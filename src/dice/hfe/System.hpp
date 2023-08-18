@@ -33,7 +33,7 @@ namespace dice
             virtual time_t getWallClockTime();
             virtual void sleep(uint32_t p_duration);
             virtual uint32_t getSimulationRate();
-            virtual void getSimulationRatio();
+            virtual float getSimulationRatio();
             virtual void storeAndTurnOffFPUExceptions();
             virtual void restoreFPUExceptions();
         };
