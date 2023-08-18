@@ -4,6 +4,8 @@
 
 using namespace dice::hfe;
 
+System* dice::hfe::g_system = nullptr;
+
 /**
  * @brief Construct a new System:: System object
  * 

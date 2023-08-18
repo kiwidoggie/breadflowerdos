@@ -37,5 +37,8 @@ namespace dice
             virtual void storeAndTurnOffFPUExceptions();
             virtual void restoreFPUExceptions();
         };
+
+        // Global reference
+        extern System* g_system;
     }
 }
