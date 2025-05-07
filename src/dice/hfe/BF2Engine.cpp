@@ -16,3 +16,9 @@ BF2Engine::BF2Engine(BF2* p_BF2Instance) :
 
     // TODO: ClassManager init
 }
+
+bool BF2Engine::mainLoop()
+{
+    // TODO: bf2: 004daa10
+    return true;
+}

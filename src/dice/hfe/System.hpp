@@ -2,6 +2,7 @@
 #include <cstdint>
 #include <cstddef>
 #include <time.h>
+#include <dice/hfe/IBase.hpp>
 
 namespace dice
 {
@@ -10,7 +11,7 @@ namespace dice
         class ClassManager;
         class BF2Engine;
 
-        class System
+        class System : private IBase
         {
         private:
             uint32_t m_refCount;
@@ -26,10 +27,10 @@ namespace dice
             System();
             virtual ~System();
 
-            virtual void addRef();
-            virtual uint32_t getRef();
-            virtual uint32_t release();
-            virtual System* queryInterface(uint32_t p_param);
+            virtual void addRef() override;
+            virtual uint32_t getRef() override;
+            virtual uint32_t release() override;
+            virtual System* queryInterface(uint32_t p_param) override;
             virtual void dtor0();
             virtual void dtor1();
             virtual uint64_t getExactTime();
