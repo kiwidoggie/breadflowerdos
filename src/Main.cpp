@@ -1,5 +1,7 @@
 #include <cstdint>
 #include <memory>
+#include <sstream>
+#include <iostream>
 #include <dice/hfe/System.hpp>
 #include <dice/hfe/BF2.hpp>
 
@@ -13,15 +15,15 @@ int main(int32_t p_argCount, const char** p_argVariables)
     // Store the system in our global reference
     dice::hfe::g_system = s_system;
 
-    // TODO: Still needs work bf2: 0040b713
-    if (1 < p_argCount)
+    // Stream all the passed variabled
+    std::ostringstream s_stream;
+    for (int32_t i = 1; i != p_argCount; i++)
     {
-        s_unknown0 = 1;
-        do
+        s_stream << p_argVariables[i];
+        if (i != p_argCount - 1)
         {
-            
-        } while (p_argCount != s_unknown0);
-        
+            s_stream << " ";
+        }
     }
 
     auto s_BF2 = new dice::hfe::BF2();
@@ -29,6 +31,23 @@ int main(int32_t p_argCount, const char** p_argVariables)
     std::string s_Unknown1; // This has to be parsed and set by above, but ghidra's a mess
     
     bool s_BF2Initalized = s_BF2->init(s_Unknown1);
+    int32_t s_ReturnCode;
 
-    return 0;
+    // Run the main loop
+    if (s_BF2Initalized)
+    {
+        bool s_Running = true;
+        while(s_Running)
+        {
+            s_Running = s_BF2->run();
+        }
+        s_ReturnCode = 0;
+    }
+    else
+    {
+        s_ReturnCode = 0x2A;
+        std::cerr << "fatal error: argument parsing failed" << std::endl;
+    }
+
+    return s_ReturnCode;
 }

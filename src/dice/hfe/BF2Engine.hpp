@@ -1,6 +1,9 @@
 #pragma once
 #include <cstdint>
 #include <cstddef>
+#include <string>
+#include <dice/hfe/io/IInputFilter.hpp>
+#include <dice/hfe/IEventListener.hpp>
 
 namespace dice
 {
@@ -15,11 +18,10 @@ namespace dice
         class TickCalculator;
 
         // BF2Engine size: 0x160 (validated from bf2: 0040b360)
-        class BF2Engine
+        class BF2Engine : private io::IInputFilter, private IEventListener
         {
         public:
-            void* m_unknown08;
-            dice::hfe::BF2* m_bf2;
+            BF2* m_bf2;
             void* m_unknown18;
             void* m_unknown20;
             void* m_unknown28;
@@ -38,7 +40,7 @@ namespace dice
             void* m_unknown90;
             uint8_t m_unknown98[4];
             uint32_t m_unknown9C;
-            uint64_t m_unknownA0;
+            uint64_t m_unknownA0; // BF2Log
             uint8_t m_unknownA8[4];
             uint32_t m_unknownAC;
             uint8_t m_unknownB0[8];
@@ -49,11 +51,16 @@ namespace dice
 
         public:
             BF2Engine(dice::hfe::BF2* p_Instance);
+            // TODO: override these
             virtual ~BF2Engine();
             virtual void filterGameInput();
             virtual void filterPlayerInput();
             virtual void handleEvent();
+            bool init(std::string& p_Param1);
+            bool mainLoop();
         };
+
+        extern BF2Engine* bf2Engine;
 
         static_assert(sizeof(BF2Engine) == 0x160);
         static_assert(offsetof(dice::hfe::BF2Engine, m_bf2) == 0x10);
