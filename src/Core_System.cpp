@@ -1,8 +1,9 @@
 #include "Core_System.hpp"
 
-#include <errno.h>
+#include <cerrno>
 #include <string>
-#include <string.h>
+#include <cstdint>
+#include <string.h> // strerror_r
 
 struct timeval g_tv = { 0, 0 };
 struct timeval g_old = { 0, 0 };

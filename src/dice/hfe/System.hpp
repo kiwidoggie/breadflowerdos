@@ -7,6 +7,9 @@ namespace dice
 {
     namespace hfe
     {
+        class ClassManager;
+        class BF2Engine;
+
         class System
         {
         private:
@@ -40,5 +43,7 @@ namespace dice
 
         // Global reference
         extern System* g_system;
+        extern ClassManager* g_classManager;
+        extern BF2Engine* g_bf2Engine;
     }
 }
