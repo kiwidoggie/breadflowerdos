@@ -26,7 +26,7 @@ jobs:
               run: sudo apt update && sudo apt install lld
 
             - name: Configure BreadFlowerDos
-              run: mkdir build && cd build && cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_LINKER_TYPE=lld -G "Unix Makefiles" .. && cd ..
+              run: mkdir build && cd build && cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld" -DCMAKE_SHARED_LINKER_FLAGS="-fuse-ld=lld" -G "Unix Makefiles" .. && cd ..
 
             - name: Build BreadFlowerDos
               run: cmake --build build
