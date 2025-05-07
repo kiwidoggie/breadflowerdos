@@ -40,7 +40,7 @@ namespace dice
             void* m_unknown90;
             uint8_t m_unknown98[4];
             uint32_t m_unknown9C;
-            uint64_t m_unknownA0;
+            uint64_t m_unknownA0; // BF2Log
             uint8_t m_unknownA8[4];
             uint32_t m_unknownAC;
             uint8_t m_unknownB0[8];
