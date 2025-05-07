@@ -45,6 +45,5 @@ namespace dice
         // Global reference
         extern System* g_system;
         extern ClassManager* g_classManager;
-        extern BF2Engine* g_bf2Engine;
     }
 }

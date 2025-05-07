@@ -1,6 +1,7 @@
 #pragma once
 #include <cstdint>
 #include <cstddef>
+#include <string>
 #include <dice/hfe/io/IInputFilter.hpp>
 #include <dice/hfe/IEventListener.hpp>
 
@@ -55,8 +56,11 @@ namespace dice
             virtual void filterGameInput();
             virtual void filterPlayerInput();
             virtual void handleEvent();
+            bool init(std::string& p_Param1);
             bool mainLoop();
         };
+
+        extern BF2Engine* bf2Engine;
 
         static_assert(sizeof(BF2Engine) == 0x160);
         static_assert(offsetof(dice::hfe::BF2Engine, m_bf2) == 0x10);
