@@ -1,0 +1,39 @@
+name: Build BreadFlowerDos
+
+on: [ push, pull_request ]
+
+jobs:
+    build-bf2:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@main
+              with:
+                fetch-depth: 0
+
+            - name: Set up clang
+              uses: egor-tensin/setup-clang@v1
+              with:
+                version: 20
+                platform: x64
+            
+            - name: Setup CMake
+              uses: jwlawson/actions-setup-cmake@v2
+              with:
+                cmake-version: '4.0.x'
+
+            - name: Install pre-reqs
+              run: sudo apt update && sudo apt install lld
+
+            - name: Configure BreadFlowerDos
+              run: mkdir build && cd build && cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_LINKER_TYPE=lld -G "Unix Makefiles" .. && cd ..
+
+            - name: Build BreadFlowerDos
+              run: cmake --build build
+
+            - name: Upload Artifacts
+              uses: actions/upload-artifact@main
+              with:
+                name: BF2
+                path: build/**
+                retention-days: 1
