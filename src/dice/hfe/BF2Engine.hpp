@@ -63,7 +63,11 @@ namespace dice
         public:
             bool init(std::string& p_Param1);
             bool mainLoop();
+            bool initEngine();
             bool shutdownEngine();
+            bool initLocalization();
+
+            void closeLog();
         };
 
         extern BF2Engine* g_bf2Engine;

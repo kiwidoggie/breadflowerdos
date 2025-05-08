@@ -54,3 +54,36 @@ bool BF2Engine::mainLoop()
     // TODO: implement
     return true;
 }
+
+// bf2: 004dc600
+bool BF2Engine::initEngine()
+{
+
+}
+
+bool BF2Engine::shutdownEngine()
+{
+
+}
+
+// bf2: 004dc5f0
+bool BF2Engine::initLocalization()
+{
+    // NOTE: This is not implemented on server
+
+    // Implemented (server)
+    return true;
+}
+
+// bf2: 004d37e0
+void BF2Engine::closeLog()
+{
+    // TODO: Implement
+
+    /*
+    if ((long *)this->field39_0xa0 != (long *)0x0) {
+        (**(code **)(*(long *)this->field39_0xa0 + 8))();
+    }
+    this->field39_0xa0 = 0;
+  */
+}

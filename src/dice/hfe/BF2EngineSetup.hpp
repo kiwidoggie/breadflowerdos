@@ -18,6 +18,16 @@ namespace dice
         public:
             BF2EngineSetup(BF2Engine* p_Engine);
             ~BF2EngineSetup();
+
+            bool initModules(void);
+            bool initLateModules(void);
+            bool initFileSystem(void);
+            bool initRenderer(void);
+            bool initNetwork(void);
+
+            bool shutdownModules();
+            void shutdownNetwork(void);
         };
+        static_assert(sizeof(BF2EngineSetup) == 0x20);
     }
 }
