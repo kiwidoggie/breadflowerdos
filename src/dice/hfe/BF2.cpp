@@ -13,7 +13,7 @@ bool BF2::init(std::string& p_Param1)
     if (s_BF2Engine == nullptr)
         return false;
 
-    bf2Engine = s_BF2Engine;
+    g_bf2Engine = s_BF2Engine;
 
     if (!m_bf2Engine->init(p_Param1))
         return false;

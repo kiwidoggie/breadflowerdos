@@ -15,16 +15,20 @@ namespace dice
         };
 
         class BF2;
+        class BF2Console;
+        class BF2EngineSetup;
         class TickCalculator;
 
         // BF2Engine size: 0x160 (validated from bf2: 0040b360)
-        class BF2Engine : private io::IInputFilter, private IEventListener
+        class BF2Engine : 
+            public io::IInputFilter, 
+            public IEventListener
         {
         public:
             BF2* m_bf2;
-            void* m_unknown18;
+            BF2EngineSetup* m_setup;
             void* m_unknown20;
-            void* m_unknown28;
+            BF2Console* m_console;
             void* m_unknown30;
             void* m_unknown38;
             void* m_unknown40;
@@ -50,17 +54,19 @@ namespace dice
             uint8_t m_unknown110[80];
 
         public:
-            BF2Engine(dice::hfe::BF2* p_Instance);
-            // TODO: override these
+            BF2Engine(BF2* p_Instance);
             virtual ~BF2Engine();
-            virtual void filterGameInput();
-            virtual void filterPlayerInput();
-            virtual void handleEvent();
+            virtual void filterGameInput(io::GameInput* p_GameInput) override;
+            virtual void filterPlayerInput(io::PlayerInput* p_PlayerInput) override;
+            virtual void handleEvent(EventCategory p_Category, uint32_t p_Unknown, EventNode* p_EventNode, void*) override;
+
+        public:
             bool init(std::string& p_Param1);
             bool mainLoop();
+            bool shutdownEngine();
         };
 
-        extern BF2Engine* bf2Engine;
+        extern BF2Engine* g_bf2Engine;
 
         static_assert(sizeof(BF2Engine) == 0x160);
         static_assert(offsetof(dice::hfe::BF2Engine, m_bf2) == 0x10);
