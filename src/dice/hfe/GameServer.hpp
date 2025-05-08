@@ -1,0 +1,23 @@
+#pragma once
+#include <dice/hfe/Game.hpp>
+#include <dice/hfe/IGameServer.hpp>
+#include <dice/hfe/IEventListener.hpp>
+#include <dice/hfe/ServerConnection.hpp>
+
+#include <map>
+
+namespace dice
+{
+    namespace hfe
+    {
+        class GameServer : public Game, public IGameServer, public IEventListener
+        {
+        public:
+            char _0x90[0x58];
+            std::map<unsigned char, ServerConnection*> m_clientConnections; // 0xE8
+            char _0x118[0x220];
+        };
+
+        static_assert(sizeof(GameServer) == 0x338);
+    }
+}

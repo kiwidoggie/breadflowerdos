@@ -6,6 +6,8 @@ namespace dice
 {
     namespace hfe
     {
+        const uint32_t IID_IBase = 1;
+
         class IBase
         {
         public:

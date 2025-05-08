@@ -77,7 +77,7 @@ uint32_t System::release()
  */
 System* System::queryInterface(uint32_t p_param)
 {
-    if (p_param == 1)
+    if (p_param == IID_IBase)
         return this;
     
     return nullptr;
