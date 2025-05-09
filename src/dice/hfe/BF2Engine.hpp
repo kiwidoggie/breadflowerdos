@@ -17,6 +17,8 @@ namespace dice
         class BF2;
         class BF2Console;
         class BF2EngineSetup;
+        class BF2Log;
+        class Mutex;
         class TickCalculator;
 
         // BF2Engine size: 0x160 (validated from bf2: 0040b360)
@@ -44,14 +46,19 @@ namespace dice
             void* m_unknown90;
             uint8_t m_unknown98[4];
             uint32_t m_unknown9C;
-            uint64_t m_unknownA0; // BF2Log
+            BF2Log* m_unknownA0;
             uint8_t m_unknownA8[4];
             uint32_t m_unknownAC;
             uint8_t m_unknownB0[8];
             TickCalculator* m_tickCalculator;
             uint8_t m_unknownC0[72];
             Demo::Demo* m_demo;
-            uint8_t m_unknown110[80];
+            uint64_t m_unknown110;
+            uint64_t m_unknown118;
+            uint64_t m_unknown120;
+            Mutex* m_unknown128;
+            Mutex* m_unknown130;
+            uint8_t m_unknown138[40];
 
         public:
             BF2Engine(BF2* p_Instance);
