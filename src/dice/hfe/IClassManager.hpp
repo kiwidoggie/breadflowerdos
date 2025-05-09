@@ -9,7 +9,7 @@ namespace dice
     namespace hfe
     {
         class IClassServer;
-        class SingletonRegInfo;
+        struct SingletonRegInfo;
 
         const uint32_t IID_IClassManager = 0x9C44;
 

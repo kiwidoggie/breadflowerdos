@@ -31,7 +31,7 @@ bool BF2::init(std::string& p_Param1)
     m_bf2Engine->getMenuActive();
     
     bool s_OutGSDedicated = false;
-    g_settings->boolGet("GSDedicated", &s_OutGSDedicated);
+    g_settings->boolGet("GSDedicated", s_OutGSDedicated);
     
     bool s_StartGame = s_OutGSDedicated || s_OutPlayNow || !s_OutGSJoinAddress.empty() || !s_OutGSLoadLevel.empty();
     if (s_StartGame)
