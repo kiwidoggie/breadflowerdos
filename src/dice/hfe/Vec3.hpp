@@ -4,8 +4,9 @@ namespace dice
 {
     namespace hfe
     {
-        struct Vec3
+        class Vec3
         {
+        public:
             float x;
             float y;
             float z;

@@ -9,10 +9,13 @@ namespace dice
     {
         class Vec3;
 
-        class Mat4 {
+        class Mat4 
+        {
         public:
-            union {
-                struct {
+            union 
+            {
+                struct 
+                {
                     float _11, _12, _13, _14;
                     float _21, _22, _23, _24;
                     float _31, _32, _33, _34;
@@ -24,7 +27,9 @@ namespace dice
             Mat4() : _11(1), _12(0), _13(0), _14(0),
                 _21(0), _22(1), _23(0), _24(0),
                 _31(0), _32(0), _33(1), _34(0),
-                _41(0), _42(0), _43(0), _44(1) {};
+                _41(0), _42(0), _43(0), _44(1) 
+            {
+            };
 
             Mat4(float _11, float _12, float _13, float _14,
                  float _21, float _22, float _23, float _24,
@@ -33,12 +38,15 @@ namespace dice
                 _11(_11), _12(_12), _13(_13), _14(_14),
                 _21(_21), _22(_22), _23(_23), _24(_24),
                 _31(_31), _32(_32), _33(_33), _34(_34),
-                _41(_41), _42(_42), _43(_43), _44(_44) {};
+                _41(_41), _42(_42), _43(_43), _44(_44) 
+            {
+            };
 
             const Vec3& translation() const { return *reinterpret_cast<const Vec3*>(&_41); };
             Vec3& translation() { return *reinterpret_cast<Vec3*>(&_41); };
 
-            Mat4& setRotateXDeg(float angle) {
+            Mat4& setRotateXDeg(float angle) 
+            {
                 angle = -degToRad(angle);
                 const float c = ::std::cos(angle);
                 const float	s = ::std::sin(angle);
@@ -49,7 +57,8 @@ namespace dice
                 return *this;
             };
 
-            Mat4& setRotateYDeg(float angle) {
+            Mat4& setRotateYDeg(float angle) 
+            {
                 angle = -degToRad(angle);
                 const float c = ::std::cos(angle);
                 const float	s = ::std::sin(angle);
@@ -60,7 +69,8 @@ namespace dice
                 return *this;
             };
 
-            Mat4& setRotateZDeg(float angle) {
+            Mat4& setRotateZDeg(float angle) 
+            {
                 angle = -degToRad(angle);
                 const float c = ::std::cos(angle);
                 const float	s = ::std::sin(angle);
@@ -71,7 +81,8 @@ namespace dice
                 return *this;
             };
 
-            Mat4& identity() {
+            Mat4& identity() 
+            {
                 _11 = 1.0f;
                 _12 = 0.0f;
                 _13 = 0.0f;
@@ -93,7 +104,8 @@ namespace dice
 
             static const Mat4& getIdentity() { static Mat4 i; return i; };
 
-            Mat4& rotMult(const Mat4& a, const Mat4& b) {
+            Mat4& rotMult(const Mat4& a, const Mat4& b) 
+            {
                 _11 = a._11 * b._11 + a._12 * b._21 + a._13 * b._31;
                 _12 = a._11 * b._12 + a._12 * b._22 + a._13 * b._32;
                 _13 = a._11 * b._13 + a._12 * b._23 + a._13 * b._33;
@@ -106,7 +118,8 @@ namespace dice
                 return *this;
             }
 
-            Mat4& mult(const Mat4& a, const Mat4& b) {
+            Mat4& mult(const Mat4& a, const Mat4& b) 
+            {
                 _11 = a._11 * b._11 + a._12 * b._21 + a._13 * b._31;
                 _12 = a._11 * b._12 + a._12 * b._22 + a._13 * b._32;
                 _13 = a._11 * b._13 + a._12 * b._23 + a._13 * b._33;
@@ -126,7 +139,8 @@ namespace dice
                 return *this;
             }
 
-            Mat4& fullMult(const Mat4& a, const Mat4& b) {
+            Mat4& fullMult(const Mat4& a, const Mat4& b) 
+            {
                 _11 = a._11 * b._11 + a._12 * b._21 + a._13 * b._31 + a._14 * b._41;
                 _12 = a._11 * b._12 + a._12 * b._22 + a._13 * b._32 + a._14 * b._42;
                 _13 = a._11 * b._13 + a._12 * b._23 + a._13 * b._33 + a._14 * b._43;

@@ -3,7 +3,7 @@
 #include <cerrno>
 #include <string>
 #include <cstdint>
-#include <string.h> // strerror_r
+#include <chrono>
 
 struct timeval g_tv = { 0, 0 };
 struct timeval g_old = { 0, 0 };
@@ -23,20 +23,13 @@ time_t getCurrentTime()
 
     const uint64_t c_timeConst = 1000000;
 
-    std::string s_errorBuffer;
-    s_errorBuffer.reserve(0x100);
+    // TODO: Determine if this is equiv of the previous implementation
+    auto s_Now = std::chrono::system_clock::now();
+    auto s_Usec = std::chrono::duration_cast<std::chrono::microseconds>(s_Now.time_since_epoch()).count();
 
-    auto s_ret = gettimeofday(&g_tv, nullptr);
-    if (s_ret != -1)
-    {
-        g_old.tv_sec = g_tv.tv_sec * c_timeConst + g_tv.tv_usec;
-        return g_old.tv_sec;
-    }
+    g_tv.tv_sec = s_Usec / c_timeConst;
+    g_tv.tv_nsec = s_Usec % c_timeConst;
 
-    auto s_error = errno;
-    strerror_r(s_error, s_errorBuffer.data(), s_errorBuffer.capacity());
-
-    g_old.tv_sec = g_tv.tv_sec * c_timeConst + g_tv.tv_usec;
-
+    g_old.tv_sec = g_tv.tv_sec * c_timeConst + g_tv.tv_nsec;
     return g_old.tv_sec;
 }
