@@ -2,6 +2,7 @@
 #include "Demo/Demo.hpp"
 #include "TickCalculator.hpp"
 #include "Mutex.hpp"
+#include "ClassManager.hpp"
 
 using namespace dice::hfe;
 
@@ -22,8 +23,7 @@ BF2Engine::BF2Engine(BF2* p_BF2Instance) :
     m_unknown130 = new Mutex();
 
     g_bf2Engine = this;
-
-    // TODO: ClassManager init
+    g_classManager = new ClassManager();
 }
 
 BF2Engine::~BF2Engine()
