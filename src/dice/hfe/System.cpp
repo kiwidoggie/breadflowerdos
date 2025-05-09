@@ -2,6 +2,9 @@
 
 #include "Core_System.hpp"
 
+#include <thread>
+#include <chrono>
+
 using namespace dice::hfe;
 
 System* dice::hfe::g_system = nullptr;
@@ -143,12 +146,17 @@ time_t System::getWallClockTime()
  */
 void System::sleep(uint32_t p_duration)
 {
+#if 0 /* This is Linux only, use STL instead */
     struct timespec s_sleepTime;
 
     s_sleepTime.tv_sec = (p_duration / 1000);
     s_sleepTime.tv_nsec = (p_duration % 1000) * 1000000;
 
     nanosleep(&s_sleepTime, nullptr);
+#else
+    // TODO: Determine if this code is equivalent of the code above
+    std::this_thread::sleep_for(std::chrono::milliseconds(p_duration));
+#endif
 }
 
 /**
