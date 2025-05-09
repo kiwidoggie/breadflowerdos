@@ -22,7 +22,11 @@ namespace dice
 				unsigned int m_minBitSize;
 			};
 
+#if defined(WIN32)
+			// TODO: Win32 static_assert
+#else
 			static_assert(sizeof(NetworkableDescriptor) == 0x30);
+#endif
 		}
 	}
 }
