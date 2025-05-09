@@ -58,7 +58,14 @@ namespace dice
                 NetworkManager();
                 virtual void handleEvent(EventCategory p_Category, uint32_t p_Unknown, EventNode* p_EventNode, void*);
                 virtual ~NetworkManager();
+
             };
+#if defined(WIN32)
+            // TODO: Win32 static_assert
+#else
+            static_assert(sizeof(NetworkManager) == 0x188);
+#endif
+
         }
     }
 }

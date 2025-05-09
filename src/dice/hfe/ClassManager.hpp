@@ -1,12 +1,12 @@
 #pragma once
-
 #include <dice/hfe/IClassManager.hpp>
 
 namespace dice
 {
     namespace hfe
     {
-        class ClassManager : public IClassManager {
+        class ClassManager : public IClassManager 
+        {
         public:
             uint32_t m_refCount;
             char m_unknown0C[0xE4];

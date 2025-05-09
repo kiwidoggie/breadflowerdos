@@ -1,11 +1,13 @@
 #pragma once
 #include <ctime>
 
+#if defined(WIN32)
 struct timeval
 {
     long int tv_sec;
-    long int tv_nsec;
+    long int tv_usec;
 };
+#endif
 
 extern struct timeval g_tv;
 extern struct timeval g_old;

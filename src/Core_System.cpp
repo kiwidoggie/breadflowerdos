@@ -28,8 +28,8 @@ time_t getCurrentTime()
     auto s_Usec = std::chrono::duration_cast<std::chrono::microseconds>(s_Now.time_since_epoch()).count();
 
     g_tv.tv_sec = s_Usec / c_timeConst;
-    g_tv.tv_nsec = s_Usec % c_timeConst;
+    g_tv.tv_usec = s_Usec % c_timeConst;
 
-    g_old.tv_sec = g_tv.tv_sec * c_timeConst + g_tv.tv_nsec;
+    g_old.tv_sec = g_tv.tv_sec * c_timeConst + g_tv.tv_usec;
     return g_old.tv_sec;
 }
