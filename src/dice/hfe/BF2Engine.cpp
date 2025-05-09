@@ -3,6 +3,7 @@
 #include "TickCalculator.hpp"
 #include "Mutex.hpp"
 #include "ClassManager.hpp"
+#include "ISettingsRepostitory.hpp"
 
 using namespace dice::hfe;
 
@@ -52,6 +53,7 @@ void BF2Engine::handleEvent(EventCategory p_Category, uint32_t p_Unknown, EventN
 bool BF2Engine::init(std::string& p_Param1)
 {
     // TODO: implement
+    ISettingsRepostitory::createSingleton();
     return true;
 }
 
@@ -93,4 +95,20 @@ void BF2Engine::closeLog()
     }
     this->field39_0xa0 = 0;
   */
+}
+
+// bf2: 004db530
+bool BF2Engine::startGame(bool, bool)
+{
+    // TODO: Implement
+    return true;
+}
+
+// bf2: 004d3830
+bool BF2Engine::getMenuActive() const
+{
+    // NOTE: This is not implemented on server
+
+    // Implemented (server)
+    return false;
 }

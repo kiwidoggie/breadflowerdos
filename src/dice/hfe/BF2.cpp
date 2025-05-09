@@ -1,5 +1,6 @@
 #include "BF2.hpp"
 #include "BF2Engine.hpp"
+#include "ISettingsRepostitory.hpp"
 
 using namespace dice::hfe;
 
@@ -18,27 +19,25 @@ bool BF2::init(std::string& p_Param1)
     if (!m_bf2Engine->init(p_Param1))
         return false;
 
-    // TODO
-    /*
-    memory::memory_update_modules((memory*)nullptr, p_Param1);
+    // TODO: add memory_update_modules
+    // memory::memory_update_modules((memory*)nullptr, p_Param1);
     std::string s_OutGSLoadLevel = "";
-    dice::hfe::SettingsRepostitory::stringGet(settings, "GSLoadLevel", &s_OutGSLoadLevel);
+    g_settings->stringGet("GSLoadLevel", s_OutGSLoadLevel);
     std::string s_OutGSJoinAddress = "";
-    dice::hfe::SettingsRepostitory::stringGet(settings, "GSJoinAddress", &s_OutGSJoinAddress);
+    g_settings->stringGet("GSJoinAddress", s_OutGSJoinAddress);
     int32_t s_OutPlayNow = 0;
-    dice::hfe::SettingsRepostitory::intGet(settings, "playNow", &s_OutPlayNow);
+    g_settings->intGet("playNow", s_OutPlayNow);
     
-    BF2Engine::getMenuActive();
+    m_bf2Engine->getMenuActive();
     
     bool s_OutGSDedicated = false;
-    dice::hfe::SettingsRepostitory::boolGet(settings, "GSDedicated", &s_OutGSDedicated);
+    g_settings->boolGet("GSDedicated", &s_OutGSDedicated);
     
     bool s_StartGame = s_OutGSDedicated || s_OutPlayNow || !s_OutGSJoinAddress.empty() || !s_OutGSLoadLevel.empty();
     if (s_StartGame)
     {
         m_bf2Engine->startGame(false, true);
     }
-    */
 
     return true;
 }

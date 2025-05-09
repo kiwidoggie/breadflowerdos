@@ -39,6 +39,11 @@ namespace dice
             virtual void getAllClassIncludingSubstring(std::string const&, std::vector<std::string>&) const override;
             virtual void initSingletons() override;
         };
+#if defined(WIN32)
+        // TODO: Win32 static_assert
+#else
+        static_assert(sizeof(ClassManager) == 0xf0); // bf2: 004d406c
+#endif
 
         extern ClassManager* g_classManager;
     }
