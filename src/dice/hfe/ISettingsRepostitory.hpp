@@ -10,7 +10,9 @@ namespace dice
 {
     namespace hfe
     {
-        class ISettingsRepostitory : private IBase
+        const uint32_t IID_ISettingsRepostitory = 0x9C4B;
+
+        class ISettingsRepostitory : public IBase
         {
         public:
             virtual void intGet(std::string const&, int32_t const&) = 0;
@@ -41,6 +43,10 @@ namespace dice
             virtual void Vec4Set(std::string const&, Vec4 const&) = 0;
             virtual bool Vec4Exists(std::string const&) = 0;
             virtual void Vec4Erase(std::string const&) = 0;
+
+            static void createSingleton();
         };
+
+        extern ISettingsRepostitory* g_settings;
     }
 }
