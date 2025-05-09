@@ -96,3 +96,19 @@ void BF2Engine::closeLog()
     this->field39_0xa0 = 0;
   */
 }
+
+// bf2: 004db530
+bool BF2Engine::startGame(bool, bool)
+{
+    // TODO: Implement
+    return true;
+}
+
+// bf2: 004d3830
+bool BF2Engine::getMenuActive() const
+{
+    // NOTE: This is not implemented on server
+
+    // Implemented (server)
+    return false;
+}
