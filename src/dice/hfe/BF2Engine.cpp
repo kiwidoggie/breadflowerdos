@@ -1,6 +1,8 @@
 #include "BF2Engine.hpp"
 #include "Demo/Demo.hpp"
 #include "TickCalculator.hpp"
+#include "Mutex.hpp"
+#include "ClassManager.hpp"
 
 using namespace dice::hfe;
 
@@ -16,7 +18,12 @@ BF2Engine::BF2Engine(BF2* p_BF2Instance) :
     // Create a new demo instance
     m_demo = new Demo::Demo();
 
-    // TODO: ClassManager init
+    // Create 2 new Mutex
+    m_unknown128 = new Mutex();
+    m_unknown130 = new Mutex();
+
+    g_bf2Engine = this;
+    g_classManager = new ClassManager();
 }
 
 BF2Engine::~BF2Engine()
@@ -58,12 +65,12 @@ bool BF2Engine::mainLoop()
 // bf2: 004dc600
 bool BF2Engine::initEngine()
 {
-
+    return true; // TODO
 }
 
 bool BF2Engine::shutdownEngine()
 {
-
+    return true; // TODO
 }
 
 // bf2: 004dc5f0
