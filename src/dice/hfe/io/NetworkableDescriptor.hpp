@@ -21,8 +21,6 @@ namespace dice
 				unsigned char _0x1D[3];
 				unsigned int m_minBitSize;
 			};
-
-			static_assert(sizeof(NetworkableDescriptor) == 0x30);
 		}
 	}
 }
