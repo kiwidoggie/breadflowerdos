@@ -49,123 +49,142 @@ SettingsRepostitory* SettingsRepostitory::queryInterface(uint32_t p_param)
     return nullptr;
 }
 
-// TODO: Implement all vfunctions below.
-
-void SettingsRepostitory::intGet(std::string const&, int32_t const&)
+void SettingsRepostitory::intGet(std::string const& key, int32_t& value)
 {
+    m_intStorage.get(key, value);
 }
 
-void SettingsRepostitory::intSet(std::string const&, int32_t const&)
+void SettingsRepostitory::intSet(std::string const& key, int32_t const& value)
 {
+    m_intStorage.set(key, value);
 }
 
-bool SettingsRepostitory::intExists(std::string const&)
+bool SettingsRepostitory::intExists(std::string const& key)
 {
-	return false;
+    return m_intStorage.exists(key);
 }
 
-void SettingsRepostitory::intErase(std::string const&)
+void SettingsRepostitory::intErase(std::string const& key)
 {
+    m_intStorage.erase(key);
 }
 
-void SettingsRepostitory::floatGet(std::string const&, float const&)
+void SettingsRepostitory::floatGet(std::string const& key, float& value)
 {
+    m_floatStorage.get(key, value);
 }
 
-void SettingsRepostitory::floatSet(std::string const&, float const&)
+void SettingsRepostitory::floatSet(std::string const& key, float const& value)
 {
+    m_floatStorage.set(key, value);
 }
 
-bool SettingsRepostitory::floatExists(std::string const&)
+bool SettingsRepostitory::floatExists(std::string const& key)
 {
-	return false;
+    return m_floatStorage.exists(key);
 }
 
-void SettingsRepostitory::floatErase(std::string const&)
+void SettingsRepostitory::floatErase(std::string const& key)
 {
+    m_floatStorage.erase(key);
 }
 
-void SettingsRepostitory::U32Get(std::string const&, uint32_t const&)
+void SettingsRepostitory::U32Get(std::string const& key, uint32_t& value)
 {
+    m_U32Storage.get(key, value);
 }
 
-void SettingsRepostitory::U32Set(std::string const&, uint32_t const&)
+void SettingsRepostitory::U32Set(std::string const& key, uint32_t const& value)
 {
+    m_U32Storage.set(key, value);
 }
 
-bool SettingsRepostitory::U32Exists(std::string const&)
+bool SettingsRepostitory::U32Exists(std::string const& key)
 {
-	return false;
+    return m_U32Storage.exists(key);
 }
 
-void SettingsRepostitory::U32Erase(std::string const&)
+void SettingsRepostitory::U32Erase(std::string const& key)
 {
+    m_U32Storage.erase(key);
 }
 
-void SettingsRepostitory::stringGet(std::string const&, std::string const&)
+void SettingsRepostitory::stringGet(std::string const& key, std::string& value)
 {
+    m_stringStorage.get(key, value);
 }
 
-void SettingsRepostitory::stringSet(std::string const&, std::string const&)
+void SettingsRepostitory::stringSet(std::string const& key, std::string const& value)
 {
+    m_stringStorage.set(key, value);
 }
 
-bool SettingsRepostitory::stringExists(std::string const&)
+bool SettingsRepostitory::stringExists(std::string const& key)
 {
-	return false;
+    return m_stringStorage.exists(key);
 }
 
-void SettingsRepostitory::stringErase(std::string const&)
+void SettingsRepostitory::stringErase(std::string const& key)
 {
+    m_stringStorage.erase(key);
 }
 
-void SettingsRepostitory::boolGet(std::string const&, bool const&)
+void SettingsRepostitory::boolGet(std::string const& key, bool& value)
 {
+    m_boolStorage.get(key, value);
 }
 
-void SettingsRepostitory::boolSet(std::string const&, bool const&)
+void SettingsRepostitory::boolSet(std::string const& key, bool const& value)
 {
+    m_boolStorage.set(key, value);
 }
 
-bool SettingsRepostitory::boolExists(std::string const&)
+bool SettingsRepostitory::boolExists(std::string const& key)
 {
-	return false;
+    return m_boolStorage.exists(key);
 }
 
-void SettingsRepostitory::boolErase(std::string const&)
+void SettingsRepostitory::boolErase(std::string const& key)
 {
+    m_boolStorage.erase(key);
 }
 
-void SettingsRepostitory::Vec3Get(std::string const&, Vec3 const&)
+void SettingsRepostitory::Vec3Get(std::string const& key, Vec3& value)
 {
+    m_Vec3Storage.get(key, value);
 }
 
-void SettingsRepostitory::Vec3Set(std::string const&, Vec3 const&)
+void SettingsRepostitory::Vec3Set(std::string const& key, Vec3 const& value)
 {
+    m_Vec3Storage.set(key, value);
 }
 
-bool SettingsRepostitory::Vec3Exists(std::string const&)
+bool SettingsRepostitory::Vec3Exists(std::string const& key)
 {
-	return false;
+    return m_Vec3Storage.exists(key);
 }
 
-void SettingsRepostitory::Vec3Erase(std::string const&)
+void SettingsRepostitory::Vec3Erase(std::string const& key)
 {
+    m_Vec3Storage.erase(key);
 }
 
-void SettingsRepostitory::Vec4Get(std::string const&, Vec4 const&)
+void SettingsRepostitory::Vec4Get(std::string const& key, Vec4& value)
 {
+    m_Vec4Storage.get(key, value);
 }
 
-void SettingsRepostitory::Vec4Set(std::string const&, Vec4 const&)
+void SettingsRepostitory::Vec4Set(std::string const& key, Vec4 const& value)
 {
+    m_Vec4Storage.set(key, value);
 }
 
-bool SettingsRepostitory::Vec4Exists(std::string const&)
+bool SettingsRepostitory::Vec4Exists(std::string const& key)
 {
-	return false;
+    return m_Vec4Storage.exists(key);
 }
 
-void SettingsRepostitory::Vec4Erase(std::string const&)
+void SettingsRepostitory::Vec4Erase(std::string const& key)
 {
+    m_Vec4Storage.erase(key);
 }
