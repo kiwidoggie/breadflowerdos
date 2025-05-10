@@ -4,6 +4,8 @@
 #include "Mutex.hpp"
 #include "ClassManager.hpp"
 #include "ISettingsRepostitory.hpp"
+#include "io/SettingsManagerBase.hpp"
+#include "BF2EngineSetup.hpp"
 
 using namespace dice::hfe;
 
@@ -54,6 +56,10 @@ bool BF2Engine::init(std::string& p_Param1)
 {
     // TODO: implement
     ISettingsRepostitory::createSingleton();
+    initDefaultSettings();
+
+    m_setup = new BF2EngineSetup(this);
+
     return true;
 }
 
@@ -111,4 +117,27 @@ bool BF2Engine::getMenuActive() const
 
     // Implemented (server)
     return false;
+}
+
+// bf2: 004d47b0
+void BF2Engine::initDefaultSettings()
+{
+    g_settings->boolSet("GSMenu", false);
+    g_settings->stringSet("GSModDirectory", "mods/bf2");
+    g_settings->stringSet("GSLevelDirectory", "Levels/");
+
+    io::g_settingsManager->U32RegisterUserVar("GSPerfLogAtPlayerCount", 30, true, 0);
+    io::g_settingsManager->floatRegisterUserVar("GSDefaultLatencyCompensation", 0.1f, true, 0);
+    io::g_settingsManager->boolRegisterUserVar("GSUseLatencyCompensation", false, false, 0);
+    io::g_settingsManager->boolRegisterUserVar("GSUseClientSidePrediction", true, false, 0);
+    io::g_settingsManager->boolRegisterUserVar("GSDebugBitStream", false, false, 0);
+    io::g_settingsManager->stringRegisterUserVar("GSPlayerName", "DefaultPlayerName", true, 0);
+
+    g_settings->intSet("GSViewDistance", 850);
+    g_settings->boolSet("GSLoadObfuscated", true);
+
+    io::g_settingsManager->boolRegisterUserVar("GSFullScreen", true, false, 0);
+    io::g_settingsManager->boolRegisterUserVar("GSExtrapolateFrame", false, true, 0);
+    io::g_settingsManager->boolRegisterUserVar("GSShowNetGraph", false, true, 0);
+    io::g_settingsManager->boolRegisterUserVar("GSClPunkBuster", false, true, 0);
 }
