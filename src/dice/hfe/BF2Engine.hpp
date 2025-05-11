@@ -77,6 +77,7 @@ namespace dice
             void closeLog();
             bool startGame(bool, bool);
             bool getMenuActive() const;
+            void initDefaultSettings();
         };
 
         extern BF2Engine* g_bf2Engine;
