@@ -84,9 +84,9 @@ bool BF2EngineSetup::initModules()
     auto spawnSystemModule = new SpawnSystemModule();
     g_modules.push_back(spawnSystemModule);
     // TODO: Add something with classManager
-    setSpawnManager(0xc487);                          
-    world::setMaterialManager(0xc4af);
-    world::setScoreManager(0xc4b9);
+    setSpawnManager(CID_SpawnManager); // 0xc487
+    world::setMaterialManager(world::CID_MaterialManager); // 0xc4af
+    world::setScoreManager(world::CID_ScoreManager); // 0xc4af
     */
     
     return true;
