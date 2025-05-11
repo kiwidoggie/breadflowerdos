@@ -11,17 +11,18 @@ namespace dice
 		class ISettingsRepostitory;
 
 		// bf2: 007451d2
-		struct SingletonRegInfo
+		class SingletonRegInfo
 		{
+		public:
 			std::string name;
 			IBase* singleton;
-			uint32_t unknown10;
-			uint32_t unknown14;
+			uint32_t iid;
+			uint32_t cid;
 			uint32_t unknown18;
-			std::string name2;
 
-			SingletonRegInfo(std::string p_ClassName, IBase* p_Class)
-				: name(p_ClassName), singleton(p_Class), unknown10(0), unknown14(0), unknown18(4), name2(p_ClassName) {}
+			SingletonRegInfo(std::string p_ClassName, IBase* p_Class, uint32_t p_IID = 0, uint32_t p_CID = 0, uint32_t p_Param5 = 4)
+				: name(p_ClassName), singleton(p_Class), iid(p_IID), cid(p_CID), unknown18(p_Param5) {
+			}
 		};
 	}
 }

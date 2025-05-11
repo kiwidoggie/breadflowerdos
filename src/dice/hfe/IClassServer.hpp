@@ -7,8 +7,8 @@ namespace dice
 {
     namespace hfe
     {
-        struct ClassRegInfo;
-        struct SingletonRegInfo;
+        class ClassRegInfo;
+        class SingletonRegInfo;
         const uint32_t IID_IClassServer = 0x9C43;
 
         class IClassServer : public IBase
