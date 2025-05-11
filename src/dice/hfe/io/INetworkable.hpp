@@ -13,6 +13,8 @@ namespace dice
             class BitStream;
             class INetworkableObject;
 
+            const uint32_t IID_INetworkable = 0x58165FFE;
+
             class INetworkable : public IBase
             {
             public:

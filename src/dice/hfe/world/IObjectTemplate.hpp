@@ -11,6 +11,8 @@ namespace dice
 	{
         namespace world
 		{
+			const uint32_t IID_IObjectTemplate = 0x0C364;
+			
 			class IObjectTemplate : public IBase {
 			public:
 				virtual unsigned int getClassID() = 0;

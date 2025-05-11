@@ -8,6 +8,8 @@ namespace dice
 	{
 		namespace geom
 		{
+			const uint32_t IID_IGeometry = 0x492FE0FE;
+
 			class IGeometry : public IBase {
 			public:
 				virtual void function4() = 0;

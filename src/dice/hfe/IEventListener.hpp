@@ -8,6 +8,8 @@ namespace dice
         enum class EventCategory;
         class EventNode;
 
+        const uint32_t IID_IEventListener = 0x9C4A;
+
         class IEventListener
         {
         public:
