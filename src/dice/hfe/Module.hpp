@@ -14,7 +14,7 @@ namespace dice
             virtual void addRef() override;
             virtual uint32_t getRef() override;
             virtual uint32_t release() override;
-            virtual IBase* queryInterface(uint32_t p_param) override;
+            virtual Module* queryInterface(uint32_t p_param) override;
             virtual void getClassList(std::vector<ClassRegInfo>&) override;
             virtual void getSingletonList(std::vector<SingletonRegInfo>&) override;
             virtual bool init() override;
