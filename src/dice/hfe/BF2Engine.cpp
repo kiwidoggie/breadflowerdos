@@ -1,5 +1,5 @@
 #include "BF2Engine.hpp"
-#include "Demo/Demo.hpp"
+#include "Demo.hpp"
 #include "TickCalculator.hpp"
 #include "Mutex.hpp"
 #include "ClassManager.hpp"
@@ -19,7 +19,7 @@ BF2Engine::BF2Engine(BF2* p_BF2Instance) :
     m_tickCalculator = new TickCalculator(10, 30.0f);
 
     // Create a new demo instance
-    m_demo = new Demo::Demo();
+    m_demo = new Demo();
 
     // Create 2 new Mutex
     m_unknown128 = new Mutex();

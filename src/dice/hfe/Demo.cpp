@@ -1,7 +1,7 @@
 #include "Demo.hpp"
 #include "Game_Main_demo.hpp"
 
-using namespace dice::hfe::Demo;
+using namespace dice::hfe;
 
 Demo::Demo()
 {
@@ -18,7 +18,7 @@ Demo::Demo()
  * @param p_node 
  * @param p_param4 
  */
-void Demo::handleEvent(dice::hfe::EventCategory p_category, uint32_t p_param2, dice::hfe::EventNode* p_node, void* p_param4)
+void Demo::handleEvent(EventCategory p_category, uint32_t p_param2, EventNode* p_node, void* p_param4)
 {
     if (p_param2 != 2)
         return;

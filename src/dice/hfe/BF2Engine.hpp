@@ -9,15 +9,11 @@ namespace dice
 {
     namespace hfe
     {
-        namespace Demo
-        {
-            class Demo;
-        };
-
         class BF2;
         class BF2Console;
         class BF2EngineSetup;
         class BF2Log;
+        class Demo;
         class Mutex;
         class TickCalculator;
 
@@ -52,7 +48,7 @@ namespace dice
             uint8_t m_unknownB0[8];
             TickCalculator* m_tickCalculator;
             uint8_t m_unknownC0[72];
-            Demo::Demo* m_demo;
+            Demo* m_demo;
             uint64_t m_unknown110;
             uint64_t m_unknown118;
             uint64_t m_unknown120;
