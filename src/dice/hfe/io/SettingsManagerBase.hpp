@@ -3,6 +3,7 @@
 #include <set>
 #include <map>
 #include <string>
+#include <cstdint>
 #include <dice/hfe/Vec3.hpp>
 
 namespace dice
