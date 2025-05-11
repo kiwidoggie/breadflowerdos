@@ -23,7 +23,7 @@ System::System() :
     m_unknown24(0),
     m_unknown28(0)
 {
-    const auto a = offsetof(dice::hfe::System, m_refCount);
+    // TODO: Implement
 }
 
 System::~System()

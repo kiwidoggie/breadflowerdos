@@ -25,7 +25,8 @@ namespace dice
 
             const uint32_t IID_IObject = 0x0C378;
 
-            class IObject : public IBase {
+            class IObject : public IBase 
+            {
             public:
                 // object flags
                 enum : unsigned int {
@@ -57,6 +58,7 @@ namespace dice
                     IsRootParent       = 1U << 24, // 0x1000000
                 };
 
+            public:
                 virtual unsigned int getClassID() = 0;
                 virtual ~IObject() = 0;
                 virtual void getWeakPtr() = 0;
@@ -143,14 +145,15 @@ namespace dice
                 virtual void removeSibling(IObject*) = 0;
                 virtual void setParent(IObject*) = 0;
 
-                unsigned int m_flags;                       // 0x008
-                void* _0x0C;
-                IObject*  m_objectRoot;                     // 0x018
-                unsigned int  m_objectId;                   // 0x020
-                IObjectTemplate*  m_objectTemplate;         // 0x028
-                void*  m_gridCullerObj;                     // 0x030
-                void* _0x38;
-                void*  m_latencyCullerObj;                  // 0x040
+            public:
+                unsigned int m_Flags;                       // 0x008
+                void* m_Unknown0C;
+                IObject*  m_ObjectRoot;                     // 0x018
+                unsigned int  m_ObjectId;                   // 0x020
+                IObjectTemplate*  m_ObjectTemplate;         // 0x028
+                void*  m_GridCullerObj;                     // 0x030
+                void* m_Unknown38;
+                void*  m_LatencyCullerObj;                  // 0x040
                 unsigned int  m_objectCacheId;              // 0x048
                 IObject*  m_objectParent;                   // 0x050
                 IObject*  m_objectSub;                      // 0x058
@@ -180,14 +183,14 @@ namespace dice
                 if (obj == nullptr) {
                     return nullptr;
                 }
-                if (obj->m_flags & IObject::IsRootParent) {
-                    obj->m_objectRoot = obj;
+                if (obj->m_Flags & IObject::IsRootParent) {
+                    obj->m_ObjectRoot = obj;
                     return obj;
                 }
-                if (obj->m_objectRoot == nullptr) {
-                    obj->m_objectRoot = getRootParent(obj->m_objectParent);
+                if (obj->m_ObjectRoot == nullptr) {
+                    obj->m_ObjectRoot = getRootParent(obj->m_objectParent);
                 }
-                return obj->m_objectRoot;
+                return obj->m_ObjectRoot;
             }
         }
     }

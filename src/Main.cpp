@@ -7,8 +7,6 @@
 
 int main(int32_t p_argCount, const char** p_argVariables)
 {
-    int32_t s_unknown0;
-
     // Initalize the system
     auto s_system = new dice::hfe::System();
 
