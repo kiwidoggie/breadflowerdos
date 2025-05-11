@@ -55,10 +55,17 @@ void BF2Engine::handleEvent(EventCategory p_Category, uint32_t p_Unknown, EventN
 bool BF2Engine::init(std::string& p_Param1)
 {
     // TODO: implement
+
     ISettingsRepostitory::createSingleton();
     initDefaultSettings();
 
     m_setup = new BF2EngineSetup(this);
+
+    if (!m_setup->initModules())
+    {
+        m_setup->shutdownModules();
+        return false;
+    }
 
     return true;
 }

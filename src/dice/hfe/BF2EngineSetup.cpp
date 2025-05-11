@@ -2,8 +2,11 @@
 #include "BF2Engine.hpp"
 #include "io/io.hpp"
 #include "io/NetworkManager.hpp"
+#include "Module.hpp"
 
 using namespace dice::hfe;
+
+std::vector<IModule*> dice::hfe::g_modules;
 
 // bf2: 004def00
 BF2EngineSetup::BF2EngineSetup(BF2Engine* p_Engine) :
@@ -29,7 +32,64 @@ BF2EngineSetup::~BF2EngineSetup()
 bool BF2EngineSetup::initModules()
 {
     // TODO: Implement
-    return false;
+    auto module = new Module();
+    g_modules.push_back(module);
+    /*
+    auto moduleBF2 = new ModuleBF2();
+    g_modules.push_back(moduleBF2);
+    auto moduleGame = new ModuleGame();
+    g_modules.push_back(moduleGame);
+    auto moduleGameLogic = new ModuleGameLogic();
+    g_modules.push_back(moduleGameLogic);
+    auto mathModule = new mathModule();
+    g_modules.push_back(mathModule);
+    auto moduleIO = new io::ModuleIO();
+    g_modules.push_back(moduleIO);
+    auto fileModule = new io::FileModule();
+    g_modules.push_back(fileModule);
+    auto worldModule = new world::Module();
+    g_modules.push_back(worldModule);
+    auto objectModule = new world::ObjectModule();
+    g_modules.push_back(objectModule);
+    auto objTemplPortalModule = new world::ObjTemplPortalModule();
+    g_modules.push_back(objTemplPortalModule);
+    auto moduleNetworkables = new ModuleNetworkables();
+    g_modules.push_back(moduleNetworkables);
+    auto objTemplBaseModule = new world::ObjTemplBaseModule();
+    g_modules.push_back(objTemplBaseModule);
+    auto moduleToolObject = new tool::ModuleToolObject();
+    g_modules.push_back(moduleToolObject);
+    auto physicsModule = new world::PhysicsModule();
+    g_modules.push_back(physicsModule);
+    auto animModule = new animationTools::AnimModule();
+    g_modules.push_back(animModule);
+    auto networkModule = new io::NetworkModule();
+    g_modules.push_back(networkModule);
+    auto bfSoundModule = new BfSoundModule();
+    g_modules.push_back(bfSoundModule);
+    auto bfMaterialSystemModule = new world::BFMaterialSystemModule();
+    g_modules.push_back(bfMaterialSystemModule);
+    auto scoreSystemModule = new world::ScoreSystemModule();
+    g_modules.push_back(scoreSystemModule);
+    auto gameLogicObjTemplBaseModule = new world::GameLogicObjTemplBaseModule();
+    g_modules.push_back(gameLogicObjTemplBaseModule);
+    auto gameLogicObjTemplFxModule = new world::GameLogicObjTemplFxModule();
+    g_modules.push_back(gameLogicObjTemplFxModule);
+    auto gameLogicObjTemplVehicleModule = new world::GameLogicObjTemplVehicleModule();
+    g_modules.push_back(gameLogicObjTemplVehicleModule);
+    auto gameLogicObjTemplBFModule = new world::GameLogicObjTemplBFModule();
+    g_modules.push_back(gameLogicObjTemplBFModule);
+    auto gameLogicCompModule = new world::GameLogicCompModule();
+    g_modules.push_back(gameLogicCompModule);
+    auto spawnSystemModule = new SpawnSystemModule();
+    g_modules.push_back(spawnSystemModule);
+    // TODO: Add something with classManager
+    setSpawnManager(0xc487);                          
+    world::setMaterialManager(0xc4af);
+    world::setScoreManager(0xc4b9);
+    */
+    
+    return true;
 }
 
 // bf2: 004df3f0

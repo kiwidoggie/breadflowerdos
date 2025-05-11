@@ -1,11 +1,13 @@
 #pragma once
 #include <cstdint>
+#include <vector>
 
 namespace dice
 {
     namespace hfe
     {
         class BF2Engine;
+        class IModule;
 
         class BF2EngineSetup
         {
@@ -29,5 +31,7 @@ namespace dice
             void shutdownNetwork(void);
         };
         static_assert(sizeof(BF2EngineSetup) == 0x20);
+
+        extern std::vector<IModule*> g_modules;
     }
 }

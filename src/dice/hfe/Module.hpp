@@ -11,6 +11,7 @@ namespace dice
         public:
             uint32_t m_refCount;
 
+            Module() : m_refCount(1) {}
             virtual void addRef() override;
             virtual uint32_t getRef() override;
             virtual uint32_t release() override;
