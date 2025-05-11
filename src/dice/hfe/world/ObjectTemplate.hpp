@@ -9,6 +9,8 @@ namespace dice
 	{
         namespace world
 		{
+			const uint32_t CID_ObjectTemplate = 0x94B5;
+
 			class ObjectTemplate : public IObjectTemplate, public IConsoleSaveable {
 			public:
 				virtual void setGameLogicComponents(IObject*);

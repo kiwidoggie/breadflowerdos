@@ -10,6 +10,8 @@ namespace dice
 {
     namespace hfe
     {
+        const uint32_t CID_GameServer = 0x1D8AA;
+
         class GameServer : public Game, public IGameServer, public IEventListener
         {
         public:

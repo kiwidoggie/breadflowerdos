@@ -31,6 +31,8 @@ namespace dice
 
             class SocketManager;
 
+            const uint32_t CID_NetworkManager = 0x4ADDB7FE;
+
             class NetworkManager :
                 public IEventListener
             {
