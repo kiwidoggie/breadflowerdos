@@ -62,12 +62,14 @@ uint32_t System::getRef()
  */
 uint32_t System::release()
 {
-    // This looks scuffed
     m_refCount--;
-    if (m_refCount == 0)
-        delete this;
-    
-    return m_refCount;
+    if (m_refCount != 0)
+    {
+        return m_refCount;
+    }
+
+    delete this;
+    return 0;
 }
 
 /**
