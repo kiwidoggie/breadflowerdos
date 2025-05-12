@@ -42,7 +42,7 @@ namespace dice
             void* m_unknown90;
             uint8_t m_unknown98[4];
             uint32_t m_unknown9C;
-            BF2Log* m_unknownA0;
+            BF2Log* m_log;
             uint8_t m_unknownA8[4];
             uint32_t m_unknownAC;
             uint8_t m_unknownB0[8];
@@ -74,13 +74,14 @@ namespace dice
             bool startGame(bool, bool);
             bool getMenuActive() const;
             void initDefaultSettings();
+            bool parseParameters(std::string const&);
         };
 
         extern BF2Engine* g_bf2Engine;
 
         static_assert(sizeof(BF2Engine) == 0x160);
         static_assert(offsetof(dice::hfe::BF2Engine, m_bf2) == 0x10);
-        static_assert(offsetof(dice::hfe::BF2Engine, m_unknownA0) == 0xA0);
+        static_assert(offsetof(dice::hfe::BF2Engine, m_log) == 0xA0);
         static_assert(offsetof(dice::hfe::BF2Engine, m_tickCalculator) == 0xB8);
         static_assert(offsetof(dice::hfe::BF2Engine, m_demo) == 0x108);
     }

@@ -15,11 +15,12 @@ namespace dice
 		public:
 			uint32_t id;
 			std::string name;
-			using CreateFunc = void* (*)(uint32_t, IBase*);
+			using CreateFunc = IBase * (*)(uint32_t, IBase*);
 			CreateFunc func;
 
 			ClassRegInfo(uint32_t p_ID, std::string p_ClassName, CreateFunc p_Function)
-				: id(p_ID), name(p_ClassName), func(p_Function) {}
+				: id(p_ID), name(p_ClassName), func(p_Function) {
+			}
 		};
 	}
 }

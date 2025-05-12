@@ -6,6 +6,8 @@
 #include "ISettingsRepostitory.hpp"
 #include "io/SettingsManagerBase.hpp"
 #include "BF2EngineSetup.hpp"
+#include "BF2Log.hpp"
+#include "BF2Console.hpp"
 
 using namespace dice::hfe;
 
@@ -56,16 +58,27 @@ bool BF2Engine::init(std::string& p_Param1)
 {
     // TODO: implement
 
+    m_log = new BF2Log();
     ISettingsRepostitory::createSingleton();
     initDefaultSettings();
 
+    if (!parseParameters(p_Param1))
+    {
+        return false;
+    }
+
     m_setup = new BF2EngineSetup(this);
+    m_console = new BF2Console();
+    m_unknownAC = 60;
+    // systemInfo()->vtable0x38();
 
     if (!m_setup->initModules())
     {
         m_setup->shutdownModules();
         return false;
     }
+
+    // initSettingsRepostitory();
 
     return true;
 }
@@ -147,4 +160,9 @@ void BF2Engine::initDefaultSettings()
     io::g_settingsManager->boolRegisterUserVar("GSExtrapolateFrame", false, true, 0);
     io::g_settingsManager->boolRegisterUserVar("GSShowNetGraph", false, true, 0);
     io::g_settingsManager->boolRegisterUserVar("GSClPunkBuster", false, true, 0);
+}
+
+bool BF2Engine::parseParameters(std::string const&)
+{
+    return true;
 }

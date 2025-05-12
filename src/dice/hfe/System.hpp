@@ -13,7 +13,7 @@ namespace dice
 
         const uint32_t CID_System = 0xA5D6;
 
-        class System : private IBase
+        class System : public IBase
         {
         private:
             uint32_t m_refCount;

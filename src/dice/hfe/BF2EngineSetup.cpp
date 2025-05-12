@@ -3,6 +3,7 @@
 #include "io/io.hpp"
 #include "io/NetworkManager.hpp"
 #include "Module.hpp"
+#include "ClassManager.hpp"
 
 using namespace dice::hfe;
 
@@ -83,7 +84,25 @@ bool BF2EngineSetup::initModules()
     g_modules.push_back(gameLogicCompModule);
     auto spawnSystemModule = new SpawnSystemModule();
     g_modules.push_back(spawnSystemModule);
+    */
     // TODO: Add something with classManager
+    for(auto l_module : g_modules)
+    {
+        g_classManager->registerServer(l_module);
+    }
+    
+    //g_classManager->setDefaultClass(IID_IMemoryPool, CID_MemoryPool);
+    g_classManager->initSingletons();
+
+    for (auto l_module : g_modules)
+    {
+        if (!l_module->init())
+        {
+            l_module->close();
+            g_classManager->unregisterServer(l_module);
+        }
+    }
+    /*
     setSpawnManager(CID_SpawnManager); // 0xc487
     world::setMaterialManager(world::CID_MaterialManager); // 0xc4af
     world::setScoreManager(world::CID_ScoreManager); // 0xc4af

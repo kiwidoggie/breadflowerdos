@@ -1,5 +1,6 @@
 #include "SettingsManagerBase.hpp"
 #include <dice/hfe/SettingsRepostitory.hpp>
+#include <dice/hfe/Debug.hpp>
 
 using namespace dice::hfe::io;
 
@@ -13,7 +14,7 @@ bool SettingsManagerBase::registerUserVar(std::string const& key, bool setVar, V
 
         if (it != m_keys.end())
         {
-            // TODO: Debug() "var already registered."
+            BF2_ERROR("Var " << key << " is already registered.");
             return false;
         }
 
