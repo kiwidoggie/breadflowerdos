@@ -78,6 +78,7 @@ namespace dice
         };
 
         extern BF2Engine* g_bf2Engine;
+        static void initSettingsRepostitory();
 
         static_assert(sizeof(BF2Engine) == 0x160);
         static_assert(offsetof(dice::hfe::BF2Engine, m_bf2) == 0x10);

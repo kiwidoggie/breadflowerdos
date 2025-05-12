@@ -9,15 +9,16 @@ namespace dice
             ECGameLogic = 0,
             ECGame = 1,
             ECHud = 2,
-            Unknown3 = 3,
+            ECAI = 3,
             Unknown4 = 4,
             ECCore = 5,
             ECNetwork = 6,
             Unknown7 = 7,
             Unknown8 = 8,
-            Unknown9 = 9,
+            ECPhysics = 9,
             ECMainMenu = 10,
-            ECCount = 11
+            UnknownB = 11,
+            ECCount = 12
         };
     }
 }

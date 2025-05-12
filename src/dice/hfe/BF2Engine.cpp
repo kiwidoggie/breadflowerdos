@@ -8,6 +8,8 @@
 #include "BF2EngineSetup.hpp"
 #include "BF2Log.hpp"
 #include "BF2Console.hpp"
+#include "EventManager.hpp"
+#include "Debug.hpp"
 
 using namespace dice::hfe;
 
@@ -78,7 +80,28 @@ bool BF2Engine::init(std::string& p_Param1)
         return false;
     }
 
-    // initSettingsRepostitory();
+    initSettingsRepostitory();
+    g_eventManager->registerEventHandler(EventCategory::ECCore, this, 0);
+    g_eventManager->registerEventHandler(EventCategory::ECMainMenu, this, 0);
+    //g_frameEventManager->registerEventHandler(EventCategory::ECMainMenu, this, 0);
+    g_eventManager->registerEventHandler(EventCategory::UnknownB, this, 0);
+
+    if (m_demo == nullptr || !g_eventManager->registerEventHandler(EventCategory::ECHud, m_demo, 100))
+    {
+        BF2_ERROR("Failed to register Demo as event handler for ECHud.");
+    }
+
+    if (!m_setup->initLateModules())
+    {
+        m_setup->shutdownModules();
+        return false;
+    }
+
+    if (!initEngine())
+    {
+        shutdownEngine();
+        return false;
+    }
 
     return true;
 }
@@ -165,4 +188,9 @@ void BF2Engine::initDefaultSettings()
 bool BF2Engine::parseParameters(std::string const&)
 {
     return true;
+}
+
+void dice::hfe::initSettingsRepostitory()
+{
+    g_eventManager->registerEvent(EventCategory::ECCore, 1, "ECCoreCEChangedSetting");
 }

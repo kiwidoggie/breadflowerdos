@@ -115,7 +115,7 @@ bool BF2EngineSetup::initModules()
 bool BF2EngineSetup::initLateModules()
 {
     // TODO: Implement
-    return false;
+    return true;
 }
 
 // bf2: 004def40

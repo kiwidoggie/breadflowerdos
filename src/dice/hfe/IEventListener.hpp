@@ -13,7 +13,7 @@ namespace dice
         class IEventListener
         {
         public:
-            virtual void handleEvent(EventCategory p_Category, uint32_t type, EventNode* p_EventNode, void* p_data) = 0;
+            virtual void handleEvent(EventCategory p_Category, uint32_t p_Type, EventNode* p_EventNode, void* p_Data) = 0;
         };
     }
 }
