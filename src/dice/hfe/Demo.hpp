@@ -3,12 +3,13 @@
 
 #include <dice/hfe/EventCategory.hpp>
 #include <dice/hfe/EventNode.hpp>
+#include <dice/hfe/IEventListener.hpp>
 
 namespace dice
 {
     namespace hfe
     {
-        class Demo
+        class Demo : public IEventListener
         {
         private:
             uint64_t m_unknown08;
@@ -18,7 +19,7 @@ namespace dice
 
         public:
             Demo();
-            virtual void handleEvent(dice::hfe::EventCategory p_category, uint32_t p_param2, dice::hfe::EventNode* p_node, void* p_param4);
+            virtual void handleEvent(EventCategory p_Category, uint32_t p_Type, EventNode* p_EventNode, void* p_data) override;
         };
         static_assert(sizeof(Demo) == 0x28, "incorrect demo size");
     }
