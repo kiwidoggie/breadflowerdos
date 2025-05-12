@@ -27,7 +27,7 @@ namespace dice
 
             struct SingletonInfo
             {
-                IBase* singleton;
+                IBase** singleton;
                 uint32_t iid;
                 uint32_t cid;
                 union
@@ -35,8 +35,8 @@ namespace dice
                     uint32_t unknown18;
                     struct
                     {
-                        bool unknownFlag : 1;
-                        bool pendingCreation : 1;
+                        bool createOnInit : 1;
+                        bool createOnRegister : 1;
                         bool unknownFlag2 : 1;
                     };
                 };
@@ -49,7 +49,8 @@ namespace dice
             char m_unknown40[0x30];
             std::vector<ClassInfo> m_classInfos;
             std::map<std::string, ClassManager::SingletonInfo> m_singletonInfos;
-            char m_unknownB8[0x38];
+            bool m_singletonsInitialized;
+            char m_unknownB9[0x37];
 
         public:
             virtual void addRef() override;

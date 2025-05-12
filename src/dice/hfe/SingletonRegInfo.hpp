@@ -15,7 +15,7 @@ namespace dice
 		{
 		public:
 			std::string name;
-			IBase* singleton;
+			IBase** singleton;
 			uint32_t iid;
 			uint32_t cid;
 			union
@@ -23,13 +23,13 @@ namespace dice
 				uint32_t unknown18;
 				struct
 				{
-					bool unknownFlag : 1;
-					bool pendingCreation : 1;
+					bool createOnInit : 1;
+					bool createOnRegister : 1;
 					bool unknownFlag2 : 1;
 				};
 			};
 
-			SingletonRegInfo(std::string p_ClassName, IBase* p_Class, uint32_t p_IID = 0, uint32_t p_CID = 0, uint32_t p_Param5 = 4)
+			SingletonRegInfo(std::string p_ClassName, IBase** p_Class, uint32_t p_IID = 0, uint32_t p_CID = 0, uint32_t p_Param5 = 4)
 				: name(p_ClassName), singleton(p_Class), iid(p_IID), cid(p_CID), unknown18(p_Param5) {
 			}
 		};

@@ -87,7 +87,7 @@ void Module::getSingletonList(std::vector<SingletonRegInfo>& regInfos)
 {
     // TODO: Implement
     {
-        auto regInfo = SingletonRegInfo("System", g_system, IID_IBase, CID_System);
+        auto regInfo = SingletonRegInfo("System", (IBase**)&g_system, IID_IBase, CID_System);
         regInfos.push_back(regInfo);
     }
     /*
@@ -113,7 +113,7 @@ void Module::getSingletonList(std::vector<SingletonRegInfo>& regInfos)
     }
     */
     {
-        auto regInfo = SingletonRegInfo("EventManager", g_eventManager, IID_IBase, CID_EventManager, 2);
+        auto regInfo = SingletonRegInfo("EventManager", (IBase**)&g_eventManager, IID_IBase, CID_EventManager, 2);
         regInfos.push_back(regInfo);
     }
     /*
@@ -139,6 +139,22 @@ void Module::getSingletonList(std::vector<SingletonRegInfo>& regInfos)
 bool Module::init()
 {
     // TODO: Implement
+    //mainConsoleObjects->registerConsoleObjects(classManager::coreList);
+    //g_profilerClient = g_profiler;
+    g_eventManager->registerEvent(EventCategory::ECCore, 2, "ECCoreCEPreLoad");
+    g_eventManager->registerEvent(EventCategory::ECCore, 3, "ECCoreCEPostLoad");
+    g_eventManager->registerEvent(EventCategory::ECCore, 4, "ECCoreCEUpdateLoadStats");
+    g_eventManager->registerEvent(EventCategory::ECCore, 6, "ECCoreCEShutdownGame");
+    g_eventManager->registerEvent(EventCategory::ECCore, 7, "ECCoreCEResourcesLoaded");
+    g_eventManager->registerEvent(EventCategory::ECCore, 8, "ECCoreCEDebugTextHook");
+    g_eventManager->registerEvent(EventCategory::ECCore, 9, "ECCoreCECollectSystemInfo");
+    g_eventManager->registerEvent(EventCategory::ECCore, 13, "ECCoreCEUnloadLevel");
+    g_eventManager->registerEvent(EventCategory::ECCore, 14, "ECCoreCEAbortLoadLevel");
+    g_eventManager->registerEvent(EventCategory::ECCore, 15, "ECCoreCEActivateApp");
+    g_eventManager->registerEvent(EventCategory::ECCore, 16, "ECCoreCEPeakWinMessages");
+    g_eventManager->registerEvent(EventCategory::ECCore, 10, "ECCoreCEStartPerformanceTest");
+    g_eventManager->registerEvent(EventCategory::ECCore, 11, "ECCoreCEStopPerformanceTest");
+    g_eventManager->registerEvent(EventCategory::ECCore, 12, "ECCoreCEReportPerformanceInfo");
     return true;
 }
 

@@ -1,4 +1,5 @@
 #include "EventManager.hpp"
+#include "Debug.hpp"
 
 using namespace dice::hfe;
 
@@ -123,10 +124,19 @@ bool EventManager::unregisterEventHandler(EventCategory, IEventListener*)
     return false;
 }
 
-bool EventManager::registerEvent(EventCategory, uint32_t, std::string const&)
+bool EventManager::registerEvent(EventCategory cat, uint32_t eventId, std::string const& eventName)
 {
-    // TODO: Implement
-    return false;
+    auto& eventRegistry = m_eventRegistry[static_cast<size_t>(cat)];
+    auto it = eventRegistry.find(eventId);
+    if (it != eventRegistry.end())
+    {
+        BF2_ERROR("Event " << eventId << " in cat " << static_cast<size_t>(cat) << " already registered as " << it->second);
+        return false;
+    }
+
+    eventRegistry.emplace(eventId, eventName);
+
+    return true;
 }
 
 bool EventManager::unregisterEvent(EventCategory, uint32_t)

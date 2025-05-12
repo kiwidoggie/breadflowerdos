@@ -165,7 +165,7 @@ void ClassManager::registerSingleton(SingletonRegInfo const& regInfo)
     // TODO: Implement
     SingletonInfo info(regInfo);
     m_singletonInfos.emplace(regInfo.name, info);
-    if (info.pendingCreation)
+    if (info.createOnRegister)
     {
         createSingleton(regInfo.name, info);
     }
@@ -214,9 +214,18 @@ void ClassManager::getAllClassIncludingSubstring(std::string const&, std::vector
     // TODO: Implement
 }
 
+// bf2: 007356e0
 void ClassManager::initSingletons()
 {
-    // TODO: Implement
+    for (auto& info : m_singletonInfos)
+    {
+        if (info.second.createOnInit)
+        {
+            createSingleton(info.first, info.second);
+        }
+    }
+
+    m_singletonsInitialized = true;
 }
 
 bool ClassManager::findServer(IClassServer* server)
@@ -252,12 +261,12 @@ bool dice::hfe::ClassManager::getClassInfo(std::string name, ClassInfo& info)
 
 void ClassManager::createSingleton(std::string const& name, SingletonInfo& info)
 {
-    if (info.singleton != nullptr)
+    if ((*info.singleton) != nullptr)
     {
-        info.singleton->release();
+        (*info.singleton)->release();
     }
 
-    info.singleton = createInstance(info.cid, info.iid, nullptr);
+    (*info.singleton) = createInstance(info.cid, info.iid, nullptr);
     std::string className;
     if (getClassName(info.cid, className))
     {
