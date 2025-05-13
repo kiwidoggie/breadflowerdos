@@ -41,6 +41,9 @@ namespace dice
             void* m_unknown88;
             void* m_unknown90;
             uint8_t m_unknown98[4];
+#if defined(BF2142_SPECIFIC)
+            uint8_t m_unknown9C;
+#endif
             uint32_t m_unknown9C;
             BF2Log* m_log;
             uint8_t m_unknownA8[4];
@@ -80,10 +83,18 @@ namespace dice
         extern BF2Engine* g_bf2Engine;
         static void initSettingsRepostitory();
 
+#if defined(BF2142_SPECIFIC)
+        static_assert(sizeof(BF2Engine) == 0x168);
+        static_assert(offsetof(dice::hfe::BF2Engine, m_bf2) == 0x10);
+        static_assert(offsetof(dice::hfe::BF2Engine, m_log) == 0xA8);
+        static_assert(offsetof(dice::hfe::BF2Engine, m_tickCalculator) == 0xC0);
+        static_assert(offsetof(dice::hfe::BF2Engine, m_demo) == 0x110);
+#else
         static_assert(sizeof(BF2Engine) == 0x160);
         static_assert(offsetof(dice::hfe::BF2Engine, m_bf2) == 0x10);
         static_assert(offsetof(dice::hfe::BF2Engine, m_log) == 0xA0);
         static_assert(offsetof(dice::hfe::BF2Engine, m_tickCalculator) == 0xB8);
         static_assert(offsetof(dice::hfe::BF2Engine, m_demo) == 0x108);
+#endif
     }
 }

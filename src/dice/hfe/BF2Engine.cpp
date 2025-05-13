@@ -166,7 +166,12 @@ bool BF2Engine::getMenuActive() const
 void BF2Engine::initDefaultSettings()
 {
     g_settings->boolSet("GSMenu", false);
+
+#if defined(BF2142_SPECIFIC)
+    g_settings->stringSet("GSModDirectory", "mods/bf2142");
+#else
     g_settings->stringSet("GSModDirectory", "mods/bf2");
+#endif
     g_settings->stringSet("GSLevelDirectory", "Levels/");
 
     io::g_settingsManager->U32RegisterUserVar("GSPerfLogAtPlayerCount", 30, true, 0);
@@ -186,6 +191,9 @@ void BF2Engine::initDefaultSettings()
     io::g_settingsManager->boolRegisterUserVar("GSExtrapolateFrame", false, true, 0);
     io::g_settingsManager->boolRegisterUserVar("GSShowNetGraph", false, true, 0);
     io::g_settingsManager->boolRegisterUserVar("GSClPunkBuster", false, true, 0);
+#if defined(BF2142_SPECIFIC)
+    io::g_settingsManager->boolRegisterUserVar("GSCameraShake", true, true, 0);
+#endif
 }
 
 bool BF2Engine::parseParameters(std::string const&)
