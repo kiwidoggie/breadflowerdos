@@ -4,6 +4,7 @@
 using namespace dice::hfe;
 
 EventManager* dice::hfe::g_eventManager = nullptr;
+EventManager* dice::hfe::g_frameEventManager = nullptr;
 
 // bf2: 0084d710
 IBase* EventManager::create(uint32_t id, IBase* baseClass)
@@ -112,10 +113,15 @@ bool EventManager::removeEvent(uint32_t)
     return false;
 }
 
-bool EventManager::registerEventHandler(EventCategory, IEventListener*, int32_t)
+bool EventManager::registerEventHandler(EventCategory cat, IEventListener* listener, int32_t priority)
 {
     // TODO: Implement
-    return false;
+    if (listener == nullptr || cat >= EventCategory::ECCount)
+    {
+        return false;
+    }
+
+    return true;
 }
 
 bool EventManager::unregisterEventHandler(EventCategory, IEventListener*)

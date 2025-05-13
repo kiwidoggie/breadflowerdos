@@ -44,5 +44,6 @@ namespace dice
 #endif
 
         extern EventManager* g_eventManager;
+        extern EventManager* g_frameEventManager;
     }
 }

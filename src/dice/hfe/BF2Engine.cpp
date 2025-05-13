@@ -83,7 +83,7 @@ bool BF2Engine::init(std::string& p_Param1)
     initSettingsRepostitory();
     g_eventManager->registerEventHandler(EventCategory::ECCore, this, 0);
     g_eventManager->registerEventHandler(EventCategory::ECMainMenu, this, 0);
-    //g_frameEventManager->registerEventHandler(EventCategory::ECMainMenu, this, 0);
+    g_frameEventManager->registerEventHandler(EventCategory::ECMainMenu, this, 0);
     g_eventManager->registerEventHandler(EventCategory::UnknownB, this, 0);
 
     if (m_demo == nullptr || !g_eventManager->registerEventHandler(EventCategory::ECHud, m_demo, 100))
@@ -170,6 +170,9 @@ void BF2Engine::initDefaultSettings()
     g_settings->stringSet("GSLevelDirectory", "Levels/");
 
     io::g_settingsManager->U32RegisterUserVar("GSPerfLogAtPlayerCount", 30, true, 0);
+    io::g_settingsManager->boolRegisterUserVar("GSUseObjectCache", true, true, 0);
+    io::g_settingsManager->U32RegisterUserVar("GSInterpolationTime", 100, true, 0);
+    io::g_settingsManager->U32RegisterUserVar("GSExtrapolationTime", 1200, true, 0);
     io::g_settingsManager->floatRegisterUserVar("GSDefaultLatencyCompensation", 0.1f, true, 0);
     io::g_settingsManager->boolRegisterUserVar("GSUseLatencyCompensation", false, false, 0);
     io::g_settingsManager->boolRegisterUserVar("GSUseClientSidePrediction", true, false, 0);

@@ -116,11 +116,11 @@ void Module::getSingletonList(std::vector<SingletonRegInfo>& regInfos)
         auto regInfo = SingletonRegInfo("EventManager", (IBase**)&g_eventManager, IID_IBase, CID_EventManager, 2);
         regInfos.push_back(regInfo);
     }
-    /*
     {
-        auto regInfo = SingletonRegInfo("FrameEventManager", g_frameEventManager, IID_IBase, CID_EventManager, 2);
+        auto regInfo = SingletonRegInfo("FrameEventManager", (IBase**)&g_frameEventManager, IID_IBase, CID_EventManager, 2);
         regInfos.push_back(regInfo);
     }
+    /*
     {
         auto regInfo = SingletonRegInfo("Profiler", g_profiler, IID_IProfilerClient, CID_Profiler, 2);
         regInfos.push_back(regInfo);
