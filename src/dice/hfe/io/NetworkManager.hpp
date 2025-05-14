@@ -45,8 +45,8 @@ namespace dice
                 std::map<unsigned short, NetworkableDescriptor*> m_staticDescriptrors; // 0x88
                 std::map<unsigned short, NetworkableDescriptor*> m_scopableDescriptors; // 0xB8
                 std::map<unsigned short, NetworkableDescriptor*> _0xE8; // 0xE8
-                int _0x118;
-                int _0x11C;
+                uint32_t m_interpolationTime;
+                uint32_t m_extrapolationTime;
                 int m_globalPredictionMode;
                 char _124;
                 char _125[3];
