@@ -126,7 +126,7 @@ namespace dice
             void* m_unknown70;
             void* m_unknown78;
             bool m_shouldQuit;
-            uint8_t m_unkown81[8];
+            uint8_t m_unkown81[7];
             std::string m_playerName;
             std::string m_launchArgs;
             bool m_menuActive;
