@@ -4,6 +4,7 @@
 #include "System.hpp"
 #include "EventManager.hpp"
 #include "MemoryPool.hpp"
+#include "Profiler.hpp"
 
 using namespace dice::hfe;
 
@@ -69,12 +70,12 @@ void Module::getClassList(std::vector<ClassRegInfo>& regInfos)
         auto regInfo = ClassRegInfo(CID_EventManager, "dice.hfe.EventManager", EventManager::create);
         regInfos.push_back(regInfo);
     }
-    // TODO: Implement
-    /*
     {
         auto regInfo = ClassRegInfo(CID_Profiler, "dice.hfe.Profiler", Profiler::create);
         regInfos.push_back(regInfo);
     }
+    // TODO: Implement
+    /*
     {
         auto regInfo = ClassRegInfo(CID_DebugCounterManager, "dice.hfe.DebugCounterManager", DebugCounterManager::create);
         regInfos.push_back(regInfo);
@@ -119,11 +120,11 @@ void Module::getSingletonList(std::vector<SingletonRegInfo>& regInfos)
         auto regInfo = SingletonRegInfo("FrameEventManager", (IBase**)&g_frameEventManager, IID_IBase, CID_EventManager, 2);
         regInfos.push_back(regInfo);
     }
-    /*
     {
-        auto regInfo = SingletonRegInfo("Profiler", g_profiler, IID_IProfilerClient, CID_Profiler, 2);
+        auto regInfo = SingletonRegInfo("Profiler", (IBase**)&g_profiler, IID_IProfilerClient, CID_Profiler, 2);
         regInfos.push_back(regInfo);
     }
+    /*
     {
         auto regInfo = SingletonRegInfo("DebugCounterManager", g_debugCounterManager, IID_IDebugCounterManager, CID_DebugCounterManager, 1);
         regInfos.push_back(regInfo);
@@ -139,7 +140,7 @@ bool Module::init()
 {
     // TODO: Implement
     //mainConsoleObjects->registerConsoleObjects(classManager::coreList);
-    //g_profilerClient = g_profiler;
+    g_profilerClient = g_profiler;
     g_eventManager->registerEvent(EventCategory::ECCore, 2, "ECCoreCEPreLoad");
     g_eventManager->registerEvent(EventCategory::ECCore, 3, "ECCoreCEPostLoad");
     g_eventManager->registerEvent(EventCategory::ECCore, 4, "ECCoreCEUpdateLoadStats");
