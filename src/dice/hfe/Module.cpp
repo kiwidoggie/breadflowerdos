@@ -3,6 +3,7 @@
 #include "SingletonRegInfo.hpp"
 #include "System.hpp"
 #include "EventManager.hpp"
+#include "MemoryPool.hpp"
 
 using namespace dice::hfe;
 
@@ -60,17 +61,15 @@ Module* Module::queryInterface(uint32_t p_param)
 
 void Module::getClassList(std::vector<ClassRegInfo>& regInfos)
 {
-    // TODO: Implement
-    /*
     {
         auto regInfo = ClassRegInfo(CID_MemoryPool, "dice.hfe.MemoryPool.Standard", MemoryPool::create);
         regInfos.push_back(regInfo);
     }
-    */
     {
         auto regInfo = ClassRegInfo(CID_EventManager, "dice.hfe.EventManager", EventManager::create);
         regInfos.push_back(regInfo);
     }
+    // TODO: Implement
     /*
     {
         auto regInfo = ClassRegInfo(CID_Profiler, "dice.hfe.Profiler", Profiler::create);

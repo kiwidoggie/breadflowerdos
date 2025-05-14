@@ -4,6 +4,7 @@
 #include "io/NetworkManager.hpp"
 #include "Module.hpp"
 #include "ClassManager.hpp"
+#include "MemoryPool.hpp"
 
 using namespace dice::hfe;
 
@@ -91,7 +92,7 @@ bool BF2EngineSetup::initModules()
         g_classManager->registerServer(l_module);
     }
     
-    //g_classManager->setDefaultClass(IID_IMemoryPool, CID_MemoryPool);
+    g_classManager->setDefaultClass(IID_IMemoryPool, CID_MemoryPool);
     g_classManager->initSingletons();
 
     for (auto l_module : g_modules)
