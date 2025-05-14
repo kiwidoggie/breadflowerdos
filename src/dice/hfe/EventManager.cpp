@@ -18,9 +18,14 @@ IBase* EventManager::create(uint32_t id, IBase* baseClass)
     return eventManager;
 }
 
-EventManager::EventManager() : m_refCount(1)
+EventManager::EventManager() : m_refCount(1), m_dispatchCounter(0), m_unknown10(0), m_currentEvent(nullptr), m_currentTime(0.0), m_unknownC0(1)
 {
     // TODO: Implement
+
+    for (size_t i = 0; i < static_cast<size_t>(EventCategory::ECCount); ++i)
+    {
+        m_eventHandlerRegistry[i] = nullptr;
+    }
 }
 
 /**
@@ -113,14 +118,37 @@ bool EventManager::removeEvent(uint32_t)
     return false;
 }
 
-bool EventManager::registerEventHandler(EventCategory cat, IEventListener* listener, int32_t priority)
+bool EventManager::registerEventHandler(EventCategory category, IEventListener* listener, int32_t priority)
 {
-    // TODO: Implement
-    if (listener == nullptr || cat >= EventCategory::ECCount)
+    if (listener == nullptr || category >= EventCategory::ECCount)
     {
         return false;
     }
 
+    auto* node = new EventHandlerRegistryNode;
+    node->listener = listener;
+    node->next = nullptr;
+    node->priority = priority;
+
+    size_t index = static_cast<size_t>(category);
+    EventHandlerRegistryNode*& head = m_eventHandlerRegistry[index];
+
+    // Insert in priority order
+    if (head == nullptr || head->priority >= priority)
+    {
+        node->next = head;
+        head = node;
+        return true;
+    }
+
+    EventHandlerRegistryNode* current = head;
+    while (current->next && current->next->priority < priority)
+    {
+        current = current->next;
+    }
+
+    node->next = current->next;
+    current->next = node;
     return true;
 }
 

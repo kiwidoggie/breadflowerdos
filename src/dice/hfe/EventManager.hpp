@@ -12,8 +12,22 @@ namespace dice
         class EventManager : public IEventManager
         {
         public:
+            struct EventHandlerRegistryNode
+            {
+                IEventListener* listener;
+                EventHandlerRegistryNode* next;
+                int32_t priority;
+            };
+        public:
             uint32_t m_refCount;
-            char m_unknown0C[0xBC];
+            uint32_t m_dispatchCounter;
+            uint32_t m_unknown10;
+            EventNode* m_currentEvent;
+            double m_currentTime;
+            EventHandlerRegistryNode* m_eventHandlerRegistry[static_cast<size_t>(EventCategory::ECCount)];
+            // NotificationEventNode m_eventNode; // offset 0x88 (bf2: 0073d693) size 0x38 (bf2: 0073d08b)
+            char m_eventNode[0x38];
+            uint32_t m_unknownC0;
             std::map<int32_t, std::string> m_eventRegistry[static_cast<size_t>(EventCategory::ECCount)];
         public:
             static IBase* create(uint32_t, IBase*);
