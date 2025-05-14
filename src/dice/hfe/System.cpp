@@ -23,6 +23,7 @@ System::System() :
     m_unknown24(0),
     m_unknown28(0)
 {
+    // TODO: Implement
 }
 
 System::~System()

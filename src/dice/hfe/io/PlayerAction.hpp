@@ -14,35 +14,38 @@ namespace dice
 
                 static constexpr float AXIS_RESOLUTION = 100.0f;
 
-                unsigned int m_tick;
+                unsigned int m_Tick;
 
                 // the first 6 inputs from PlayerInputMap (compressed)
-                short m_axisInputs[6]; // 0x04
+                short m_AxisInputs[6]; // 0x04
 
                 // rest of the buttons
-                unsigned int m_buttonInputs[2]; // 0x10
-                unsigned char _0x18;
+                unsigned int m_ButtonInputs[2]; // 0x10
+                unsigned char m_Unknown18;
 
-                inline static short convertAxisToInternalResolution(float axis) {
-                    float tmp = axis * AXIS_RESOLUTION;
-                    if (tmp < -32767.0f) {
-                        tmp = -32767.0f;
+                inline static short convertAxisToInternalResolution(float p_Axis) 
+                {
+                    float s_Temp = p_Axis * AXIS_RESOLUTION;
+                    if (s_Temp < -32767.0f) {
+                        s_Temp = -32767.0f;
                     }
-                    else if (tmp > 32767.0f)
+                    else if (s_Temp > 32767.0f)
                     {
-                        tmp = 32767.0f;
+                        s_Temp = 32767.0f;
                     }
-                    return static_cast<short>(tmp);
+                    return static_cast<short>(s_Temp);
                 }
 
-                void setAxis(PlayerInput& input, PlayerInputMap id) {
-                    float* axis = input.getInput(id);
-                    m_axisInputs[static_cast<size_t>(id)] = convertAxisToInternalResolution(axis ? *axis : 0.0f);
+                void setAxis(PlayerInput& p_Input, PlayerInputMap p_Id) 
+                {
+                    float* s_Axis = p_Input.getInput(p_Id);
+                    m_AxisInputs[static_cast<size_t>(p_Id)] = convertAxisToInternalResolution(s_Axis ? *s_Axis : 0.0f);
                 }
 
-                void getAxis(PlayerInput& input, PlayerInputMap id) {
-                    float axis = m_axisInputs[static_cast<size_t>(id)] / AXIS_RESOLUTION;
-                    input.setInput(id, axis);
+                void getAxis(PlayerInput& p_Input, PlayerInputMap p_Id) 
+                {
+                    float s_Axis = m_AxisInputs[static_cast<size_t>(p_Id)] / AXIS_RESOLUTION;
+                    p_Input.setInput(p_Id, s_Axis);
                 }
             };
 

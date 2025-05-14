@@ -5,7 +5,7 @@
 
 using namespace dice::hfe;
 
-ISettingsRepostitory* dice::hfe::g_settings = nullptr;
+ISettingsRepostitory* dice::hfe::g_Settings = nullptr;
 
 void ISettingsRepostitory::createSingleton()
 {

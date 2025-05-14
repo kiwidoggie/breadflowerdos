@@ -7,12 +7,20 @@ set(CMAKE_VERBOSE_MAKEFILE OFF)
 project(bf2 CXX)
 
 # C++ Defaults
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Set the include directories
 include_directories(${PROJECT_SOURCE_DIR}/src)
+
+if (MSVC)
+    # warning level 4
+    add_compile_options(/W4)
+else()
+    # additional warnings
+    add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
 
 add_definitions( -D_GLIBCXX_USE_CXX11_ABI=0 ) # this is required for STL binary combatibility on modern GCC
 

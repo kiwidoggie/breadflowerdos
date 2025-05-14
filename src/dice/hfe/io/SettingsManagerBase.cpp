@@ -4,21 +4,21 @@
 
 using namespace dice::hfe::io;
 
-SettingsManagerBase* dice::hfe::io::g_settingsManager = new SettingsManagerBase();
+SettingsManagerBase* dice::hfe::io::g_SettingsManager = new SettingsManagerBase();
 
 // bf2: 007a4db0
 bool SettingsManagerBase::registerUserVar(std::string const& key, bool setVar, VariableSet var)
 {
     {
-        auto it = m_keys.find(key);
+        auto it = m_Keys.find(key);
 
-        if (it != m_keys.end())
+        if (it != m_Keys.end())
         {
             BF2_ERROR("Var " << key << " is already registered.");
             return false;
         }
 
-        m_keys.insert(key);
+        m_Keys.insert(key);
     }
 
     if (!setVar)
@@ -26,12 +26,12 @@ bool SettingsManagerBase::registerUserVar(std::string const& key, bool setVar, V
         return true;
     }
 
-    auto it = m_storage.find(key);
+    auto it = m_Storage.find(key);
 
-    if (it == m_storage.end())
+    if (it == m_Storage.end())
     {
         // TODO: recheck bf2: 007a4f3e
-        m_storage.insert({ key, var });
+        m_Storage.insert({ key, var });
     }
 
     return true;
@@ -44,13 +44,13 @@ bool SettingsManagerBase::floatRegisterUserVar(std::string const& key, float con
         return false;
     }
 
-    if (!g_settings->floatExists(key))
+    if (!g_Settings->floatExists(key))
     {
-        g_settings->floatSet(key, value);
+        g_Settings->floatSet(key, value);
     }
 
-    g_settingsManager->m_floatStorage.insert({ key, value });
-    g_settingsManager->m_floatKeys.insert(key);
+    g_SettingsManager->m_FloatStorage.insert({ key, value });
+    g_SettingsManager->m_FloatKeys.insert(key);
     return true;
 }
 
@@ -61,13 +61,13 @@ bool SettingsManagerBase::U32RegisterUserVar(std::string const& key, uint32_t co
         return false;
     }
 
-    if (!g_settings->U32Exists(key))
+    if (!g_Settings->U32Exists(key))
     {
-        g_settings->U32Set(key, value);
+        g_Settings->U32Set(key, value);
     }
 
-    g_settingsManager->m_U32Storage.insert({ key, value });
-    g_settingsManager->m_U32Keys.insert(key);
+    g_SettingsManager->m_UIntStorage.insert({ key, value });
+    g_SettingsManager->m_UIntKeys.insert(key);
     return true;
 }
 
@@ -79,13 +79,13 @@ bool SettingsManagerBase::boolRegisterUserVar(std::string const& key, bool const
         return false;
     }
 
-    if (!g_settings->boolExists(key))
+    if (!g_Settings->boolExists(key))
     {
-        g_settings->boolSet(key, value);
+        g_Settings->boolSet(key, value);
     }
 
-    g_settingsManager->m_boolStorage.insert({ key, value });
-    g_settingsManager->m_boolKeys.insert(key);
+    g_SettingsManager->m_BoolStorage.insert({ key, value });
+    g_SettingsManager->m_BoolKeys.insert(key);
     return true;
 }
 
@@ -96,12 +96,12 @@ bool SettingsManagerBase::stringRegisterUserVar(std::string const& key, std::str
         return false;
     }
 
-    if (!g_settings->stringExists(key))
+    if (!g_Settings->stringExists(key))
     {
-        g_settings->stringSet(key, value);
+        g_Settings->stringSet(key, value);
     }
 
-    g_settingsManager->m_stringStorage.insert({ key, value });
-    g_settingsManager->m_stringKeys.insert(key);
+    g_SettingsManager->m_StringStorage.insert({ key, value });
+    g_SettingsManager->m_StringKeys.insert(key);
     return true;
 }

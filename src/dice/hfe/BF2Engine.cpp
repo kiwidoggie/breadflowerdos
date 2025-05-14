@@ -40,19 +40,19 @@ BF2Engine::~BF2Engine()
 
 }
 
-void BF2Engine::filterGameInput(dice::hfe::io::GameInput* p_GameInput)
+void BF2Engine::filterGameInput([[maybe_unused]] dice::hfe::io::GameInput* p_GameInput)
 {
-
+    // TODO: Implement
 }
 
 // bf2: 004d38a0
-void BF2Engine::filterPlayerInput(dice::hfe::io::PlayerInput* p_PlayerInput)
+void BF2Engine::filterPlayerInput([[maybe_unused]] dice::hfe::io::PlayerInput* p_PlayerInput)
 {
     // TODO: Implement
 }
 
 // bf2: 004dd790 (unconfirmed)
-void BF2Engine::handleEvent(EventCategory p_Category, uint32_t p_Unknown, EventNode* p_EventNode, void*)
+void BF2Engine::handleEvent([[maybe_unused]] EventCategory p_Category, [[maybe_unsued]] uint32_t p_Unknown, [[maybe_unused]] EventNode* p_EventNode, void*)
 {
     // TODO: Implement
 }
@@ -199,8 +199,8 @@ void BF2Engine::initDefaultSettings()
     io::g_settingsManager->boolRegisterUserVar("GSDebugBitStream", false, false, 0);
     io::g_settingsManager->stringRegisterUserVar("GSPlayerName", "DefaultPlayerName", true, 0);
 
-    g_settings->intSet("GSViewDistance", 850);
-    g_settings->boolSet("GSLoadObfuscated", true);
+    g_Settings->intSet("GSViewDistance", 850);
+    g_Settings->boolSet("GSLoadObfuscated", true);
 
     io::g_settingsManager->boolRegisterUserVar("GSFullScreen", true, false, 0);
     io::g_settingsManager->boolRegisterUserVar("GSExtrapolateFrame", false, true, 0);

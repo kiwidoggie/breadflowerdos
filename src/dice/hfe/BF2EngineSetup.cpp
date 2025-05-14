@@ -152,10 +152,10 @@ bool BF2EngineSetup::initNetwork()
     // Implemented
 
     // Allocate a new network manager
-    io::g_networkManager = new io::NetworkManager();
+    io::g_NetworkManager = new io::NetworkManager();
 
     // Validate network manager
-    if (io::g_networkManager != nullptr)
+    if (io::g_NetworkManager != nullptr)
     {
         // Create/set a new socket manager
         auto s_SocketManager = io::setSocketManager();
@@ -188,9 +188,9 @@ void BF2EngineSetup::shutdownNetwork()
     // TODO: Implement
 
     // io:: shutdownSocketManager
-    if (io::g_networkManager != nullptr)
+    if (io::g_NetworkManager != nullptr)
     {
         // vtable call: (**(code **)(*io::networkManager + 0x10))();
-        io::g_networkManager = nullptr;
+        io::g_NetworkManager = nullptr;
     }
 }

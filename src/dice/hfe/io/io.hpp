@@ -14,7 +14,7 @@ namespace dice
             // NOTE: Should we move this to like an io.hpp??
             SocketManager* setSocketManager();
 
-            static NetworkManager* g_networkManager;
+            static NetworkManager* g_NetworkManager;
         }
     }
 }

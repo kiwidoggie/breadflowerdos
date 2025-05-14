@@ -22,16 +22,16 @@ bool BF2::init(std::string& launchArgs)
     // TODO: add memory_update_modules
     // memory::memory_update_modules((memory*)nullptr, launchArgs);
     std::string s_OutGSLoadLevel = "";
-    g_settings->stringGet("GSLoadLevel", s_OutGSLoadLevel);
+    g_Settings->stringGet("GSLoadLevel", s_OutGSLoadLevel);
     std::string s_OutGSJoinAddress = "";
-    g_settings->stringGet("GSJoinAddress", s_OutGSJoinAddress);
+    g_Settings->stringGet("GSJoinAddress", s_OutGSJoinAddress);
     int32_t s_OutPlayNow = 0;
-    g_settings->intGet("playNow", s_OutPlayNow);
+    g_Settings->intGet("playNow", s_OutPlayNow);
     
     m_bf2Engine->getMenuActive();
     
     bool s_OutGSDedicated = false;
-    g_settings->boolGet("GSDedicated", s_OutGSDedicated);
+    g_Settings->boolGet("GSDedicated", s_OutGSDedicated);
     
     bool s_StartGame = s_OutGSDedicated || s_OutPlayNow || !s_OutGSJoinAddress.empty() || !s_OutGSLoadLevel.empty();
     if (s_StartGame)
