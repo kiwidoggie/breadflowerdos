@@ -22,32 +22,32 @@ namespace dice
 				}
 
 				void set(const NetworkableStateMask& rhs) {
-					for (int i = 0; i < N; i++) {
+					for (size_t i = 0; i < N; i++) {
 						m_masks[i] |= rhs.m_masks[i];
 					}
 				}
 
 				void unset(const NetworkableStateMask& rhs) {
-					for (int i = 0; i < N; i++) {
+					for (size_t i = 0; i < N; i++) {
 						m_masks[i] &= ~rhs.m_masks[i];
 					}
 				}
 
 				void reset() {
-					for (int i = 0; i < N; i++) {
+					for (size_t i = 0; i < N; i++) {
 						m_masks[i] = 0xFFFFFFFF;
 					}
 				}
 
 				void zero() {
-					for (int i = 0; i < N; i++) {
+					for (size_t i = 0; i < N; i++) {
 						m_masks[i] = 0;
 					}
 				}
 
 				bool isSet() {
 					unsigned int sum = 0;
-					for (int i = 0; i < N; i++) {
+					for (size_t i = 0; i < N; i++) {
 						sum |= m_masks[i];
 					}
 					return sum;

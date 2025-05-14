@@ -26,7 +26,7 @@ namespace dice
             std::ostringstream oss;
 
             Debug(DebugType type, std::string const& filename, int lineNo, std::string const& _0x10)
-                : type(type), filename(filename), lineNo(lineNo), _0x10(_0x10)
+                : type(type), filename(filename), _0x10(_0x10), lineNo(lineNo)
             {
             }
 
