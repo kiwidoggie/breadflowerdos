@@ -28,26 +28,16 @@ int main(int32_t p_argCount, const char** p_argVariables)
 
     auto s_BF2 = new dice::hfe::BF2();
 
-    std::string s_Unknown1; // This has to be parsed and set by above, but ghidra's a mess
+    std::string launchArgs = s_stream.str();
     
-    bool s_BF2Initalized = s_BF2->init(s_Unknown1);
-    int32_t s_ReturnCode;
+    if (!s_BF2->init(launchArgs))
+    {
+        std::cerr << "fatal error: argument parsing failed" << std::endl;
+        return 0x2A;
+    }
 
     // Run the main loop
-    if (s_BF2Initalized)
-    {
-        bool s_Running = true;
-        while(s_Running)
-        {
-            s_Running = s_BF2->run();
-        }
-        s_ReturnCode = 0;
-    }
-    else
-    {
-        s_ReturnCode = 0x2A;
-        std::cerr << "fatal error: argument parsing failed" << std::endl;
-    }
+    while(s_BF2->run()) {}
 
-    return s_ReturnCode;
+    return 0;
 }

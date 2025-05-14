@@ -2,4 +2,4 @@
 
 using namespace dice::hfe;
 
-ServerSettings** dice::hfe::serverSettings = nullptr;
+ServerSettings* dice::hfe::g_serverSettings = new ServerSettings();
