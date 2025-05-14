@@ -46,7 +46,7 @@ namespace dice
         public:
             uint32_t m_refCount;
             std::set<IClassServer*> m_servers;
-            char m_unknown40[0x30];
+            std::map<uint32_t, uint32_t> m_defaultClasses;
             std::vector<ClassInfo> m_classInfos;
             std::map<std::string, ClassManager::SingletonInfo> m_singletonInfos;
             bool m_singletonsInitialized;

@@ -97,14 +97,18 @@ void ClassManager::unregisterServer(IClassServer* server)
     // TODO: Implement
 }
 
-void ClassManager::setDefaultClass(unsigned int, unsigned int)
+void ClassManager::setDefaultClass(unsigned int iid, unsigned int cid)
 {
-    // TODO: Implement
+    m_defaultClasses[iid] = cid;
 }
 
-bool ClassManager::getDefaultClass(unsigned int, unsigned int&)
+bool ClassManager::getDefaultClass(unsigned int iid, unsigned int& cid)
 {
-    // TODO: Implement
+    auto it = m_defaultClasses.find(iid);
+    if (it != m_defaultClasses.end()) {
+        cid = it->second;
+        return true;
+    }
     return false;
 }
 
