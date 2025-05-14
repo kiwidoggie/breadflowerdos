@@ -51,10 +51,14 @@ void BF2Engine::filterPlayerInput(dice::hfe::io::PlayerInput* p_PlayerInput)
     // TODO: Implement
 }
 
-// bf2: 004dd790 (unconfirmed)
+// bf2: 004dd790
 void BF2Engine::handleEvent(EventCategory p_Category, uint32_t p_Unknown, EventNode* p_EventNode, void*)
 {
     // TODO: Implement
+    if (p_Category != EventCategory::ECCore)
+    {
+        return;
+    }
 }
 
 // bf2: 004dcf20

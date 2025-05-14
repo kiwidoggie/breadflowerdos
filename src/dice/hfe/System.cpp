@@ -133,7 +133,7 @@ time_t System::getWallClockTime()
         s_unknownTime = s_differenceTime;
     
     if (-1 < g_frequency)
-        return s_unknownTime / g_frequency;
+        return static_cast<time_t>(s_unknownTime / g_frequency);
     
     s_unknownTime2 = (((uint64_t)g_frequency >> 1) | ((uint64_t)g_frequency & 1));
 
@@ -180,7 +180,7 @@ uint32_t System::getSimulationRate()
  */
 float System::getSimulationRatio()
 {
-    float s_simulationRate = getSimulationRate();
+    auto s_simulationRate = getSimulationRate();
 
     return s_simulationRate / 100.f;
 }

@@ -21,7 +21,7 @@ NetworkManager::~NetworkManager()
 }
 
 // bf2: 007c8900
-void NetworkManager::handleEvent(EventCategory p_Category, uint32_t p_Unknown, EventNode* p_EventNode, void* p_Unknown2)
+void NetworkManager::handleEvent(EventCategory p_Category, uint32_t p_ID, [[maybe_unused]] EventNode* p_EventNode, void* p_Unknown)
 {
     // TODO: Implement
 }

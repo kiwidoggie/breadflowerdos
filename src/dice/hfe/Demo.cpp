@@ -18,7 +18,7 @@ Demo::Demo()
  * @param p_node 
  * @param p_param4 
  */
-void Demo::handleEvent(EventCategory p_category, uint32_t p_param2, EventNode* p_node, void* p_param4)
+void Demo::handleEvent([[maybe_unused]] EventCategory p_category, uint32_t p_param2, EventNode* p_node, [[maybe_unused]] void* p_param4)
 {
     if (p_param2 != 2)
         return;
