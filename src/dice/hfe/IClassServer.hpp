@@ -2,13 +2,13 @@
 
 #include <vector>
 #include <dice/hfe/IBase.hpp>
+#include <dice/hfe/ClassRegInfo.hpp>
+#include <dice/hfe/SingletonRegInfo.hpp>
 
 namespace dice
 {
     namespace hfe
     {
-        class ClassRegInfo;
-        class SingletonRegInfo;
         const uint32_t IID_IClassServer = 0x9C43;
 
         class IClassServer : public IBase

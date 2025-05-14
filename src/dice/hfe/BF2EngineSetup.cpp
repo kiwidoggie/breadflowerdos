@@ -3,6 +3,7 @@
 #include "io/io.hpp"
 #include "io/NetworkManager.hpp"
 #include "Module.hpp"
+#include "ModuleBF2.hpp"
 #include "ClassManager.hpp"
 #include "MemoryPool.hpp"
 
@@ -36,9 +37,9 @@ bool BF2EngineSetup::initModules()
     // TODO: Implement
     auto module = new Module();
     g_modules.push_back(module);
-    /*
     auto moduleBF2 = new ModuleBF2();
     g_modules.push_back(moduleBF2);
+    /*
     auto moduleGame = new ModuleGame();
     g_modules.push_back(moduleGame);
     auto moduleGameLogic = new ModuleGameLogic();

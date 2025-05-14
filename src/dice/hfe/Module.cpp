@@ -1,6 +1,4 @@
 #include "Module.hpp"
-#include "ClassRegInfo.hpp"
-#include "SingletonRegInfo.hpp"
 #include "System.hpp"
 #include "EventManager.hpp"
 #include "MemoryPool.hpp"
@@ -139,7 +137,7 @@ void Module::getSingletonList(std::vector<SingletonRegInfo>& regInfos)
 bool Module::init()
 {
     // TODO: Implement
-    //mainConsoleObjects->registerConsoleObjects(classManager::coreList);
+    //g_mainConsoleObjects->registerConsoleObjects(classManager::coreList);
     g_profilerClient = g_profiler;
     g_eventManager->registerEvent(EventCategory::ECCore, 2, "ECCoreCEPreLoad");
     g_eventManager->registerEvent(EventCategory::ECCore, 3, "ECCoreCEPostLoad");
@@ -161,5 +159,6 @@ bool Module::init()
 bool Module::close()
 {
     // TODO: Implement
+    // g_mainConsoleObjects->unregisterConsoleObjects(classManager::coreList);
     return true;
 }
