@@ -1,5 +1,4 @@
 #pragma once
-#include <cstdint>
 #include <set>
 #include <map>
 #include <string>
@@ -17,21 +16,21 @@ namespace dice
 			class SettingsManagerBase
 			{
 			public:
-				std::set<std::string> m_IntKeys;
-				std::map<std::string, int32_t> m_IntStorage;
-				std::set<std::string> m_FloatKeys;
-				std::map<std::string, float> m_FloatStorage;
-				std::set<std::string> m_UIntKeys;
-				std::map<std::string, uint32_t> m_UIntStorage;
-				std::set<std::string> m_BoolKeys;
-				std::map<std::string, bool> m_BoolStorage;
-				std::set<std::string> m_StringKeys;
-				std::map<std::string, std::string> m_StringStorage;
+				std::set<std::string> m_intKeys;
+				std::map<std::string, int32_t> m_intStorage;
+				std::set<std::string> m_floatKeys;
+				std::map<std::string, float> m_floatStorage;
+				std::set<std::string> m_U32Keys;
+				std::map<std::string, uint32_t> m_U32Storage;
+				std::set<std::string> m_boolKeys;
+				std::map<std::string, bool> m_boolStorage;
+				std::set<std::string> m_stringKeys;
+				std::map<std::string, std::string> m_stringStorage;
 				std::set<std::string> m_Vec3Keys;
 				std::map<std::string, Vec3> m_Vec3Storage;
 
-				std::set<std::string> m_Keys;
-				std::map<std::string, VariableSet> m_Storage;
+				std::set<std::string> m_keys;
+				std::map<std::string, VariableSet> m_storage;
 
 			public:
 				bool registerUserVar(std::string const&, bool, VariableSet);
@@ -41,7 +40,7 @@ namespace dice
 				bool stringRegisterUserVar(std::string const&, std::string const&, bool, VariableSet);
 			};
 
-			extern SettingsManagerBase* g_SettingsManager;
+			extern SettingsManagerBase* g_settingsManager;
 #if defined(WIN32)
 // TODO: Win32 static_assert
 #else

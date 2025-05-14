@@ -32,15 +32,15 @@ namespace dice
                 virtual void getMinimumBitSize() = 0;
                 virtual void getAverageUpdateDeltaTime() = 0;
 
-                unsigned short m_NetId; // 0x08
-                char m_Unknown0C[0x5];
-                INetworkableInfo* m_NetworkableInfo; // 0x10
-                char m_GhostActive; // 0x18
-                char m_Unknown19[0x3];
-                float m_Priority;
-                char m_IsServerSide; // 0x20
-                char m_Unknown21[0x7];
-                INetworkableObject* m_NetObj; // 0x28
+                unsigned short m_netId; // 0x08
+                char _0x0C[0x5];
+                INetworkableInfo* m_networkableInfo; // 0x10
+                char m_ghostActive; // 0x18
+                char _0x19[0x3];
+                float m_priority;
+                char m_isServerSide; // 0x20
+                char _0x21[0x7];
+                INetworkableObject* m_netObj; // 0x28
             };
 
             static_assert(sizeof(INetworkable) == 0x30);

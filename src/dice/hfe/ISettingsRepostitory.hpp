@@ -47,6 +47,6 @@ namespace dice
             static void createSingleton();
         };
 
-        extern ISettingsRepostitory* g_Settings;
+        extern ISettingsRepostitory* g_settings;
     }
 }
