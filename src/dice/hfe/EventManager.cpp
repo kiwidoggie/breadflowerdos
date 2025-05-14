@@ -7,14 +7,14 @@ EventManager* dice::hfe::g_eventManager = nullptr;
 EventManager* dice::hfe::g_frameEventManager = nullptr;
 
 // bf2: 0084d710
-IBase* EventManager::create(uint32_t id, IBase* baseClass)
+IBase* EventManager::create(uint32_t id, IBase* eventManager)
 {
-    auto eventManager = new EventManager();
+    eventManager = new EventManager();
     if (eventManager->queryInterface(id) == nullptr)
     {
         eventManager->release();
     }
-    baseClass = eventManager;
+
     return eventManager;
 }
 
