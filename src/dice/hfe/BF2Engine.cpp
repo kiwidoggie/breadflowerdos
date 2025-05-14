@@ -532,7 +532,7 @@ bool BF2Engine::parseParameters(std::string const& launchArgs)
                     g_settings->stringSet("gameName", value);
                     break;
                 case LaunchArgs::LaunchArg_MenuName:
-                    if (value.find(".dfm") != -1)
+                    if (value.ends_with(".dfm"))
                     { 
                         g_settings->stringSet("menuName", value);
                     }
