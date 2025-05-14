@@ -15,7 +15,6 @@ namespace dice
             uint32_t m_refCount;
             char m_unknown0C[0xBC];
             std::map<int32_t, std::string> m_eventRegistry[static_cast<size_t>(EventCategory::ECCount)];
-            char m_unknownF8[0x210];
         public:
             static IBase* create(uint32_t, IBase*);
             EventManager();

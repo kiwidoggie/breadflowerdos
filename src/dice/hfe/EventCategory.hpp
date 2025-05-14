@@ -18,8 +18,7 @@ namespace dice
             ECPhysics = 9,
             ECMainMenu = 10,
             UnknownB = 11,
-            UnknownC = 12,
-            ECCount = 13
+            ECCount = 12
         };
     }
 }
