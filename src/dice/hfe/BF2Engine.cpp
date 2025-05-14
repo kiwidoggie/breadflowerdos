@@ -109,6 +109,17 @@ bool BF2Engine::init(std::string& launchArgs)
         return false;
     }
 
+    //io::g_mainConsole->function0x70(bf2ExitCallback, this);
+
+    bool fileChangeMonitor = false;
+    g_settings->boolGet("GSFileChangeMonitor", fileChangeMonitor);
+    if (fileChangeMonitor)
+    {
+        //io::g_fileChangeManager->function0x38(1);
+    }
+
+    //io::g_mainConsole->function0x158(bf2ExitCallback, "Logs/BfCommandHistory.con");
+
     return true;
 }
 
@@ -639,6 +650,19 @@ bool BF2Engine::playDemo(bool, std::string const&)
 {
     // TODO: Implement
     return true;
+}
+
+void BF2Engine::quitNextFrame()
+{
+    m_shouldQuit = true;
+}
+
+void dice::hfe::bf2ExitCallback(void* bf2Engine)
+{
+    if (bf2Engine != nullptr)
+    {
+        ((BF2Engine*)bf2Engine)->quitNextFrame();
+    }
 }
 
 void dice::hfe::initSettingsRepostitory()

@@ -125,7 +125,8 @@ namespace dice
             uint32_t m_unknown6C;
             void* m_unknown70;
             void* m_unknown78;
-            uint8_t m_unkown80[8];
+            bool m_shouldQuit;
+            uint8_t m_unkown81[8];
             std::string m_playerName;
             std::string m_launchArgs;
             bool m_menuActive;
@@ -170,9 +171,11 @@ namespace dice
             void initDefaultSettings();
             bool parseParameters(std::string const&);
             bool playDemo(bool, std::string const&);
+            void quitNextFrame();
         };
 
         extern BF2Engine* g_bf2Engine;
+        static void bf2ExitCallback(void*);
         static void initSettingsRepostitory();
 #if defined(WIN32)
         // TODO
