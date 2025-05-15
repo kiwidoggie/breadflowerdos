@@ -107,7 +107,7 @@ void ModuleGame::getSingletonList(std::vector<SingletonRegInfo>& regInfos)
     // TODO: Implement
     /*
     {
-        auto regInfo = SingletonRegInfo("ModInfo", g_modInfo, IID_IModInfo, CID_ModInfo, 2);
+        auto regInfo = SINGLETON_REG_INFO("ModInfo", g_modInfo, IID_IModInfo, CID_ModInfo, 2);
         regInfos.push_back(regInfo);
     }
     */

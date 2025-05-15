@@ -85,7 +85,7 @@ void FileModule::getClassList(std::vector<ClassRegInfo>& regInfos)
     */
 }
 
-void FileModule::getSingletonList(std::vector<SingletonRegInfo>& regInfos)
+void FileModule::getSingletonList([[maybe_unused]] std::vector<SingletonRegInfo>& regInfos)
 {
 }
 

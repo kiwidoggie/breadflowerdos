@@ -90,47 +90,47 @@ void ModuleIO::getSingletonList(std::vector<SingletonRegInfo>& regInfos)
     // TODO: Implement
     /*
     {
-        auto regInfo = SingletonRegInfo("FileManager", g_fileManager, IID_IFileManager, CID_FileManager, 1);
+        auto regInfo = SINGLETON_REG_INFO("FileManager", g_fileManager, IID_IFileManager, CID_FileManager, 1);
         regInfos.push_back(regInfo);
     }
     {
-        auto regInfo = SingletonRegInfo("FileChangeManager", g_fileChangeManager, IID_IFileChangeManager, CID_FileChangeManager, 1);
+        auto regInfo = SINGLETON_REG_INFO("FileChangeManager", g_fileChangeManager, IID_IFileChangeManager, CID_FileChangeManager, 1);
         regInfos.push_back(regInfo);
     }
     {
-        auto regInfo = SingletonRegInfo("ResourceManager", g_resourceManager, IID_IResourceManager, CID_NullResourceManager, 1);
+        auto regInfo = SINGLETON_REG_INFO("ResourceManager", g_resourceManager, IID_IResourceManager, CID_NullResourceManager, 1);
         regInfos.push_back(regInfo);
     }
     {
-        auto regInfo = SingletonRegInfo("CacheManager", g_cacheManager, IID_ICacheManager, CID_NullCacheManager, 1);
+        auto regInfo = SINGLETON_REG_INFO("CacheManager", g_cacheManager, IID_ICacheManager, CID_NullCacheManager, 1);
         regInfos.push_back(regInfo);
     }
     {
-        auto regInfo = SingletonRegInfo("AsyncMultiStreamer", g_asyncMultiStreamer, IID_IAsyncMultiStreamer, CID_AsyncMultiStreamer, 1);
+        auto regInfo = SINGLETON_REG_INFO("AsyncMultiStreamer", g_asyncMultiStreamer, IID_IAsyncMultiStreamer, CID_AsyncMultiStreamer, 1);
         regInfos.push_back(regInfo);
     }
     {
-        auto regInfo = SingletonRegInfo("InputDeviceManager", g_inputDeviceManager, IID_IInputDeviceManager, CID_NullInputDeviceManager, 1);
+        auto regInfo = SINGLETON_REG_INFO("InputDeviceManager", g_inputDeviceManager, IID_IInputDeviceManager, CID_NullInputDeviceManager, 1);
         regInfos.push_back(regInfo);
     }
     {
-        auto regInfo = SingletonRegInfo("InputManager", g_inputManager, IID_IInputManager, CID_InputManager, 1);
+        auto regInfo = SINGLETON_REG_INFO("InputManager", g_inputManager, IID_IInputManager, CID_InputManager, 1);
         regInfos.push_back(regInfo);
     }
     {
-        auto regInfo = SingletonRegInfo("ControlMapManager", g_controlMapManager, IID_IControlMapManager, CID_ControlMapManager, 1);
+        auto regInfo = SINGLETON_REG_INFO("ControlMapManager", g_controlMapManager, IID_IControlMapManager, CID_ControlMapManager, 1);
         regInfos.push_back(regInfo);
     }
     {
-        auto regInfo = SingletonRegInfo("MainConsole", g_mainConsole);
+        auto regInfo = SINGLETON_REG_INFO("MainConsole", g_mainConsole);
         regInfos.push_back(regInfo);
     }
     {
-        auto regInfo = SingletonRegInfo("ActiveMethodConsole", g_activeMethodConsole);
+        auto regInfo = SINGLETON_REG_INFO("ActiveMethodConsole", g_activeMethodConsole);
         regInfos.push_back(regInfo);
     }
     {
-        auto regInfo = SingletonRegInfo("Lexicon", g_lexicon, IID_ILexicon, CID_ExcelLexicon, 2);
+        auto regInfo = SINGLETON_REG_INFO("Lexicon", g_lexicon, IID_ILexicon, CID_ExcelLexicon, 2);
         regInfos.push_back(regInfo);
     }
     */

@@ -77,7 +77,7 @@ void ModuleGameLogic::getClassList(std::vector<ClassRegInfo>& regInfos)
     */
 }
 
-void ModuleGameLogic::getSingletonList(std::vector<SingletonRegInfo>& regInfos)
+void ModuleGameLogic::getSingletonList([[maybe_unused]] std::vector<SingletonRegInfo>& regInfos)
 {
 }
 

@@ -10,6 +10,6 @@ ISettingsRepostitory* dice::hfe::g_settings = nullptr;
 void ISettingsRepostitory::createSingleton()
 {
 	g_settings = new SettingsRepostitory();
-	auto regInfo = SingletonRegInfo("SettingsRepostitory", (IBase**)&g_settings);
+	SingletonRegInfo regInfo = SINGLETON_REG_INFO("SettingsRepostitory", g_settings);
 	g_classManager->registerSingleton(regInfo);
 }

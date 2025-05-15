@@ -35,3 +35,6 @@ namespace dice
 		};
 	}
 }
+
+#define SINGLETON_REG_INFO(name, obj, ...) \
+    SingletonRegInfo(name, (IBase**)&obj, ##__VA_ARGS__)

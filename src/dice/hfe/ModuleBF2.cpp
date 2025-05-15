@@ -70,7 +70,7 @@ void ModuleBF2::getClassList(std::vector<ClassRegInfo>& regInfos)
 }
 
 // bf2: 008ac450
-void ModuleBF2::getSingletonList(std::vector<SingletonRegInfo>& regInfos)
+void ModuleBF2::getSingletonList([[maybe_unused]] std::vector<SingletonRegInfo>& regInfos)
 {
 }
 

@@ -54,11 +54,11 @@ MathModule* MathModule::queryInterface(uint32_t p_param)
     return nullptr;
 }
 
-void MathModule::getClassList(std::vector<ClassRegInfo>& regInfos)
+void MathModule::getClassList([[maybe_unused]] std::vector<ClassRegInfo>& regInfos)
 {
 }
 
-void MathModule::getSingletonList(std::vector<SingletonRegInfo>& regInfos)
+void MathModule::getSingletonList([[maybe_unused]] std::vector<SingletonRegInfo>& regInfos)
 {
 }
 

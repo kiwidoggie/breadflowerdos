@@ -85,50 +85,50 @@ void Module::getSingletonList(std::vector<SingletonRegInfo>& regInfos)
 {
     // TODO: Implement
     {
-        auto regInfo = SingletonRegInfo("System", (IBase**)&g_system, IID_IBase, CID_System);
+        auto regInfo = SINGLETON_REG_INFO("System", g_system, IID_IBase, CID_System);
         regInfos.push_back(regInfo);
     }
     /*
     {
-        auto regInfo = SingletonRegInfo("MainConsoleObjects", g_mainConsoleObjects);
+        auto regInfo = SINGLETON_REG_INFO("MainConsoleObjects", g_mainConsoleObjects);
         regInfos.push_back(regInfo);
     }
     {
-        auto regInfo = SingletonRegInfo("BfGlobal_callback", g_bfGlobal_callback);
+        auto regInfo = SINGLETON_REG_INFO("BfGlobal_callback", g_bfGlobal_callback);
         regInfos.push_back(regInfo);
     }
     {
-        auto regInfo = SingletonRegInfo("BfGlobal_callbackData", g_bfGlobal_callbackData);
+        auto regInfo = SINGLETON_REG_INFO("BfGlobal_callbackData", g_bfGlobal_callbackData);
         regInfos.push_back(regInfo);
     }
     {
-        auto regInfo = SingletonRegInfo("DebugOn", g_debugOn);
+        auto regInfo = SINGLETON_REG_INFO("DebugOn", g_debugOn);
         regInfos.push_back(regInfo);
     }
     {
-        auto regInfo = SingletonRegInfo("DebugModules", g_debugModules);
+        auto regInfo = SINGLETON_REG_INFO("DebugModules", g_debugModules);
         regInfos.push_back(regInfo);
     }
     */
     {
-        auto regInfo = SingletonRegInfo("EventManager", (IBase**)&g_eventManager, IID_IBase, CID_EventManager, 2);
+        auto regInfo = SINGLETON_REG_INFO("EventManager", g_eventManager, IID_IBase, CID_EventManager, 2);
         regInfos.push_back(regInfo);
     }
     {
-        auto regInfo = SingletonRegInfo("FrameEventManager", (IBase**)&g_frameEventManager, IID_IBase, CID_EventManager, 2);
+        auto regInfo = SINGLETON_REG_INFO("FrameEventManager", g_frameEventManager, IID_IBase, CID_EventManager, 2);
         regInfos.push_back(regInfo);
     }
     {
-        auto regInfo = SingletonRegInfo("Profiler", (IBase**)&g_profiler, IID_IProfilerClient, CID_Profiler, 2);
+        auto regInfo = SINGLETON_REG_INFO("Profiler", g_profiler, IID_IProfilerClient, CID_Profiler, 2);
         regInfos.push_back(regInfo);
     }
     /*
     {
-        auto regInfo = SingletonRegInfo("DebugCounterManager", g_debugCounterManager, IID_IDebugCounterManager, CID_DebugCounterManager, 1);
+        auto regInfo = SINGLETON_REG_INFO("DebugCounterManager", g_debugCounterManager, IID_IDebugCounterManager, CID_DebugCounterManager, 1);
         regInfos.push_back(regInfo);
     }
     {
-        auto regInfo = SingletonRegInfo("LoadStat", g_loadStat);
+        auto regInfo = SINGLETON_REG_INFO("LoadStat", g_loadStat);
         regInfos.push_back(regInfo);
     }
     */

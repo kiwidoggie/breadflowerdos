@@ -2,6 +2,9 @@
 #include "BF2Engine.hpp"
 #include "io/io.hpp"
 #include "io/NetworkManager.hpp"
+#include "ClassManager.hpp"
+#include "MemoryPool.hpp"
+
 #include "Module.hpp"
 #include "ModuleBF2.hpp"
 #include "ModuleGame.hpp"
@@ -9,8 +12,14 @@
 #include "MathModule.hpp"
 #include "io/ModuleIO.hpp"
 #include "io/FileModule.hpp"
-#include "ClassManager.hpp"
-#include "MemoryPool.hpp"
+#include "world/Module.hpp"
+#include "world/ObjectModule.hpp"
+#include "world/ObjTemplPortalModule.hpp"
+#include "ModuleNetworkables.hpp"
+#include "world/ObjTemplBaseModule.hpp"
+#include "tool/ModuleToolObject.hpp"
+#include "world/PhysicsModule.hpp"
+#include "io/NetworkModule.hpp"
 
 using namespace dice::hfe;
 
@@ -54,7 +63,6 @@ bool BF2EngineSetup::initModules()
     g_modules.push_back(moduleIO);
     auto fileModule = new io::FileModule();
     g_modules.push_back(fileModule);
-    /*
     auto worldModule = new world::Module();
     g_modules.push_back(worldModule);
     auto objectModule = new world::ObjectModule();
@@ -69,10 +77,13 @@ bool BF2EngineSetup::initModules()
     g_modules.push_back(moduleToolObject);
     auto physicsModule = new world::PhysicsModule();
     g_modules.push_back(physicsModule);
+    /*
     auto animModule = new animationTools::AnimModule();
     g_modules.push_back(animModule);
+    */
     auto networkModule = new io::NetworkModule();
     g_modules.push_back(networkModule);
+    /*
     auto bfSoundModule = new BfSoundModule();
     g_modules.push_back(bfSoundModule);
     auto bfMaterialSystemModule = new world::BFMaterialSystemModule();
