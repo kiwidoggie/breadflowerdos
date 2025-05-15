@@ -1,4 +1,7 @@
 #include "ClassManager.hpp"
+#include "IClassServer.hpp"
+#include "ClassRegInfo.hpp"
+#include "Debug.hpp"
 
 using namespace dice::hfe;
 
@@ -27,12 +30,14 @@ uint32_t ClassManager::getRef()
  */
 uint32_t ClassManager::release()
 {
-    // This looks scuffed
     m_refCount--;
-    if (m_refCount == 0)
-        delete this;
+    if (m_refCount != 0)
+    {
+        return m_refCount;
+    }
 
-    return m_refCount;
+    delete this;
+    return 0;
 }
 
 /**
@@ -56,30 +61,65 @@ ClassManager::~ClassManager()
     // TODO: Implement
 }
 
-void ClassManager::registerServer(IClassServer*)
+// bf2: 00734d80
+void ClassManager::registerServer(IClassServer* server)
+{
+    // TODO: Recheck if done correctly.
+    addServer(server);
+    std::vector<ClassRegInfo> classRegInfos;
+    server->getClassList(classRegInfos);
+
+    for (auto& regInfo : classRegInfos)
+    {
+        ClassInfo classInfo(regInfo, server);
+        if (getClassInfo(regInfo.id, classInfo))
+        {
+            BF2_ERROR("Duplicate registration of class id " << regInfo.id << ". Already used by:" << classInfo.name << " tried to set new name:" << regInfo.name);
+        }
+        if (getClassInfo(regInfo.name, classInfo))
+        {
+            BF2_ERROR("Duplicate registration of class name \"" << regInfo.name << "\" exists already as: " << classInfo.name);
+        }
+        m_classInfos.push_back(classInfo);
+    }
+
+    std::vector<SingletonRegInfo> singletonRegInfos;
+    server->getSingletonList(singletonRegInfos);
+
+    for (auto& regInfo : singletonRegInfos)
+    {
+        registerSingleton(regInfo);
+    }
+}
+
+void ClassManager::unregisterServer(IClassServer* server)
 {
     // TODO: Implement
 }
 
-void ClassManager::unregisterServer(IClassServer*)
+void ClassManager::setDefaultClass(unsigned int iid, unsigned int cid)
 {
-    // TODO: Implement
+    m_defaultClasses[iid] = cid;
 }
 
-void ClassManager::setDefaultClass(unsigned int, unsigned int)
+bool ClassManager::getDefaultClass(unsigned int iid, unsigned int& cid)
 {
-    // TODO: Implement
-}
-
-bool ClassManager::getDefaultClass(unsigned int, unsigned int&)
-{
-    // TODO: Implement
+    auto it = m_defaultClasses.find(iid);
+    if (it != m_defaultClasses.end()) {
+        cid = it->second;
+        return true;
+    }
     return false;
 }
 
-bool ClassManager::getClassName(unsigned int, std::string&)
+bool ClassManager::getClassName(unsigned int id, std::string& name)
 {
-    // TODO: Implement
+    ClassInfo info;
+    if (getClassInfo(id, info))
+    {
+        name = info.name;
+        return true;
+    }
     return false;
 }
 
@@ -95,10 +135,15 @@ bool ClassManager::createInstance(unsigned int, IBase*)
     return false;
 }
 
-bool ClassManager::createInstance(unsigned int, unsigned int, IBase*)
+IBase* ClassManager::createInstance(unsigned int cid, unsigned int iid, IBase* baseClass)
 {
-    // TODO: Implement
-    return false;
+    ClassInfo info;
+    if (getClassInfo(cid, info))
+    {
+        return info.func(iid, baseClass);
+    }
+
+    return nullptr;
 }
 
 bool ClassManager::createInstance(std::string const&, unsigned int, IBase*)
@@ -119,9 +164,15 @@ bool ClassManager::getSingletonClass(std::string const&, unsigned int&)
     return false;
 }
 
-void ClassManager::registerSingleton(SingletonRegInfo const&)
+void ClassManager::registerSingleton(SingletonRegInfo const& regInfo)
 {
     // TODO: Implement
+    SingletonInfo info(regInfo);
+    m_singletonInfos.emplace(regInfo.name, info);
+    if (info.createOnRegister)
+    {
+        createSingleton(regInfo.name, info);
+    }
 }
 
 void ClassManager::unregisterSingleton(std::string const&)
@@ -167,7 +218,66 @@ void ClassManager::getAllClassIncludingSubstring(std::string const&, std::vector
     // TODO: Implement
 }
 
+// bf2: 007356e0
 void ClassManager::initSingletons()
 {
+    for (auto& info : m_singletonInfos)
+    {
+        if (info.second.createOnInit)
+        {
+            createSingleton(info.first, info.second);
+        }
+    }
+
+    m_singletonsInitialized = true;
+}
+
+bool ClassManager::findServer(IClassServer* server)
+{
+    auto it = m_servers.find(server);
+    return it != m_servers.end();
+}
+
+void ClassManager::addServer(IClassServer* server)
+{
+    findServer(server); // TODO: why is this unused ???
+    m_servers.insert(server);
+}
+
+bool ClassManager::getClassInfo(uint32_t id, ClassInfo& info)
+{
+    for (auto& classInfo : m_classInfos)
+    {
+        if (classInfo.id == id)
+        {
+            info = classInfo; // TODO: does this work?
+            return true;
+        }
+    }
+    return false;
+}
+
+bool dice::hfe::ClassManager::getClassInfo(std::string name, ClassInfo& info)
+{
     // TODO: Implement
+    return false;
+}
+
+void ClassManager::createSingleton(std::string const& name, SingletonInfo& info)
+{
+    if ((*info.singleton) != nullptr)
+    {
+        (*info.singleton)->release();
+    }
+
+    (*info.singleton) = createInstance(info.cid, info.iid, nullptr);
+    std::string className;
+    if (getClassName(info.cid, className))
+    {
+        return;
+    }
+
+    // TODO: Implement
+    // sth with formatString("Unknown ID %d", info.iid);
+    // but it looks like nothing gets done with it.
 }

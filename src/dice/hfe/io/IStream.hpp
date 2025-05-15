@@ -10,6 +10,8 @@ namespace dice
 		{
 			class SeekOrigin;
 
+			const uint32_t IID_IStream = 0x6317C8FE;
+
 			class IStream : public IBase {
 			public:
 				virtual void read(void*, unsigned int) = 0;

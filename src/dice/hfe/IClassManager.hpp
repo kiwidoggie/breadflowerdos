@@ -9,7 +9,7 @@ namespace dice
     namespace hfe
     {
         class IClassServer;
-        struct SingletonRegInfo;
+        class SingletonRegInfo;
 
         const uint32_t IID_IClassManager = 0x9C44;
 
@@ -24,7 +24,7 @@ namespace dice
             virtual bool getClassName(unsigned int, std::string&) = 0;
             virtual bool getClassID(std::string const&, unsigned int&) = 0;
             virtual bool createInstance(unsigned int, IBase*) = 0;
-            virtual bool createInstance(unsigned int, unsigned int, IBase*) = 0;
+            virtual IBase* createInstance(unsigned int, unsigned int, IBase*) = 0;
             virtual bool createInstance(std::string const&, unsigned int, IBase*) = 0;
             virtual bool setSingletonClass(std::string const&, unsigned int) = 0;
             virtual bool getSingletonClass(std::string const&, unsigned int&) = 0;

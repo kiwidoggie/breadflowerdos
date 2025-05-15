@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.30.5)
 
 # Set verbosity
 set(CMAKE_VERBOSE_MAKEFILE OFF)
@@ -16,7 +16,8 @@ include_directories(${PROJECT_SOURCE_DIR}/src)
 
 if (MSVC)
     # warning level 4
-    add_compile_options(/W4)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
+    string(REPLACE "/W3" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 else()
     # additional warnings
     add_compile_options(-Wall -Wextra -Wpedantic)

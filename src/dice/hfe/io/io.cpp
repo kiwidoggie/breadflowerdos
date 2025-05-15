@@ -2,7 +2,7 @@
 
 using namespace dice::hfe::io;
 
-NetworkManager* g_NetworkManager = nullptr;
+NetworkManager* g_networkManager = nullptr;
 
 SocketManager* dice::hfe::io::setSocketManager()
 {

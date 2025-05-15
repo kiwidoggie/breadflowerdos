@@ -23,6 +23,8 @@ namespace dice
             class IObject;
             class IObjectTemplate;
 
+            const uint32_t IID_IPlayer = 0x0C3E6;
+
             class IPlayer : public IBase {
             public:
                 virtual void getClassID() = 0;

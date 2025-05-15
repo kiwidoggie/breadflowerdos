@@ -8,7 +8,7 @@ namespace dice
 	{
 		class ServerSettings // 0x00 (0)
 		{
-		private:
+		public:
 			std::string m_configFile; // 0x00 (0)
 			std::string m_serverName; // 0x1C (28)
 			std::string m_password; // 0x38 (56)
@@ -88,6 +88,6 @@ namespace dice
 
 		}; // 0x298 (664)
 
-		extern ServerSettings** serverSettings;
+		extern ServerSettings* g_serverSettings;
 	};
 }

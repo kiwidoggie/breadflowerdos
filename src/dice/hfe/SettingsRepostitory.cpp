@@ -25,12 +25,14 @@ uint32_t SettingsRepostitory::getRef()
  */
 uint32_t SettingsRepostitory::release()
 {
-    // This looks scuffed
     m_refCount--;
-    if (m_refCount == 0)
-        delete this;
+    if (m_refCount != 0)
+    {
+        return m_refCount;
+    }
 
-    return m_refCount;
+    delete this;
+    return 0;
 }
 
 /**

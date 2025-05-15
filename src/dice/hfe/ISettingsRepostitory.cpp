@@ -5,11 +5,11 @@
 
 using namespace dice::hfe;
 
-ISettingsRepostitory* dice::hfe::g_Settings = nullptr;
+ISettingsRepostitory* dice::hfe::g_settings = nullptr;
 
 void ISettingsRepostitory::createSingleton()
 {
-	g_Settings = new SettingsRepostitory();
-	auto regInfo = SingletonRegInfo("SettingsRepostitory", g_Settings);
+	g_settings = new SettingsRepostitory();
+	SingletonRegInfo regInfo = SINGLETON_REG_INFO("SettingsRepostitory", g_settings);
 	g_classManager->registerSingleton(regInfo);
 }

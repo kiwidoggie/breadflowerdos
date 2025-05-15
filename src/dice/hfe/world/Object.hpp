@@ -12,6 +12,8 @@ namespace dice
     {
         namespace world
         {
+            const uint32_t CID_Object = 0xC379;
+
             class Object : public IObject, public IConsoleSaveable {
             public:
                 virtual void getLayerId() = 0;

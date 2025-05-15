@@ -7,10 +7,15 @@ namespace dice
 {
     namespace hfe
     {
+        // bf2: 004e481f
         enum class DebugType {
-            Error = 6,
-            Warning = 7,
-            Info = 8,
+            DTDebug = 0,
+            DTInfo = 1,
+            DTWarning = 2,
+            DTAssert = 3,
+            DxAssert = 5,
+            DTError = 6,
+            Log = 8,
         };
 
         struct Debug {
@@ -21,7 +26,7 @@ namespace dice
             std::ostringstream oss;
 
             Debug(DebugType type, std::string const& filename, int lineNo, std::string const& _0x10)
-                : type(type), filename(filename), lineNo(lineNo), _0x10(_0x10)
+                : type(type), filename(filename), _0x10(_0x10), lineNo(lineNo)
             {
             }
 
@@ -36,10 +41,10 @@ namespace dice
     std::string file = __FILE__; \
     std::string unk = ""; \
     dice::hfe::Debug dbg(dbg_type, file, __LINE__, unk); \
-    dbg->oss << msg; \
+    dbg.oss << msg; \
 }
 
-#define BF2_ERROR(msg) _BF2_DBG(dice::hfe::DebugType::Error, msg);
-#define BF2_WARNING(msg) _BF2_DBG(dice::hfe::DebugType::Warning, msg);
-#define BF2_INFO(msg) _BF2_DBG(dice::hfe::DebugType::Info, msg);
-#define BF2_ASSERT(cond) if (!(cond)) _BF2_DBG(dice::hfe::DebugType::Error, #cond);
+#define BF2_ERROR(msg) _BF2_DBG(dice::hfe::DebugType::DTError, msg);
+#define BF2_WARNING(msg) _BF2_DBG(dice::hfe::DebugType::DTWarning, msg);
+#define BF2_INFO(msg) _BF2_DBG(dice::hfe::DebugType::DTInfo, msg);
+#define BF2_ASSERT(cond) if (!(cond)) _BF2_DBG(dice::hfe::DebugType::DTAssert, #cond);

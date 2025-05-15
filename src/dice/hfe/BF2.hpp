@@ -13,8 +13,13 @@ namespace dice
         private:
             BF2Engine* m_bf2Engine;
         public:
-            bool init(std::string& p_commandArgs);
+            bool init(std::string& launchArgs);
             bool run();
+            void shutdown();
+            ~BF2();
+
+            bool handleInGameWinMessages();
+            void startDemo(std::string const&);
         };
     }
 }

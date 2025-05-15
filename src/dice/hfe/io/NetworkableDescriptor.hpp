@@ -13,13 +13,13 @@ namespace dice
 
 			struct NetworkableDescriptor
 			{
-				unsigned int m_PcoId;
-				unsigned short m_NetworkId;
-				char m_Unknown06[0xa];
-				std::vector<std::vector<INetworkable*>> m_NetProps;
-				unsigned char m_Unknown1C;
-				unsigned char m_Unknown1D[3];
-				unsigned int m_MinBitSize;
+				unsigned int m_pcoId;
+				unsigned short m_networkId;
+				char _0x6[0xa];
+				std::vector<std::vector<INetworkable*>> m_netProps;
+				unsigned char _0x1C;
+				unsigned char _0x1D[3];
+				unsigned int m_minBitSize;
 			};
 
 #if defined(WIN32)

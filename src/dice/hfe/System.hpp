@@ -11,7 +11,9 @@ namespace dice
         class ClassManager;
         class BF2Engine;
 
-        class System : private IBase
+        const uint32_t CID_System = 0xA5D6;
+
+        class System : public IBase
         {
         private:
             uint32_t m_refCount;

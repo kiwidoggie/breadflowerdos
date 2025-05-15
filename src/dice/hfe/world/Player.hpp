@@ -11,6 +11,8 @@ namespace dice
     {
         namespace world
         {
+            const uint32_t CID_Player = 0xC3EA;
+
             class Player : public IPlayer, public IConsoleSaveable, public io::NetworkableBase {
             public:
                 virtual void moveTo(const Vec3*) = 0; // 0x338

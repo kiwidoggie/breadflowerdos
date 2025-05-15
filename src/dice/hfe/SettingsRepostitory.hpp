@@ -9,6 +9,8 @@ namespace dice
 {
     namespace hfe
     {
+        const uint32_t CID_SettingsRepostitory = 0x9C76;
+
         class SettingsRepostitory : public ISettingsRepostitory
         {
         public:

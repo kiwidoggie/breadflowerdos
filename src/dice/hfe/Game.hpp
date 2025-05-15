@@ -21,6 +21,8 @@ namespace dice
 
         static_assert(sizeof(MapInfo) == 0x30);
 
+        const uint32_t CID_Game = 0x1D8A9;
+
         class Game : public IGame {
         public:
 

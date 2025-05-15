@@ -9,8 +9,9 @@ namespace dice
     {
         namespace io
         {
-
             enum class PredictionMode;
+
+            const uint32_t IID_INetworkableInfo = 0xBB1FD9FC;
 
             class INetworkableInfo : public IBase {
             public:

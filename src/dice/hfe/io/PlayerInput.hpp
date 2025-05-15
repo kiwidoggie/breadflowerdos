@@ -78,11 +78,10 @@ namespace dice
                 PINone = 64 // used as unset value
             };
 
-            class PlayerInput 
-            {
+            class PlayerInput {
             public:
                 union {
-                    float m_Inputs[64];
+                    float m_inputs[64];
                     //
                     struct {
                         float PIYaw;
@@ -152,25 +151,22 @@ namespace dice
                     };
                 };
 
-                uint64_t m_Flags; // 0x100
-                uint32_t m_Unknown108;
-                uint32_t m_Unknown10C;
-                uint32_t m_Unknown110;
-                uint8_t m_Unknown111;
+                unsigned long long m_flags; // 0x100
+                unsigned int _0x108;
+                unsigned int _0x10C;
+                unsigned int _0x110;
+                unsigned char _0x0111;
 
-                inline float* getInput(PlayerInputMap p_PlayerInputMap) 
-                {
-                    if ((m_Flags >> (unsigned long long)p_PlayerInputMap) & 1ULL) 
-                    {
-                        return &m_Inputs[static_cast<size_t>(p_PlayerInputMap)];
+                inline float* getInput(PlayerInputMap f) {
+                    if ((m_flags >> (unsigned long long)f) & 1ULL) {
+                        return &m_inputs[static_cast<size_t>(f)];
                     }
                     return nullptr;
                 }
 
-                inline void setInput(PlayerInputMap p_PlayerInputMap, float p_Value = 1.0f) 
-                {
-                    m_Flags |= 1ULL << (unsigned long long)p_PlayerInputMap;
-                    m_Inputs[static_cast<size_t>(p_PlayerInputMap)] = p_Value;
+                inline void setInput(PlayerInputMap f, float value = 1.0f) {
+                    m_flags |= 1ULL << (unsigned long long)f;
+                    m_inputs[static_cast<size_t>(f)] = value;
                 }
             };
 

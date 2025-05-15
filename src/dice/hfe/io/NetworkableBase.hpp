@@ -9,7 +9,7 @@ namespace dice
         {
             class NetworkableBase : public INetworkable {
             public:
-                char m_Unknown50[0x20];
+                char _0x50[0x20];
             };
         }
     }
