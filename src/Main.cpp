@@ -13,7 +13,7 @@ int main(int32_t p_argCount, const char** p_argVariables)
     // Store the system in our global reference
     dice::hfe::g_system = s_system;
 
-    // Stream all the passed variabled
+    // Create one string out of all passed arguments
     std::ostringstream s_stream;
     for (int32_t i = 1; i != p_argCount; i++)
     {
@@ -23,10 +23,10 @@ int main(int32_t p_argCount, const char** p_argVariables)
             s_stream << " ";
         }
     }
-
-    auto s_BF2 = new dice::hfe::BF2();
-
     std::string launchArgs = s_stream.str();
+
+    // Initialize the engine
+    auto s_BF2 = new dice::hfe::BF2();
     
     if (!s_BF2->init(launchArgs))
     {

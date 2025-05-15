@@ -19,7 +19,7 @@ BF2Engine* dice::hfe::g_bf2Engine = nullptr;
 
 // bf2: 004d4100
 BF2Engine::BF2Engine(BF2* p_BF2Instance) :
-    m_bf2(p_BF2Instance)
+    m_bf2(p_BF2Instance), m_setup(nullptr), m_console(nullptr), m_shouldQuit(false)
 {
     // Create a new tick calculator
     m_tickCalculator = new TickCalculator(10, 30.0f);

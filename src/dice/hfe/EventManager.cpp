@@ -46,8 +46,8 @@ uint32_t EventManager::getRef()
 }
 
 /**
- * @brief TODO: Documentation
- * @return uint32_t
+ * @brief Removes a reference from this class. Calls the deconstructor if there are no more references.
+ * @return uint32_t Current reference count
  */
 uint32_t EventManager::release()
 {
@@ -63,15 +63,15 @@ uint32_t EventManager::release()
 
 /**
  * @brief TODO: Documentation
- * @param p_param
+ * @param iid
  * @return EventManager*
  */
-IBase* EventManager::queryInterface(uint32_t p_param)
+IBase* EventManager::queryInterface(uint32_t iid)
 {
-    if (p_param == IID_IBase)
+    if (iid == IID_IBase)
         return this;
 
-    if (p_param == IID_IEventManager)
+    if (iid == IID_IEventManager)
         return this;
 
     return nullptr;

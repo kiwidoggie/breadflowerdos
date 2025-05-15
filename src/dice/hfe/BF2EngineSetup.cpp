@@ -4,6 +4,11 @@
 #include "io/NetworkManager.hpp"
 #include "Module.hpp"
 #include "ModuleBF2.hpp"
+#include "ModuleGame.hpp"
+#include "ModuleGameLogic.hpp"
+#include "MathModule.hpp"
+#include "io/ModuleIO.hpp"
+#include "io/FileModule.hpp"
 #include "ClassManager.hpp"
 #include "MemoryPool.hpp"
 
@@ -39,17 +44,17 @@ bool BF2EngineSetup::initModules()
     g_modules.push_back(module);
     auto moduleBF2 = new ModuleBF2();
     g_modules.push_back(moduleBF2);
-    /*
     auto moduleGame = new ModuleGame();
     g_modules.push_back(moduleGame);
     auto moduleGameLogic = new ModuleGameLogic();
     g_modules.push_back(moduleGameLogic);
-    auto mathModule = new mathModule();
+    auto mathModule = new MathModule();
     g_modules.push_back(mathModule);
     auto moduleIO = new io::ModuleIO();
     g_modules.push_back(moduleIO);
     auto fileModule = new io::FileModule();
     g_modules.push_back(fileModule);
+    /*
     auto worldModule = new world::Module();
     g_modules.push_back(worldModule);
     auto objectModule = new world::ObjectModule();
@@ -87,7 +92,6 @@ bool BF2EngineSetup::initModules()
     auto spawnSystemModule = new SpawnSystemModule();
     g_modules.push_back(spawnSystemModule);
     */
-    // TODO: Add something with classManager
     for(auto l_module : g_modules)
     {
         g_classManager->registerServer(l_module);
