@@ -21,14 +21,15 @@ namespace dice
             BF2EngineSetup(BF2Engine* p_Engine);
             ~BF2EngineSetup();
 
-            bool initModules(void);
-            bool initLateModules(void);
-            bool initFileSystem(void);
-            bool initRenderer(void);
-            bool initNetwork(void);
+            bool initModules();
+            bool initLateModules();
+            static bool initFileSystem();
+            bool initRenderer();
+            bool initConsole();
+            bool initNetwork();
 
             bool shutdownModules();
-            void shutdownNetwork(void);
+            void shutdownNetwork();
         };
         static_assert(sizeof(BF2EngineSetup) == 0x20);
 

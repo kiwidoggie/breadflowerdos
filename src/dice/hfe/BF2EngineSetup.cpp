@@ -139,7 +139,7 @@ bool BF2EngineSetup::initLateModules()
 bool BF2EngineSetup::initFileSystem()
 {
     // TODO: Implement
-    return false;
+    return true;
 }
 
 // bf2: 004deff0
@@ -161,6 +161,11 @@ bool BF2EngineSetup::initRenderer()
     // TODO: if the call returned true, return 1 otherwise return 0
 
     return false;
+}
+
+bool BF2EngineSetup::initConsole()
+{
+    return true;
 }
 
 // bf2: 004df050

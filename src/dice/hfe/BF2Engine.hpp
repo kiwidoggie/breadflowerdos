@@ -101,10 +101,11 @@ namespace dice
         class BF2Console;
         class BF2EngineSetup;
         class BF2Log;
+        class CheckServerAliveThread;
         class Demo;
         class Mutex;
+        class StatusMonitor;
         class TickCalculator;
-        class CheckServerAliveThread;
 
         // BF2Engine size: 0x160 (validated from bf2: 0040b360)
         class BF2Engine : 
@@ -118,7 +119,7 @@ namespace dice
             BF2Console* m_console;
             void* m_unknown30;
             void* m_unknown38;
-            void* m_unknown40;
+            StatusMonitor* m_statusMonitor;
             uint32_t m_unknown48;
             uint64_t m_unknown50;
             uint64_t m_unknown58;

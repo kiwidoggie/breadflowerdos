@@ -23,6 +23,7 @@ namespace dice
         public:
             virtual ~BF2Log();
             virtual bool initDebugCallback();
+            bool initLogFiles();
         };
 #if defined(WIN32)
         // TODO: Win32 static_assert
