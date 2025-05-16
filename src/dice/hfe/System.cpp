@@ -2,8 +2,8 @@
 
 #include "Core_System.hpp"
 
-#include <thread>
 #include <chrono>
+#include <thread>
 
 using namespace dice::hfe;
 
@@ -15,20 +15,20 @@ System* dice::hfe::g_system = nullptr;
  * bf2: 0074a3d0
  */
 System::System() :
-    m_refCount(1),
-    m_simulationRate(100),
-    m_exactTime(0),
-    m_unknown18(0),
-    m_unknown20(0),
-    m_unknown24(0),
-    m_unknown28(0)
+	m_refCount(1),
+	m_simulationRate(100),
+	m_exactTime(0),
+	m_unknown18(0),
+	m_unknown20(0),
+	m_unknown24(0),
+	m_unknown28(0)
 {
-    // TODO: Implement
+	// TODO: Implement
 }
 
 System::~System()
 {
-    // TODO: Implement
+	// TODO: Implement
 }
 
 /**
@@ -38,7 +38,7 @@ System::~System()
  */
 void System::addRef()
 {
-    m_refCount++;
+	m_refCount++;
 }
 
 /**
@@ -46,11 +46,12 @@ void System::addRef()
  * 
  * bf2: 0074a8f0
  * 
+ *
  * @return uint32_t Current reference count
  */
 uint32_t System::getRef()
 {
-    return m_refCount;
+	return m_refCount;
 }
 
 /**
@@ -59,17 +60,18 @@ uint32_t System::getRef()
  * bf2: 0074a8a0
  * 
  * @return uint32_t 
+
  */
 uint32_t System::release()
 {
-    m_refCount--;
-    if (m_refCount != 0)
-    {
-        return m_refCount;
-    }
+	m_refCount--;
+	if (m_refCount != 0)
+	{
+		return m_refCount;
+	}
 
-    delete this;
-    return 0;
+	delete this;
+	return 0;
 }
 
 /**
@@ -78,24 +80,25 @@ uint32_t System::release()
  * bf2: 0074a8c0
  * 
  * @param p_param 
+ *
  * @return System* 
  */
 System* System::queryInterface(uint32_t p_param)
 {
-    if (p_param == IID_IBase)
-        return this;
-    
-    return nullptr;
+	if (p_param == IID_IBase)
+		return this;
+
+	return nullptr;
 }
 
 void System::dtor0()
 {
-    // TODO: Implement
+	// TODO: Implement
 }
 
 void System::dtor1()
 {
-    // TODO: Implement
+	// TODO: Implement
 }
 
 /**
@@ -104,10 +107,11 @@ void System::dtor1()
  * bf2: 0074a530
  * 
  * @return uint64_t 
+
  */
 uint64_t System::getExactTime()
 {
-    return m_exactTime;
+	return m_exactTime;
 }
 
 /**
@@ -119,32 +123,34 @@ uint64_t System::getExactTime()
  */
 time_t System::getWallClockTime()
 {
-    auto s_currentTime = getCurrentTime();
-    auto s_differenceTime = s_currentTime - g_startTime.tv_sec;
-    time_t s_unknownTime;
-    time_t s_unknownTime2;
+	auto s_currentTime = getCurrentTime();
+	auto s_differenceTime = s_currentTime - g_startTime.tv_sec;
+	time_t s_unknownTime;
+	time_t s_unknownTime2;
 
-    if (s_differenceTime < 0)
-    {
-        s_unknownTime = (s_differenceTime >> 1 | (s_differenceTime & 1));
-        s_unknownTime = s_unknownTime + s_unknownTime;
-    }
-    else
-        s_unknownTime = s_differenceTime;
-    
-    if (-1 < g_frequency)
-        return static_cast<time_t>(s_unknownTime / g_frequency);
-    
-    s_unknownTime2 = (((uint64_t)g_frequency >> 1) | ((uint64_t)g_frequency & 1));
+	if (s_differenceTime < 0)
+	{
+		s_unknownTime = (s_differenceTime >> 1 | (s_differenceTime & 1));
+		s_unknownTime = s_unknownTime + s_unknownTime;
+	}
+	else
+		s_unknownTime = s_differenceTime;
 
-    return s_unknownTime / (s_unknownTime2 + s_unknownTime2);
+	if (-1 < g_frequency)
+		return static_cast<time_t>(s_unknownTime / g_frequency);
+
+	s_unknownTime2 =
+		(((uint64_t)g_frequency >> 1) | ((uint64_t)g_frequency & 1));
+
+	return s_unknownTime / (s_unknownTime2 + s_unknownTime2);
 }
 
 /**
  * @brief Sleeps for specified duration
  * 
  * bf2: 0074a540
- * @param p_duration 
+ * @param
+ * p_duration 
  */
 void System::sleep(uint32_t p_duration)
 {
@@ -156,8 +162,8 @@ void System::sleep(uint32_t p_duration)
 
     nanosleep(&s_sleepTime, nullptr);
 #else
-    // TODO: Determine if this code is equivalent of the code above
-    std::this_thread::sleep_for(std::chrono::milliseconds(p_duration));
+	// TODO: Determine if this code is equivalent of the code above
+	std::this_thread::sleep_for(std::chrono::milliseconds(p_duration));
 #endif
 }
 
@@ -169,7 +175,7 @@ void System::sleep(uint32_t p_duration)
  */
 uint32_t System::getSimulationRate()
 {
-    return m_simulationRate;
+	return m_simulationRate;
 }
 
 /**
@@ -180,9 +186,9 @@ uint32_t System::getSimulationRate()
  */
 float System::getSimulationRatio()
 {
-    auto s_simulationRate = getSimulationRate();
+	auto s_simulationRate = getSimulationRate();
 
-    return s_simulationRate / 100.f;
+	return s_simulationRate / 100.f;
 }
 
 /**
@@ -192,7 +198,7 @@ float System::getSimulationRatio()
  */
 void System::storeAndTurnOffFPUExceptions()
 {
-    // Not implemented
+	// Not implemented
 }
 
 /**
@@ -202,5 +208,5 @@ void System::storeAndTurnOffFPUExceptions()
  */
 void System::restoreFPUExceptions()
 {
-    // Not implemented
+	// Not implemented
 }

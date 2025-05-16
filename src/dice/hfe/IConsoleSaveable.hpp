@@ -3,13 +3,11 @@
 #include <dice/hfe/IBase.hpp>
 #include <dice/hfe/io/IStream.hpp>
 
-namespace dice
+namespace dice::hfe
 {
-	namespace hfe
+	class IConsoleSaveable : IBase
 	{
-		class IConsoleSaveable : IBase {
-		public:
-			virtual void makeScript(io::IStream*) = 0;
-		};
-	}
-}
+	public:
+		virtual void makeScript(io::IStream*) = 0;
+	};
+}	 // namespace dice::hfe

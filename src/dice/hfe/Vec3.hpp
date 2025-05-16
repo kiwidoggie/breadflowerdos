@@ -1,15 +1,12 @@
 #pragma once
 
-namespace dice
+namespace dice::hfe
 {
-    namespace hfe
-    {
-        class Vec3
-        {
-        public:
-            float x;
-            float y;
-            float z;
-        };
-    }
-}
+	class Vec3
+	{
+	public:
+		float x;
+		float y;
+		float z;
+	};
+}	 // namespace dice::hfe

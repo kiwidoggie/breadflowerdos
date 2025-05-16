@@ -6,6 +6,6 @@ NetworkManager* g_networkManager = nullptr;
 
 SocketManager* dice::hfe::io::setSocketManager()
 {
-    // TODO: Implement
-    return nullptr;
+	// TODO: Implement
+	return nullptr;
 }

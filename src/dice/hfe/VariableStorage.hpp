@@ -2,53 +2,52 @@
 
 #include <map>
 
-namespace dice
+namespace dice::hfe
 {
-    namespace hfe
-    {
-        template <class T, class U>
-        class VariableStorage
-        {
-        public:
-            std::map<T, U> storage;
-            void* lastLookup;
+	template <class T, class U> class VariableStorage
+	{
+	public:
+		std::map<T, U> storage;
+		void* lastLookup;
 
-        public:
-            U& get(T const& key, U& value)
-            {
-                auto it = storage.find(key);
-                lastLookup = &it;
+	public:
+		U& get(const T& key, U& value)
+		{
+			auto it = storage.find(key);
+			lastLookup = &it;
 
-                if (it != storage.end())
-                {
-                    value = it->second;
-                }
-                return value;
-            }
-            void set(T const& key, U const& value)
-            {
-                auto it = storage.find(key);
-                lastLookup = &it;
+			if (it != storage.end())
+			{
+				value = it->second;
+			}
+			return value;
+		}
 
-                if (it != storage.end())
-                {
-                    it->second = value;
-                }
-                else
-                {
-                    storage.insert({ key, value });
-                }
-            }
-            bool exists(std::string const& key)
-            {
-                auto it = storage.find(key);
-                lastLookup = &it;
-                return it != storage.end();
-            }
-            size_t erase(std::string const& key)
-            {
-                return storage.erase(key);
-            }
-        };
-    }
-}
+		void set(const T& key, const U& value)
+		{
+			auto it = storage.find(key);
+			lastLookup = &it;
+
+			if (it != storage.end())
+			{
+				it->second = value;
+			}
+			else
+			{
+				storage.insert({key, value});
+			}
+		}
+
+		bool exists(const std::string& key)
+		{
+			auto it = storage.find(key);
+			lastLookup = &it;
+			return it != storage.end();
+		}
+
+		size_t erase(const std::string& key)
+		{
+			return storage.erase(key);
+		}
+	};
+}	 // namespace dice::hfe

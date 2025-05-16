@@ -7,16 +7,17 @@ using namespace dice::hfe::tool;
  */
 void ModuleToolObject::addRef()
 {
-    m_refCount++;
+	m_refCount++;
 }
 
 /**
  * @brief Gets the current reference count
- * @return uint32_t Current reference count
+ * @return uint32_t Current
+ * reference count
  */
 uint32_t ModuleToolObject::getRef()
 {
-    return m_refCount;
+	return m_refCount;
 }
 
 /**
@@ -25,14 +26,14 @@ uint32_t ModuleToolObject::getRef()
  */
 uint32_t ModuleToolObject::release()
 {
-    m_refCount--;
-    if (m_refCount != 0)
-    {
-        return m_refCount;
-    }
+	m_refCount--;
+	if (m_refCount != 0)
+	{
+		return m_refCount;
+	}
 
-    delete this;
-    return 0;
+	delete this;
+	return 0;
 }
 
 /**
@@ -42,36 +43,38 @@ uint32_t ModuleToolObject::release()
  */
 ModuleToolObject* ModuleToolObject::queryInterface(uint32_t iid)
 {
-    if (iid == IID_IBase)
-        return this;
+	if (iid == IID_IBase)
+		return this;
 
-    if (iid == IID_IClassServer)
-        return this;
+	if (iid == IID_IClassServer)
+		return this;
 
-    if (iid == IID_IModule)
-        return this;
+	if (iid == IID_IModule)
+		return this;
 
-    return nullptr;
+	return nullptr;
 }
 
-void ModuleToolObject::getClassList([[maybe_unused]] std::vector<ClassRegInfo>& regInfos)
+void ModuleToolObject::getClassList(
+	[[maybe_unused]] std::vector<ClassRegInfo>& regInfos)
 {
 }
 
-void ModuleToolObject::getSingletonList([[maybe_unused]] std::vector<SingletonRegInfo>& regInfos)
+void ModuleToolObject::getSingletonList(
+	[[maybe_unused]] std::vector<SingletonRegInfo>& regInfos)
 {
 }
 
 bool ModuleToolObject::init()
 {
-    // TODO: Implement
-    // g_mainConsoleObjects->registerConsoleObjects(myList);
-    return true;
+	// TODO: Implement
+	// g_mainConsoleObjects->registerConsoleObjects(myList);
+	return true;
 }
 
 bool ModuleToolObject::close()
 {
-    // TODO: Implement
-    // g_mainConsoleObjects->unregisterConsoleObjects(myList);
-    return true;
+	// TODO: Implement
+	// g_mainConsoleObjects->unregisterConsoleObjects(myList);
+	return true;
 }

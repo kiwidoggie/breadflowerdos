@@ -4,8 +4,8 @@
 #if defined(WIN32)
 struct timeval
 {
-    long int tv_sec;
-    long int tv_usec;
+	long int tv_sec;
+	long int tv_usec;
 };
 #endif
 

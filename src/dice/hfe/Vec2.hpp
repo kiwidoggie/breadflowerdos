@@ -1,13 +1,10 @@
 #pragma once
 
-namespace dice
+namespace dice::hfe
 {
-    namespace hfe
-    {
-        struct Vec2
-        {
-            float x;
-            float y;
-        };
-    }
-}
+	struct Vec2
+	{
+		float x;
+		float y;
+	};
+}	 // namespace dice::hfe

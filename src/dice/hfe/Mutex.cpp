@@ -2,12 +2,6 @@
 
 using namespace dice::hfe;
 
-Mutex::Mutex() 
-{
+Mutex::Mutex() { }
 
-}
-
-Mutex::~Mutex() 
-{
-
-}
+Mutex::~Mutex() { }

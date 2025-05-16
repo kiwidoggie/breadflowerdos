@@ -75,7 +75,7 @@ namespace dice::hfe::io
 
 	class PlayerInput
 	{
-	  public:
+	public:
 		union
 		{
 			float m_inputs[64];

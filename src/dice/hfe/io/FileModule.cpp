@@ -7,16 +7,17 @@ using namespace dice::hfe::io;
  */
 void FileModule::addRef()
 {
-    m_refCount++;
+	m_refCount++;
 }
 
 /**
  * @brief Gets the current reference count
- * @return uint32_t Current reference count
+ * @return uint32_t Current
+ * reference count
  */
 uint32_t FileModule::getRef()
 {
-    return m_refCount;
+	return m_refCount;
 }
 
 /**
@@ -25,14 +26,14 @@ uint32_t FileModule::getRef()
  */
 uint32_t FileModule::release()
 {
-    m_refCount--;
-    if (m_refCount != 0)
-    {
-        return m_refCount;
-    }
+	m_refCount--;
+	if (m_refCount != 0)
+	{
+		return m_refCount;
+	}
 
-    delete this;
-    return 0;
+	delete this;
+	return 0;
 }
 
 /**
@@ -42,59 +43,75 @@ uint32_t FileModule::release()
  */
 FileModule* FileModule::queryInterface(uint32_t p_param)
 {
-    if (p_param == IID_IBase)
-        return this;
+	if (p_param == IID_IBase)
+		return this;
 
-    if (p_param == IID_IClassServer)
-        return this;
+	if (p_param == IID_IClassServer)
+		return this;
 
-    if (p_param == IID_IModule)
-        return this;
+	if (p_param == IID_IModule)
+		return this;
 
-    return nullptr;
+	return nullptr;
 }
 
 void FileModule::getClassList(std::vector<ClassRegInfo>& regInfos)
 {
-    // TODO: Implement
-    /*
+	// TODO: Implement
+	/*
     {
-        auto regInfo = ClassRegInfo(CID_FileManager, "dice.hfe.io.FileManager.Standard", FileManager::create);
+        auto regInfo = ClassRegInfo(CID_FileManager,
+	 * "dice.hfe.io.FileManager.Standard", FileManager::create);
+
+	 * regInfos.push_back(regInfo);
+    }
+    {
+        auto regInfo =
+	 * ClassRegInfo(CID_FileChangeManager,
+	 * "dice.hfe.io.FileChangeManager.Standard", FileChangeManager::create);
+
+	 * regInfos.push_back(regInfo);
+    }
+    {
+        auto regInfo =
+	 * ClassRegInfo(CID_UnixFileSystem, "dice.hfe.io.FileSystem.Unix",
+	 * UnixFileSystem::create);
+        regInfos.push_back(regInfo);
+    }
+ {
+
+	 * auto regInfo = ClassRegInfo(CID_ZipArchiveHandler,
+	 * "dice.hfe.io.ArchiveHandler.ZIP", ZipArchiveHandler::create);
+
+	 * regInfos.push_back(regInfo);
+    }
+    {
+        auto regInfo =
+	 * ClassRegInfo(CID_MemStream, "dice.hfe.io.Stream.Memory",
+	 * MemStream::create);
         regInfos.push_back(regInfo);
     }
     {
-        auto regInfo = ClassRegInfo(CID_FileChangeManager, "dice.hfe.io.FileChangeManager.Standard", FileChangeManager::create);
-        regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo = ClassRegInfo(CID_UnixFileSystem, "dice.hfe.io.FileSystem.Unix", UnixFileSystem::create);
-        regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo = ClassRegInfo(CID_ZipArchiveHandler, "dice.hfe.io.ArchiveHandler.ZIP", ZipArchiveHandler::create);
-        regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo = ClassRegInfo(CID_MemStream, "dice.hfe.io.Stream.Memory", MemStream::create);
-        regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo = ClassRegInfo(CID_BufferedStream, "dice.hfe.io.Stream.Buffered", BufferedStream::create);
-        regInfos.push_back(regInfo);
+
+	 * auto regInfo = ClassRegInfo(CID_BufferedStream,
+	 * "dice.hfe.io.Stream.Buffered", BufferedStream::create);
+
+	 * regInfos.push_back(regInfo);
     }
     */
 }
 
-void FileModule::getSingletonList([[maybe_unused]] std::vector<SingletonRegInfo>& regInfos)
+void FileModule::getSingletonList(
+	[[maybe_unused]] std::vector<SingletonRegInfo>& regInfos)
 {
 }
 
 bool FileModule::init()
 {
-    return true;
+	return true;
 }
 
 bool FileModule::close()
 {
-    return true;
+	return true;
 }

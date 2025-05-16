@@ -1,16 +1,11 @@
 #pragma once
 #include <dice/hfe/io/INetworkable.hpp>
 
-namespace dice
+namespace dice::hfe::io
 {
-    namespace hfe
-    {
-        namespace io
-        {
-            class NetworkableBase : public INetworkable {
-            public:
-                char _0x50[0x20];
-            };
-        }
-    }
-}
+	class NetworkableBase : public INetworkable
+	{
+	public:
+		char _0x50[0x20];
+	};
+}	 // namespace dice::hfe::io

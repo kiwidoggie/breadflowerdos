@@ -7,16 +7,17 @@ using namespace dice::hfe;
  */
 void ModuleBF2::addRef()
 {
-    m_refCount++;
+	m_refCount++;
 }
 
 /**
  * @brief Gets the current reference count
- * @return uint32_t Current reference count
+ * @return uint32_t Current
+ * reference count
  */
 uint32_t ModuleBF2::getRef()
 {
-    return m_refCount;
+	return m_refCount;
 }
 
 /**
@@ -25,14 +26,14 @@ uint32_t ModuleBF2::getRef()
  */
 uint32_t ModuleBF2::release()
 {
-    m_refCount--;
-    if (m_refCount != 0)
-    {
-        return m_refCount;
-    }
+	m_refCount--;
+	if (m_refCount != 0)
+	{
+		return m_refCount;
+	}
 
-    delete this;
-    return 0;
+	delete this;
+	return 0;
 }
 
 /**
@@ -42,48 +43,53 @@ uint32_t ModuleBF2::release()
  */
 ModuleBF2* ModuleBF2::queryInterface(uint32_t p_param)
 {
-    if (p_param == IID_IBase)
-        return this;
+	if (p_param == IID_IBase)
+		return this;
 
-    if (p_param == IID_IClassServer)
-        return this;
+	if (p_param == IID_IClassServer)
+		return this;
 
-    if (p_param == IID_IModule)
-        return this;
+	if (p_param == IID_IModule)
+		return this;
 
-    return nullptr;
+	return nullptr;
 }
 
 void ModuleBF2::getClassList(std::vector<ClassRegInfo>& regInfos)
 {
-    // TODO: Implement
-    /*
+	// TODO: Implement
+	/*
     {
-        auto regInfo = ClassRegInfo(CID_GameServer, "dice.bf.gameServer", GameServer::create);
-        regInfos.push_back(regInfo);
-    }
+        auto regInfo = ClassRegInfo(CID_GameServer,
+	 * "dice.bf.gameServer", GameServer::create);
+ regInfos.push_back(regInfo);
+
+	 * }
     {
-        auto regInfo = ClassRegInfo(world::CID_PlayerManager, "dice.hfe.world.PlayerManager.Standard", world::PlayerManager::create);
-        regInfos.push_back(regInfo);
+        auto regInfo = ClassRegInfo(world::CID_PlayerManager,
+	 * "dice.hfe.world.PlayerManager.Standard", world::PlayerManager::create);
+
+	 * regInfos.push_back(regInfo);
     }
     */
 }
 
 // bf2: 008ac450
-void ModuleBF2::getSingletonList([[maybe_unused]] std::vector<SingletonRegInfo>& regInfos)
+void ModuleBF2::getSingletonList(
+	[[maybe_unused]] std::vector<SingletonRegInfo>& regInfos)
 {
 }
 
 bool ModuleBF2::init()
 {
-    // TODO: Implement
-    //g_mainConsoleObjects->registerConsoleObjects(game::myList);
-    return true;
+	// TODO: Implement
+	// g_mainConsoleObjects->registerConsoleObjects(game::myList);
+	return true;
 }
 
 bool ModuleBF2::close()
 {
-    // TODO: Implement
-    // g_mainConsoleObjects->unregisterConsoleObjects(game::myList);
-    return true;
+	// TODO: Implement
+	// g_mainConsoleObjects->unregisterConsoleObjects(game::myList);
+	return true;
 }

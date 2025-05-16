@@ -1,20 +1,14 @@
 #pragma once
 
-namespace dice
+namespace dice::hfe::io
 {
-    namespace hfe
-    {
-        namespace io
-        {
-            class NetworkManager;
-            class SocketManager;
-            
-            // TODO: Implement
-            // bf2: 00850820
-            // NOTE: Should we move this to like an io.hpp??
-            SocketManager* setSocketManager();
+	class NetworkManager;
+	class SocketManager;
 
-            static NetworkManager* g_networkManager;
-        }
-    }
-}
+	// TODO: Implement
+	// bf2: 00850820
+	// NOTE: Should we move this to like an io.hpp??
+	SocketManager* setSocketManager();
+
+	static NetworkManager* g_networkManager;
+}	 // namespace dice::hfe::io
