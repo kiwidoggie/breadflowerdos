@@ -1,5 +1,6 @@
 #include "ModuleIO.hpp"
 #include "FileChangeManager.hpp"
+#include "OldConsole.hpp"
 
 using namespace dice::hfe::io;
 
@@ -124,10 +125,12 @@ void ModuleIO::getSingletonList(std::vector<SingletonRegInfo>& regInfos)
         auto regInfo = SINGLETON_REG_INFO("ControlMapManager", g_controlMapManager, IID_IControlMapManager, CID_ControlMapManager, 1);
         regInfos.push_back(regInfo);
     }
+    */
     {
         auto regInfo = SINGLETON_REG_INFO("MainConsole", g_mainConsole);
         regInfos.push_back(regInfo);
     }
+    /*
     {
         auto regInfo = SINGLETON_REG_INFO("ActiveMethodConsole", g_activeMethodConsole);
         regInfos.push_back(regInfo);

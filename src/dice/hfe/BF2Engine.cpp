@@ -14,6 +14,7 @@
 #include "ServerSettings.hpp"
 #include "io/FileChangeManager.hpp"
 #include "Profiler.hpp"
+#include "io/OldConsole.hpp"
 
 using namespace dice::hfe;
 
@@ -111,7 +112,7 @@ bool BF2Engine::init(std::string& launchArgs)
         return false;
     }
 
-    //io::g_mainConsole->setExitCallBack(bf2ExitCallback, this);
+    io::g_mainConsole->setExitCallBack(bf2ExitCallback, this);
 
     bool fileChangeMonitor = false;
     g_settings->boolGet("GSFileChangeMonitor", fileChangeMonitor);
@@ -120,8 +121,8 @@ bool BF2Engine::init(std::string& launchArgs)
         io::g_fileChangeManager->setEnable(true);
     }
 
-    //io::g_mainConsole->loadCommandHistory("Logs/BfCommandHistory.con");
-    //io::g_mainConsole->runFullAccess("Init.con", "", "", "", "", "", "", "", "", &io::Console::ignoredString_);
+    io::g_mainConsole->loadCommandHistory("Logs/BfCommandHistory.con");
+    io::g_mainConsole->runFullAccess("Init.con", "", "", "", "", "", "", "", "");
 
     //PbServerInitialize();
     //io::g_mainConsole->setHandleCommandHook(HandleCommandHookPB);
@@ -172,7 +173,7 @@ bool BF2Engine::initEngine()
         return false;
     }
 
-    //io::g_mainConsole->setUseRelativePaths(true);
+    io::g_mainConsole->setUseRelativePaths(true);
 
     if (!BF2EngineSetup::initFileSystem())
     {
@@ -202,7 +203,7 @@ bool BF2Engine::initEngine()
     }
 
     io::g_fileManager->permitMountArchives(true);
-    io::g_mainConsole->runFullAccess("ServerArchives.con", "", "", "", "", "", "", "", "", io::Console::ignoredString_);
+    io::g_mainConsole->runFullAccess("ServerArchives.con", "", "", "", "", "", "", "", "");
     io::g_fileManager->permitMountArchives(false);
 
     if (!initLocalization())

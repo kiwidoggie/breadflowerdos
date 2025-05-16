@@ -65,6 +65,8 @@ namespace dice
 				virtual void addAutoComplArgument(std::string const&) = 0;
 				virtual void removeAutoComplArgument(std::string const&) = 0;
 				virtual void setHandleCommandHook(bool (*)(char const*, int32_t)) = 0;
+
+				static std::string ignoredString_;
 			};
 		}
 	}
