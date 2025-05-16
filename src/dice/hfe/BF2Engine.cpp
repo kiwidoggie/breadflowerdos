@@ -12,6 +12,7 @@
 #include "Debug.hpp"
 #include "SimpleParser.hpp"
 #include "ServerSettings.hpp"
+#include "io/FileChangeManager.hpp"
 
 using namespace dice::hfe;
 
@@ -115,7 +116,7 @@ bool BF2Engine::init(std::string& launchArgs)
     g_settings->boolGet("GSFileChangeMonitor", fileChangeMonitor);
     if (fileChangeMonitor)
     {
-        //io::g_fileChangeManager->setEnable(true);
+        io::g_fileChangeManager->setEnable(true);
     }
 
     //io::g_mainConsole->loadCommandHistory("Logs/BfCommandHistory.con");

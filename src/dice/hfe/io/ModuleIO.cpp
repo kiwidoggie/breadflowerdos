@@ -1,4 +1,5 @@
 #include "ModuleIO.hpp"
+#include "FileChangeManager.hpp"
 
 using namespace dice::hfe::io;
 
@@ -93,10 +94,12 @@ void ModuleIO::getSingletonList(std::vector<SingletonRegInfo>& regInfos)
         auto regInfo = SINGLETON_REG_INFO("FileManager", g_fileManager, IID_IFileManager, CID_FileManager, 1);
         regInfos.push_back(regInfo);
     }
+    */
     {
         auto regInfo = SINGLETON_REG_INFO("FileChangeManager", g_fileChangeManager, IID_IFileChangeManager, CID_FileChangeManager, 1);
         regInfos.push_back(regInfo);
     }
+    /*
     {
         auto regInfo = SINGLETON_REG_INFO("ResourceManager", g_resourceManager, IID_IResourceManager, CID_NullResourceManager, 1);
         regInfos.push_back(regInfo);
