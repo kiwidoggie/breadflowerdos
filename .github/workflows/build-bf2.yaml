@@ -16,11 +16,17 @@ jobs:
               with:
                 version: 20
                 platform: x64
-            
+
             - name: Setup CMake
               uses: jwlawson/actions-setup-cmake@v2
               with:
                 cmake-version: '4.0.x'
+
+            - name: Run clang-format style check for C/C++/Protobuf programs.
+              uses: jidicula/clang-format-action@v4.15.0
+              with:
+                clang-format-version: '20'
+                check-path: 'src'
 
             - name: Install pre-reqs
               run: sudo apt update && sudo apt install lld
