@@ -104,6 +104,7 @@ namespace dice
         class Demo;
         class Mutex;
         class TickCalculator;
+        class CheckServerAliveThread;
 
         // BF2Engine size: 0x160 (validated from bf2: 0040b360)
         class BF2Engine : 
@@ -147,7 +148,8 @@ namespace dice
             uint64_t m_unknown120;
             Mutex* m_unknown128;
             Mutex* m_unknown130;
-            uint8_t m_unknown138[40];
+            CheckServerAliveThread* m_thread;
+            uint8_t m_unknown140[38];
 
         public:
             BF2Engine(BF2* p_Instance);

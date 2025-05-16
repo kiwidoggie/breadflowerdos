@@ -121,6 +121,26 @@ bool BF2Engine::init(std::string& launchArgs)
 
     //io::g_mainConsole->loadCommandHistory("Logs/BfCommandHistory.con");
     //io::g_mainConsole->runFullAccess("Init.con", "", "", "", "", "", "", "", "", &io::Console::ignoredString_);
+
+    //PbServerInitialize();
+    //io::g_mainConsole->setHandleCommandHook(HandleCommandHookPB);
+    // g_debugDraw = new DebugDraw(); // TODO: verify ? cuz size 1
+
+    if (m_thread != nullptr)
+    {
+        return true;
+    }
+
+    /*
+    m_thread = new CheckServerAliveThread();
+
+    if (m_thread != nullptr)
+    {
+        m_thread->start("CheckServerAliveThread", 2);
+    }
+
+    g_loadStat->registerAtIncLoadCallback(atIncLoadCallback);
+    */
     return true;
 }
 
