@@ -7,9 +7,15 @@ set(CMAKE_VERBOSE_MAKEFILE OFF)
 project(bf2 CXX)
 
 # C++ Defaults
+set(CMAKE_CXX_COMPILER clang++)
+set(CMAKE_C_COMPILER clang)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_CXX_CLANG_TIDY
+        clang-tidy;
+        -header-filter=.;
+        -checks=-*,modernize-concat-nested-namespaces;)
 
 # Set the include directories
 include_directories(${PROJECT_SOURCE_DIR}/src)
