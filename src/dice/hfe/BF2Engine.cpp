@@ -15,6 +15,7 @@
 #include "io/FileChangeManager.hpp"
 #include "Profiler.hpp"
 #include "io/OldConsole.hpp"
+#include "GameServer.hpp"
 
 using namespace dice::hfe;
 
@@ -272,9 +273,96 @@ void BF2Engine::closeLog()
 }
 
 // bf2: 004db530
-bool BF2Engine::startGame(bool, bool)
+bool BF2Engine::startGame(bool param1, bool)
 {
     // TODO: Implement
+    bool isServer = false;
+    g_settings->boolGet("GSIsServer", isServer);
+    
+    if (!isServer)
+    {
+        /*
+        SingletonRegInfo regInfo = SINGLETON_REG_INFO("Game", g_game, IID_IGame, CID_GameClient, 2);
+        g_classManager->registerSingleton(regInfo);
+
+        if (!g_game->init())
+        {
+            return false;
+        }
+
+        setGameLogic(CID_ClientGameLogic);
+        if (!g_gameLogic->init())
+        {
+            return false;
+        }
+
+        m_log->renameAndReOpenPureLog("", "client");
+
+        IGameClient* igameClient = static_cast<IGameClient*>(g_game->queryInterface(IID_IGameClient));
+        if (igameClient == nullptr)
+        {
+            return true;
+        }
+
+        if (param1)
+        {
+            return true;
+        }
+
+        std::string joinAddress("127.0.0.1");
+        g_settings->stringGet("GSJoinAddress", joinAddress);
+        std::string password("");
+        g_settings->stringGet("GSPassword", password);
+        int32_t port = 16567;
+        g_settings->intGet("GSPort", port);
+        bool punkBuster = false;
+        g_settings->boolGet("GSClPunkBuster", punkBuster);
+
+        if(!igameClient->function0x38(joinAddress, port, password, punkBuster, 5.f))
+        {
+            shutdownGame(false);
+            return false;
+        }
+        */
+
+        return true;
+    }
+
+    SingletonRegInfo regInfo = SINGLETON_REG_INFO("Game", g_game, IID_IGame, CID_GameServer, 2);
+    g_classManager->registerSingleton(regInfo);
+
+    /*if (!g_game->init())
+    {
+        return false;
+    }
+
+    IGameServer* igameServer = static_cast<IGameServer*>(g_game->queryInterface(IID_IGameServer));
+    if (igameServer == nullptr)
+    {
+        return false;
+    }
+
+    setGameLogic(CID_ServerGameLogic);
+
+    if (!g_gameLogic->init())
+    {
+        return false;
+    }
+
+    int32_t outPort = 16567;
+    g_settings->intGet("GSPort", outPort);
+
+    if (outPort != 16567)
+    {
+        g_serverSettings->m_serverPort = outPort;
+    }
+
+    if(!igameServer->startServer(g_serverSettings->m_serverIP, g_serverSettings->m_serverPort, 0))
+    {
+        shutdownGame(false);
+        return false;
+    }
+    */
     return true;
 }
 

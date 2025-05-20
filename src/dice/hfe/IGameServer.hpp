@@ -1,10 +1,6 @@
 #pragma once
 
 #include <dice/hfe/IBase.hpp>
-#include <dice/hfe/world/IPlayer.hpp>
-#include <dice/hfe/world/IObject.hpp>
-#include <dice/hfe/world/IObjectTemplate.hpp>
-#include <dice/hfe/io/NetworkableDescriptor.hpp>
 
 namespace dice
 {
@@ -15,14 +11,15 @@ namespace dice
         class GameEvent;
         class EventNode;
         class HTTPRequest;
-        typedef int TargetChannel;
-        typedef int ChannelMessageType;
+        enum class TargetChannel;
+        enum class ChannelMessageType;
         enum class ConnectionType;
 
         namespace io
         {
             enum class ConnectionStatus;
             enum class PResult;
+            class NetworkableDescriptor;
         }
 
         class IGameServer : public IBase {

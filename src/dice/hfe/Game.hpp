@@ -19,8 +19,6 @@ namespace dice
             void* m_netBuffer; // 0x28
         };
 
-        static_assert(sizeof(MapInfo) == 0x30);
-
         const uint32_t CID_Game = 0x1D8A9;
 
         class Game : public IGame {
@@ -30,7 +28,13 @@ namespace dice
             char _0x38[0x48];
         };
 
+        extern Game* g_game;
+
+#if defined(WIN32)
+        // TODO: Win32 static_assert
+#else
         static_assert(sizeof(Game) == 0x80);
+        static_assert(sizeof(MapInfo) == 0x30);
+#endif
     }
 }
-
