@@ -156,6 +156,11 @@ bool BF2Engine::shutdown()
 // bf2: 004daa10
 bool BF2Engine::mainLoop()
 {
+    if (m_shouldQuit)
+    {
+        return false;
+    }
+
     // TODO: implement
     return true;
 }
@@ -259,14 +264,11 @@ bool BF2Engine::initLocalization()
 // bf2: 004d37e0
 void BF2Engine::closeLog()
 {
-    // TODO: Implement
-
-    /*
-    if ((long *)this->field39_0xa0 != (long *)0x0) {
-        (**(code **)(*(long *)this->field39_0xa0 + 8))();
+    if (m_log != nullptr)
+    {
+        delete m_log;
     }
-    this->field39_0xa0 = 0;
-  */
+    m_log = nullptr;
 }
 
 // bf2: 004db530
