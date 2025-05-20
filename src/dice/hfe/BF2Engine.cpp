@@ -91,10 +91,10 @@ bool BF2Engine::init(std::string& launchArgs)
     }
 
     initSettingsRepostitory();
-    g_eventManager->registerEventHandler(EventCategory::ECCore, this, 0);
-    g_eventManager->registerEventHandler(EventCategory::ECMainMenu, this, 0);
-    g_frameEventManager->registerEventHandler(EventCategory::ECMainMenu, this, 0);
-    g_eventManager->registerEventHandler(EventCategory::UnknownB, this, 0);
+    g_eventManager->registerEventHandler(EventCategory::ECCore, this);
+    g_eventManager->registerEventHandler(EventCategory::ECMainMenu, this);
+    g_frameEventManager->registerEventHandler(EventCategory::ECMainMenu, this);
+    g_eventManager->registerEventHandler(EventCategory::UnknownB, this);
 
     if (m_demo == nullptr || !g_eventManager->registerEventHandler(EventCategory::ECHud, m_demo, 100))
     {

@@ -117,9 +117,9 @@ bool ModuleGame::init()
 {
     // TODO: Implement
     //g_mainConsoleObjects->registerConsoleObjects(hudInformationLayer::gameList);
-    g_eventManager->registerEventHandler(EventCategory::ECMainMenu, this, 0);
-    g_eventManager->registerEventHandler(EventCategory::ECGameLogic, this, 0);
-    g_eventManager->registerEventHandler(EventCategory::ECCore, this, 0);
+    g_eventManager->registerEventHandler(EventCategory::ECMainMenu, this);
+    g_eventManager->registerEventHandler(EventCategory::ECGameLogic, this);
+    g_eventManager->registerEventHandler(EventCategory::ECCore, this);
     m_initialized = true;
     return true;
 }

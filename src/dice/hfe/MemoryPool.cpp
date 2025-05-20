@@ -88,10 +88,13 @@ MemoryPool::~MemoryPool()
 
 IBase* MemoryPool::create(uint32_t id, IBase* memoryPool)
 {
-    memoryPool = new MemoryPool();
-    if (memoryPool->queryInterface(id) == nullptr)
+    if (memoryPool == nullptr)
     {
-        memoryPool->release();
+        memoryPool = new MemoryPool();
+        if (memoryPool->queryInterface(id) == nullptr)
+        {
+            memoryPool->release();
+        }
     }
 
     return memoryPool;

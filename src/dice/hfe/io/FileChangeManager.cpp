@@ -7,13 +7,16 @@ FileChangeManager* dice::hfe::io::g_fileChangeManager = nullptr;
 // bf2: 008504d0
 dice::hfe::IBase* FileChangeManager::create(uint32_t id, IBase* base)
 {
-    auto fileChangeManager = new FileChangeManager();
-    if (fileChangeManager->queryInterface(id) == nullptr)
-    {
-        fileChangeManager->release();
-    }
+    if (base == nullptr)
+    { 
+        auto fileChangeManager = new FileChangeManager();
+        if (fileChangeManager->queryInterface(id) == nullptr)
+        {
+            fileChangeManager->release();
+        }
 
-    base = static_cast<IFileChangeManager*>(fileChangeManager);
+        base = static_cast<IFileChangeManager*>(fileChangeManager);
+    }
 
     return base;
 }
