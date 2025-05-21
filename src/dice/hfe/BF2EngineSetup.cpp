@@ -20,6 +20,8 @@
 #include "tool/ModuleToolObject.hpp"
 #include "world/PhysicsModule.hpp"
 #include "io/NetworkModule.hpp"
+#include "world/GameLogicCompModule.hpp"
+#include "SpawnSystemModule.hpp"
 
 using namespace dice::hfe;
 
@@ -98,11 +100,11 @@ bool BF2EngineSetup::initModules()
     g_modules.push_back(gameLogicObjTemplVehicleModule);
     auto gameLogicObjTemplBFModule = new world::GameLogicObjTemplBFModule();
     g_modules.push_back(gameLogicObjTemplBFModule);
+    */
     auto gameLogicCompModule = new world::GameLogicCompModule();
     g_modules.push_back(gameLogicCompModule);
     auto spawnSystemModule = new SpawnSystemModule();
     g_modules.push_back(spawnSystemModule);
-    */
     for(auto l_module : g_modules)
     {
         g_classManager->registerServer(l_module);
