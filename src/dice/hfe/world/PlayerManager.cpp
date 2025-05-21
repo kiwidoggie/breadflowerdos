@@ -251,9 +251,13 @@ std::list<IPlayer*>& PlayerManager::getTeamSquadLeaders(int32_t teamId)
     return m_tempPlayers;
 }
 
-void PlayerManager::updatePlayers(float)
+void PlayerManager::updatePlayers(float dt)
 {
     // TODO: Implement
+    /*for (auto& player : m_players)
+    {
+        getPlayer(player)->update(dt);
+    }*/
 }
 
 void PlayerManager::registerPlayerClass(uint32_t classId, const std::string& className)
@@ -294,62 +298,122 @@ bool PlayerManager::saveAllPlayers(std::string const&)
 
 IPlayer* PlayerManager::getActivePlayer() const
 {
-    // TODO: Implement
-    return nullptr;
+    return m_activePlayer;
 }
 
-void PlayerManager::setActivePlayer(IPlayer*)
+void PlayerManager::setActivePlayer(IPlayer* player)
 {
-    // TODO: Implement
+    m_activePlayer = player;
 }
 
 uint32_t PlayerManager::getNumberOfPlayers() const
 {
-    // TODO: Implement
-    return 0;
+    return m_players.size();
 }
 
 uint32_t PlayerManager::getNumberOfHumanPlayers() const
 {
-    // TODO: Implement
-    return 0;
+    uint32_t playerCount = 0;
+    
+    for (auto& player : m_players)
+    {
+        if (!player->getIsAIPlayer())
+        {
+            ++playerCount;
+        }
+    }
+
+    return playerCount;
 }
 
 uint32_t PlayerManager::getNumberOfAliveHumanPlayers() const
 {
-    // TODO: Implement
-    return 0;
+    uint32_t playerCount = 0;
+
+    for (auto& player : m_players)
+    {
+        if (!player->getIsAIPlayer() && player->getIsConnected()) // TODO: is this a bug in bf2? shouldn't this be getIsAlive()?
+        {
+            ++playerCount;
+        }
+    }
+
+    return playerCount;
 }
 
-uint32_t PlayerManager::getNrOfPlayerInTeam(int32_t)
+uint32_t PlayerManager::getNrOfPlayerInTeam(int32_t teamId)
 {
-    // TODO: Implement
-    return 0;
+    uint32_t playerCount = 0;
+
+    for (auto& player : m_players)
+    {
+        if (player->getTeam() == teamId)
+        {
+            ++playerCount;
+        }
+    }
+
+    return playerCount;
 }
 
-uint32_t PlayerManager::getNrOfPlayerInSquads(int32_t)
+uint32_t PlayerManager::getNrOfPlayerInSquads(int32_t teamId)
 {
-    // TODO: Implement
-    return 0;
+    uint32_t playerCount = 0;
+
+    for (auto& player : m_players)
+    {
+        if (player->getTeam() == teamId && player->getSquadId() != 0)
+        {
+            ++playerCount;
+        }
+    }
+
+    return playerCount;
 }
 
-uint32_t PlayerManager::getNrOfPlayersInSquad(int32_t, int32_t)
+uint32_t PlayerManager::getNrOfPlayersInSquad(int32_t teamId, int32_t squadId)
 {
-    // TODO: Implement
-    return 0;
+    uint32_t playerCount = 0;
+
+    for (auto& player : m_players)
+    {
+        if (player->getTeam() == teamId && player->getSquadId() == squadId)
+        {
+            ++playerCount;
+        }
+    }
+
+    return playerCount;
 }
 
-std::list<IPlayer*>& PlayerManager::getInvitedPlayers(int32_t, int32_t)
+std::list<IPlayer*>& PlayerManager::getInvitedPlayers(int32_t teamId, int32_t squadId)
 {
-    // TODO: Implement
-    auto players = std::list<IPlayer*>();
-    return players;
+    m_tempPlayers.clear();
+
+    for (auto& player : m_players)
+    {
+        if (player->getTeam() == teamId && player->getSquadId() != squadId && player->getIsInvitedToSquad(squadId))
+        {
+            m_tempPlayers.push_back(player);
+        }
+    }
+
+    return m_tempPlayers;
 }
 
-uint32_t PlayerManager::getNrOfActiveSquads(int32_t)
+uint32_t PlayerManager::getNrOfActiveSquads(int32_t teamId)
 {
-    // TODO: Implement
-    return 0;
+    uint32_t activeSquadCount = 0;
+    // TODO: should we use sth like SquadId::SquadCount? That way we can increase the max squad count later on.
+    for (size_t squadId = 1; squadId <= 10; squadId++)
+    {
+        if (getNrOfPlayersInSquad(teamId, squadId) > 0)
+        {
+            activeSquadCount++;
+        }
+    }
+    
+    return activeSquadCount;
 }
 
 int32_t PlayerManager::getTeamToAddPlayer(float, float)

@@ -14,13 +14,13 @@ namespace dice
             {
             public:
                 uint32_t m_refCount;
-                void* m_unknown10;
+                IPlayer* m_activePlayer;
                 std::list<IPlayer*> m_players;
                 std::list<IPlayer*> m_tempPlayers;
                 char m_unknown38[0x28]; // dice::hfe::StringHash at 0x48 (size 0x18) // bf2: 00680298
                 std::map<uint32_t, std::string> m_playerClasses;
                 std::map<int32_t, IPlayer*> m_idToPlayerMap;
-                char m_unknownC0[0x30];
+                std::map<int32_t, IPlayer*> m_deactivatedPlayers;
                 IPlayer* m_localPlayer;
             public:
                 static IBase* create(uint32_t, IBase*);
@@ -78,9 +78,11 @@ namespace dice
             // TODO: Win32 static_assert
 #else
             static_assert(sizeof(PlayerManager) == 0x100); // bf2: 008add03
-            static_assert(offsetof(PlayerManager, m_players) == 0x10); // bf2: 00680239
+            static_assert(offsetof(PlayerManager, m_activePlayer) == 0x10); // bf2: 00682580
+            static_assert(offsetof(PlayerManager, m_players) == 0x18); // bf2: 00680239
             static_assert(offsetof(PlayerManager, m_playerClasses) == 0x60); // bf2: 006818c7
             static_assert(offsetof(PlayerManager, m_idToPlayerMap) == 0x90); // bf2: 00680264
+            static_assert(offsetof(PlayerManager, m_deactivatedPlayers) == 0xC0); // bf2: 006800be
 #endif
         }
     }

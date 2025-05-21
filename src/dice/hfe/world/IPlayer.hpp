@@ -148,7 +148,7 @@ namespace dice
                 virtual void getCameraShake() = 0;
                 virtual void getSquadInviteMask() = 0;
                 virtual void setSquadInviteMask(unsigned int) = 0;
-                virtual void getIsInvitedToSquad(int) = 0;
+                virtual bool getIsInvitedToSquad(int32_t) = 0;
                 virtual void setKitTimeStamp(double) = 0;
                 virtual void getKitTimeStamp() = 0;
                 virtual void setCurrentFiringButton(io::PlayerInputMap) = 0;
