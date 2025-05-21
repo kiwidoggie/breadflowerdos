@@ -29,7 +29,7 @@ namespace dice
                 virtual void addRef() override;
                 virtual uint32_t getRef() override;
                 virtual uint32_t release() override;
-                virtual IBase* queryInterface(uint32_t p_param) override;
+                virtual IBase* queryInterface(uint32_t) override;
                 virtual void addPlayer(IPlayer*) override;
                 virtual void removePlayer(IPlayer*) override;
                 virtual void removePlayerId(int32_t) override;
