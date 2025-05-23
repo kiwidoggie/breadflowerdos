@@ -6,11 +6,16 @@
 #include "Debug.hpp"
 #include "Demo.hpp"
 #include "EventManager.hpp"
+#include "GameServer.hpp"
 #include "ISettingsRepostitory.hpp"
+#include "LaunchArgs.hpp"
 #include "Mutex.hpp"
+#include "Profiler.hpp"
 #include "ServerSettings.hpp"
 #include "SimpleParser.hpp"
 #include "TickCalculator.hpp"
+#include "io/FileManager.hpp"
+#include "io/OldConsole.hpp"
 #include "io/SettingsManagerBase.hpp"
 
 using namespace dice::hfe;
@@ -88,13 +93,10 @@ bool BF2Engine::init(std::string& launchArgs)
 	}
 
 	initSettingsRepostitory();
-	g_eventManager->registerEventHandler(EventCategory::ECCore, this, 0);
-	g_eventManager->registerEventHandler(EventCategory::ECMainMenu, this, 0);
-	g_frameEventManager->registerEventHandler(
-		EventCategory::ECMainMenu,
-		this,
-		0);
-	g_eventManager->registerEventHandler(EventCategory::UnknownB, this, 0);
+	g_eventManager->registerEventHandler(EventCategory::ECCore, this);
+	g_eventManager->registerEventHandler(EventCategory::ECMainMenu, this);
+	g_frameEventManager->registerEventHandler(EventCategory::ECMainMenu, this);
+	g_eventManager->registerEventHandler(EventCategory::UnknownB, this);
 
 	if (m_demo == nullptr ||
 		!g_eventManager
@@ -127,6 +129,26 @@ bool BF2Engine::init(std::string& launchArgs)
 	// io::g_mainConsole->loadCommandHistory("Logs/BfCommandHistory.con");
 	// io::g_mainConsole->runFullAccess("Init.con", "", "", "", "", "", "", "",
 	// "", &io::Console::ignoredString_);
+
+	// PbServerInitialize();
+	// io::g_mainConsole->setHandleCommandHook(HandleCommandHookPB);
+	//  g_debugDraw = new DebugDraw(); // TODO: verify ? cuz size 1
+
+	if (m_thread != nullptr)
+	{
+		return true;
+	}
+
+	/*
+	m_thread = new CheckServerAliveThread();
+
+	if (m_thread != nullptr)
+	{
+		m_thread->start("CheckServerAliveThread", 2);
+	}
+
+	g_loadStat->registerAtIncLoadCallback(atIncLoadCallback);
+	*/
 	return true;
 }
 
@@ -140,6 +162,9 @@ bool BF2Engine::shutdown()
 // bf2: 004daa10
 bool BF2Engine::mainLoop()
 {
+	if (m_shouldQuit)
+		return false;
+
 	// TODO: implement
 	return true;
 }
@@ -147,7 +172,96 @@ bool BF2Engine::mainLoop()
 // bf2: 004dc600
 bool BF2Engine::initEngine()
 {
-	return true;	// TODO
+	if (g_profilerClient != nullptr)
+	{
+		g_profilerClient->getEnable();	  // TODO: real code seems missing in
+										  // bf2 linux server build.
+	}
+
+	if (!m_log->initDebugCallback())
+	{
+		return false;
+	}
+
+	// io::g_mainConsole->setUseRelativePaths(true);
+
+	// if (!BF2EngineSetup::initFileSystem()) // TODO: Verify static?
+	if (!m_setup->initFileSystem())
+	{
+		return false;
+	}
+
+	std::string modDirectory;
+	g_settings->stringGet("GSModDirectory", modDirectory);
+	/*
+#ifdef BF2142_SPECIFIC
+	if (compareIgnoreCase(modDirectory, "mods/bf2142") != 0)
+	{
+		io::g_fileManager->addPath("mods/bf2142");
+	}
+#else
+	if (compareIgnoreCase(modDirectory, "mods/bf2") != 0)
+	{
+		io::g_fileManager->addPath("mods/bf2");
+	}
+#endif
+*/
+	io::g_fileManager->addPath(modDirectory);
+
+	if (!m_log->initLogFiles())
+	{
+		return false;
+	}
+
+	io::g_fileManager->permitMountArchives(true);
+	io::g_mainConsole->runFullAccess(
+		"ServerArchives.con",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		io::Console::ignoredString_);
+	io::g_fileManager->permitMountArchives(false);
+
+	if (!initLocalization())
+	{
+		return false;
+	}
+	/*
+		io::g_settingsManager->load("Settings/Usersettings.con");
+
+		if (m_statusMonitor == nullptr)
+		{
+			bool statusMonitor = true;
+			g_settings->boolGet("GSStatusMonitor", statusMonitor);
+
+			if (statusMonitor)
+			{
+				m_statusMonitor = new StatusMonitor();
+			}
+		}
+
+		auto modInfo = g_classManager->getSingleton("ModInfo");
+		modInfo->init();
+
+		if (m_setup->initRenderer() && !m_setup->initConsole())
+		{
+			return false;
+		}
+
+		if (!m_setup->initNetwork())
+		{
+			return false;
+		}
+
+		SingletonServer::init();
+		*/
+
+	return true;
 }
 
 bool BF2Engine::shutdownEngine()
@@ -170,19 +284,115 @@ void BF2Engine::closeLog()
 	// TODO: Implement
 
 	/*
-    if ((long *)this->field39_0xa0 != (long *)0x0) {
-        (**(code
+	if ((long *)this->field39_0xa0 != (long *)0x0) {
+		(**(code
 	 * **)(*(long *)this->field39_0xa0 + 8))();
-    }
-    this->field39_0xa0 =
+	}
+	this->field39_0xa0 =
 	 * 0;
   */
+	if (m_log != nullptr)
+		delete m_log;
+
+	m_log = nullptr;
 }
 
 // bf2: 004db530
 bool BF2Engine::startGame(bool, bool)
 {
 	// TODO: Implement
+	bool isServer = false;
+	g_settings->boolGet("GSIsServer", isServer);
+
+	if (!isServer)
+	{
+		/*
+		SingletonRegInfo regInfo = SINGLETON_REG_INFO("Game", g_game, IID_IGame,
+		CID_GameClient, 2); g_classManager->registerSingleton(regInfo);
+
+		if (!g_game->init())
+		{
+			return false;
+		}
+
+		setGameLogic(CID_ClientGameLogic);
+		if (!g_gameLogic->init())
+		{
+			return false;
+		}
+
+		m_log->renameAndReOpenPureLog("", "client");
+
+		IGameClient* igameClient =
+		static_cast<IGameClient*>(g_game->queryInterface(IID_IGameClient)); if
+		(igameClient == nullptr)
+		{
+			return true;
+		}
+
+		if (param1)
+		{
+			return true;
+		}
+
+		std::string joinAddress("127.0.0.1");
+		g_settings->stringGet("GSJoinAddress", joinAddress);
+		std::string password("");
+		g_settings->stringGet("GSPassword", password);
+		int32_t port = 16567;
+		g_settings->intGet("GSPort", port);
+		bool punkBuster = false;
+		g_settings->boolGet("GSClPunkBuster", punkBuster);
+
+		if(!igameClient->function0x38(joinAddress, port, password,
+		punkBuster, 5.f))
+		{
+			shutdownGame(false);
+			return false;
+		}
+		*/
+
+		return true;
+	}
+
+	SingletonRegInfo regInfo =
+		SINGLETON_REG_INFO("Game", g_game, IID_IGame, CID_GameServer, 2);
+	g_classManager->registerSingleton(regInfo);
+
+	/*if (!g_game->init())
+	{
+		return false;
+	}
+
+	IGameServer* igameServer =
+	static_cast<IGameServer*>(g_game->queryInterface(IID_IGameServer)); if
+	(igameServer == nullptr)
+	{
+		return false;
+	}
+
+	setGameLogic(CID_ServerGameLogic);
+
+	if (!g_gameLogic->init())
+	{
+		return false;
+	}
+
+	int32_t outPort = 16567;
+	g_settings->intGet("GSPort", outPort);
+
+	if (outPort != 16567)
+	{
+		g_serverSettings->m_serverPort = outPort;
+	}
+
+	if(!igameServer->startServer(g_serverSettings->m_serverIP,
+	g_serverSettings->m_serverPort, 0))
+	{
+		shutdownGame(false);
+		return false;
+	}
+	*/
 	return true;
 }
 
@@ -206,7 +416,7 @@ void BF2Engine::initDefaultSettings()
 {
 	g_settings->boolSet("GSMenu", false);
 
-#if defined(BF2142_SPECIFIC)
+#if defined(BF2142)
 	g_settings->stringSet("GSModDirectory", "mods/bf2142");
 #else
 	g_settings->stringSet("GSModDirectory", "mods/bf2");
@@ -242,7 +452,7 @@ void BF2Engine::initDefaultSettings()
 		->boolRegisterUserVar("GSShowNetGraph", false, true, 0);
 	io::g_settingsManager
 		->boolRegisterUserVar("GSClPunkBuster", false, true, 0);
-#if defined(BF2142_SPECIFIC)
+#if defined(BF2142)
 	io::g_settingsManager->boolRegisterUserVar("GSCameraShake", true, true, 0);
 #endif
 }
@@ -312,7 +522,7 @@ bool BF2Engine::parseParameters(const std::string& launchArgs)
 				LaunchArgs::LaunchArg_Password,
 				"password",
 				"Set the server password when joining a server");
-#ifdef BF2142_SPECIFIC
+#ifdef BF2142
 			simpleParser.add(
 				LaunchArgs::LaunchArg_ModPath,
 				"modPath",
@@ -365,10 +575,12 @@ bool BF2Engine::parseParameters(const std::string& launchArgs)
 				"skipDXCheck",
 				"Skips DirectX version check. Use with caution.");	  // only
 																	  // bf2
+#if defined(BF_2142)
 			simpleParser.add(
 				LaunchArgs::LaunchArg_OverlayPath,
 				"overlayPath",
 				"Start game with a custom path for configuration files");	 // only bf2142
+#endif
 			simpleParser.add(
 				LaunchArgs::LaunchArg_Ranked,
 				"ranked",
@@ -389,6 +601,7 @@ bool BF2Engine::parseParameters(const std::string& launchArgs)
 				LaunchArgs::LaunchArg_PlayerName,
 				"playerName",
 				"Set the player name");
+#if defined(BF_2142)
 			simpleParser.add(
 				LaunchArgs::LaunchArg_EAAccountName,
 				"eaAccountName",
@@ -402,6 +615,7 @@ bool BF2Engine::parseParameters(const std::string& launchArgs)
 				LaunchArgs::LaunchArg_SoldierName,
 				"soldierName",
 				"Auto-login to a soldier in the specified EA Account Name");	// only bf2142
+#endif
 			simpleParser.add(
 				LaunchArgs::LaunchArg_PlayerPassword,
 				"playerPassword",
@@ -430,6 +644,7 @@ bool BF2Engine::parseParameters(const std::string& launchArgs)
 				LaunchArgs::LaunchArg_DropDynamicSpawns,
 				"dropDynamicSpawns",
 				"Don\'t re-add dynamic spawn groups as round (re)starts.");	   // only bf2
+#if defined(BF_2142)
 			simpleParser.add(
 				LaunchArgs::LaunchArg_Provider,
 				"provider",
@@ -442,6 +657,7 @@ bool BF2Engine::parseParameters(const std::string& launchArgs)
 				LaunchArgs::LaunchArg_ServerInfoType,
 				"type",
 				"");	// only bf2142
+#endif
 		}
 
 		std::list<std::pair<int32_t, std::string>> paramList;
@@ -693,9 +909,11 @@ bool BF2Engine::parseParameters(const std::string& launchArgs)
 						"GSFileChangeMonitor",
 						std::stol(value) != 0);
 					break;
+#if defined(BF_2142)
 				case LaunchArgs::LaunchArg_OverlayPath:
 					g_settings->stringSet("GSOverlayPath", value);
 					break;
+#endif
 				case LaunchArgs::LaunchArg_PlayerPassword:
 					g_settings->stringSet("GSPlayerPassword", value);
 					break;
@@ -723,12 +941,14 @@ bool BF2Engine::parseParameters(const std::string& launchArgs)
 				case LaunchArgs::LaunchArg_GameName:
 					g_settings->stringSet("gameName", value);
 					break;
+#if defined(BF_2142)
 				case LaunchArgs::LaunchArg_MenuName:
 					if (value.ends_with(".dfm"))
 					{
 						g_settings->stringSet("menuName", value);
 					}
 					break;
+#endif
 				case LaunchArgs::LaunchArg_Restart:
 					g_settings->boolSet("skipMovies", true);
 					break;
@@ -741,6 +961,7 @@ bool BF2Engine::parseParameters(const std::string& launchArgs)
 				case LaunchArgs::LaunchArg_DropDynamicSpawns:
 					g_settings->boolSet("dropDynamicSpawns", true);
 					break;
+#if defined(BF_2142)
 				case LaunchArgs::LaunchArg_VideoOptions:
 					g_settings->stringSet("GSVideoOptions", value);
 					break;
@@ -770,6 +991,7 @@ bool BF2Engine::parseParameters(const std::string& launchArgs)
 				case LaunchArgs::LaunchArg_ServerInfoType:
 					g_settings->intSet("ServerInfoType", std::stol(value));
 					break;
+#endif
 				default:
 					break;
 				}
@@ -781,7 +1003,7 @@ bool BF2Engine::parseParameters(const std::string& launchArgs)
 	g_settings->stringGet("GSOverlayPath", path);
 	if (path.empty())
 	{
-#ifdef BF2142_SPECIFIC
+#ifdef BF2142
 		std::string modPath("mods/bf2142");
 #else
 		std::string modPath("mods/bf2");
@@ -795,17 +1017,17 @@ bool BF2Engine::parseParameters(const std::string& launchArgs)
 		g_serverSettings->m_configFile = path + "Settings/serversettings.con";
 	}
 	/* TODO
-    if (g_reservedSlots->getConfigFile().empty())
-    {
+	if (g_reservedSlots->getConfigFile().empty())
+	{
 
 	 * g_reservedSlots->setConfigFile(path + "Settings/reservedSlots.con");
  }
 
 	 * if (g_mapList->m_configFile.empty())
-    {
+	{
  g_mapList->m_configFile =
 	 * path + "Settings/maplist.con";
-    }*/
+	}*/
 
 	g_settings->boolSet("GSIsServer", isServer);
 	g_settings->boolSet("GSDedicated", isDedicated);

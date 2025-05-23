@@ -60,80 +60,80 @@ void ModuleGame::getClassList(std::vector<ClassRegInfo>& regInfos)
 {
 	// TODO: Implement
 	/*
-    {
-        auto regInfo = ClassRegInfo(CID_StatsManager,
+	{
+		auto regInfo = ClassRegInfo(CID_StatsManager,
 	 * "dice.hfe.StatsManager", StatsManager::create);
 
 	 * regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo =
+	}
+	{
+		auto regInfo =
 	 * ClassRegInfo(CID_PlayerStatsManager, "dice.hfe.PlayerStatsManager",
 	 * PlayerStatsManager::create);
-        regInfos.push_back(regInfo);
-    }
+		regInfos.push_back(regInfo);
+	}
 
 	 * {
-        auto regInfo = ClassRegInfo(CID_PlayerAwards,
+		auto regInfo = ClassRegInfo(CID_PlayerAwards,
 	 * "dice.hfe.PlayerAwards", PlayerAwards::create);
 
 	 * regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo =
+	}
+	{
+		auto regInfo =
 	 * ClassRegInfo(CID_PlayerStats, "dice.hfe.PlayerStats",
 	 * PlayerStats::create);
-        regInfos.push_back(regInfo);
-    }
-    {
+		regInfos.push_back(regInfo);
+	}
+	{
 
 	 * auto regInfo = ClassRegInfo(CID_PlayerUnlocks, "dice.hfe.PlayerUnlocks",
 	 * PlayerUnlocks::create);
-        regInfos.push_back(regInfo);
-    }
-    {
+		regInfos.push_back(regInfo);
+	}
+	{
 
 	 * auto regInfo = ClassRegInfo(CID_SearchForPlayer,
 	 * "dice.hfe.SearchForPlayer", SearchForPlayer::create);
 
 	 * regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo =
+	}
+	{
+		auto regInfo =
 	 * ClassRegInfo(CID_LeaderBoard, "dice.hfe.LeaderBoard",
 	 * LeaderBoard::create);
-        regInfos.push_back(regInfo);
-    }
-    {
+		regInfos.push_back(regInfo);
+	}
+	{
 
 	 * auto regInfo = ClassRegInfo(CID_PlayerUnlockInfo,
 	 * "dice.hfe.PlayerUnlockInfo", PlayerUnlockInfo::create);
 
 	 * regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo =
+	}
+	{
+		auto regInfo =
 	 * ClassRegInfo(CID_PlayerRankInfo, "dice.hfe.PlayerRankInfo",
 	 * PlayerRankInfo::create);
-        regInfos.push_back(regInfo);
-    }
+		regInfos.push_back(regInfo);
+	}
  {
 
 	 * auto regInfo = ClassRegInfo(CID_ModInfo, "dice.hfe.ModInfo",
 	 * ModInfo::create);
-        regInfos.push_back(regInfo);
-    }
-    */
+		regInfos.push_back(regInfo);
+	}
+	*/
 }
 
 void ModuleGame::getSingletonList(std::vector<SingletonRegInfo>& regInfos)
 {
 	// TODO: Implement
 	/*
-    {
-        auto regInfo = SINGLETON_REG_INFO("ModInfo", g_modInfo,
+	{
+		auto regInfo = SINGLETON_REG_INFO("ModInfo", g_modInfo,
 	 * IID_IModInfo, CID_ModInfo, 2);
-        regInfos.push_back(regInfo);
+		regInfos.push_back(regInfo);
  }
 
 	 */
@@ -143,9 +143,9 @@ bool ModuleGame::init()
 {
 	// TODO: Implement
 	// g_mainConsoleObjects->registerConsoleObjects(hudInformationLayer::gameList);
-	g_eventManager->registerEventHandler(EventCategory::ECMainMenu, this, 0);
-	g_eventManager->registerEventHandler(EventCategory::ECGameLogic, this, 0);
-	g_eventManager->registerEventHandler(EventCategory::ECCore, this, 0);
+	g_eventManager->registerEventHandler(EventCategory::ECMainMenu, this);
+	g_eventManager->registerEventHandler(EventCategory::ECGameLogic, this);
+	g_eventManager->registerEventHandler(EventCategory::ECCore, this);
 	m_initialized = true;
 	return true;
 }

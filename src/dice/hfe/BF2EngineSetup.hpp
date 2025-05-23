@@ -23,6 +23,7 @@ namespace dice::hfe
 		bool initLateModules(void);
 		bool initFileSystem(void);
 		bool initRenderer(void);
+		bool initConsole();
 		bool initNetwork(void);
 
 		bool shutdownModules();

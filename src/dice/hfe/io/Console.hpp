@@ -89,5 +89,7 @@ namespace dice::hfe::io
 		virtual void addAutoComplArgument(const std::string&) = 0;
 		virtual void removeAutoComplArgument(const std::string&) = 0;
 		virtual void setHandleCommandHook(bool (*)(const char*, int32_t)) = 0;
+
+		static std::string ignoredString_;
 	};
 }	 // namespace dice::hfe::io

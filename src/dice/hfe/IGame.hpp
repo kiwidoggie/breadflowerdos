@@ -2,10 +2,7 @@
 
 #include <dice/hfe/IBase.hpp>
 #include <dice/hfe/Vec2.hpp>
-
-#include <dice/hfe/world/IObject.hpp>
-#include <dice/hfe/world/IObjectTemplate.hpp>
-#include <dice/hfe/world/IPlayer.hpp>
+#include <dice/hfe/Vec3.hpp>
 
 #include <string>
 
@@ -17,6 +14,7 @@ namespace dice::hfe
 	class EventNode;
 	class HTTPRequest;
 	class DemoRecorder;
+	class MapInfo;
 
 	enum class ConnectionType;
 	enum class TargetChannel;
@@ -27,52 +25,56 @@ namespace dice::hfe
 	{
 		enum class ConnectionStatus;
 		enum class PResult;
+		class PlayerInput;
 	}	 // namespace io
 
 	namespace world
 	{
 		enum class VehicleType;
 		enum class MissileLockMessage;
+		class IPlayer;
+		class IObjectTemplate;
+		class IObject;
 	}	 // namespace world
 
 	class IGame : public IBase
 	{
 	public:
-		virtual ~IGame() = 0;
-		virtual void init() = 0;
+		virtual ~IGame() { };
+		virtual bool init() = 0;
 		virtual void shutdown() = 0;
-		virtual void load() = 0;
-		virtual void loadPath(const std::string&) = 0;
+		virtual bool load() = 0;
+		virtual bool loadPath(const std::string&) = 0;
 		virtual void unload() = 0;
 		virtual void getStatsMonitor() = 0;
 		virtual void update(int, float) = 0;
 		virtual void say(const std::string&) = 0;
-		virtual void getCurrentChannel() = 0;
+		virtual TargetChannel getCurrentChannel() = 0;
 		virtual void setCurrentChannel(TargetChannel) = 0;
-		virtual void getCurrentFlags() = 0;
-		virtual void setCurrentFlags(int) = 0;
-		virtual void getCurrentType() = 0;
+		virtual int32_t getCurrentFlags() = 0;
+		virtual void setCurrentFlags(int32_t) = 0;
+		virtual ChannelMessageType getCurrentType() = 0;
 		virtual void setCurrentType(ChannelMessageType) = 0;
-		virtual void getMapInfo() = 0;
+		virtual MapInfo* getMapInfo(MapInfo*) = 0;
 		virtual void radioMessage(
 			TargetChannel, const std::string&, world::IPlayer*, unsigned int,
 			bool, bool) = 0;
 		virtual void radioMessageFromPlayer(
 			TargetChannel, const std::string&, unsigned int, unsigned int, bool,
 			bool) = 0;
-		virtual void localRadioMessage(TargetChannel, const std::string&) = 0;
+		virtual bool localRadioMessage(TargetChannel, const std::string&) = 0;
 		virtual void gameInfoMessage(
 			TargetChannel, const std::string&, unsigned int, unsigned int,
 			bool) = 0;
-		virtual void
+		virtual bool
 		localGameInfoMessage(TargetChannel, const std::string&) = 0;
 		virtual void addPlayerInput(const io::PlayerInput&) = 0;
-		virtual void getCurrentInputIndex() = 0;
+		virtual int32_t getCurrentInputIndex() = 0;
 		virtual void confirmGhost(int, unsigned int) = 0;
 		virtual void confirmReset(int) = 0;
 		virtual void createObjectOnAllClients(
 			const world::IObjectTemplate*, Vec3, Vec3, bool, int, int) = 0;
-		virtual void getObjectFromNetworkableId(const unsigned short&) = 0;
+		virtual void* getObjectFromNetworkableId(const uint16_t&) = 0;
 		virtual void createAndDestroyObject(const world::IObjectTemplate*) = 0;
 		virtual void sendGameEventToAllPlaying(GameEvent*) = 0;
 		virtual void sendGameEventIfPlaying(unsigned int, GameEvent*) = 0;
@@ -86,16 +88,16 @@ namespace dice::hfe
 		virtual void enterVehicle(world::IPlayer*, world::IObject*, bool) = 0;
 		virtual void exitVehicle(world::IPlayer*, bool, bool) = 0;
 		virtual void listPlayers() = 0;
-		virtual void joinSquad(int) = 0;
-		virtual void leaveSquad(int) = 0;
-		virtual void listSquadMembers(int, int) = 0;
-		virtual void listSquads(int) = 0;
+		virtual void joinSquad(int32_t) = 0;
+		virtual void leaveSquad(int32_t) = 0;
+		virtual const std::string& listSquadMembers(int32_t, int32_t) = 0;
+		virtual const std::string& listSquads(int32_t) = 0;
 		virtual void changeSquadName(const std::string&, bool) = 0;
 		virtual void makeMeCommander() = 0;
-		virtual void popNextCommanderApplicant(int) = 0;
-		virtual void getSpottedMessage(unsigned short) = 0;
+		virtual void popNextCommanderApplicant(int32_t) = 0;
+		virtual const std::string& getSpottedMessage(uint16_t) = 0;
 		virtual void sendSpottedMessage(
-			world::IPlayer*, unsigned short, Vec2, world::VehicleType) = 0;
+			world::IPlayer*, uint16_t, Vec2, world::VehicleType) = 0;
 		virtual void callForSpecialist(world::IPlayer*, HudNodeTypes) = 0;
 		virtual void recordDemo(DemoRecorder*) = 0;
 		virtual void stopRecording() = 0;
@@ -103,18 +105,18 @@ namespace dice::hfe
 		virtual void setSimulationRate(int) = 0;
 		virtual void getSimulationRate() = 0;
 		virtual void debugShowActiveGhosts(int) = 0;
-		virtual void getCurrentMapName() = 0;
-		virtual void getCurrentMapGameMode() = 0;
-		virtual void getCurrentMapLevelPath() = 0;
-		virtual void getCurrentMapMaxPlayers() = 0;
-		virtual void getCurrentMapSize() = 0;
-		virtual void setCurrentMapSize(unsigned int) = 0;
+		virtual const std::string& getCurrentMapName() const = 0;
+		virtual const std::string& getCurrentMapGameMode() const = 0;
+		virtual const std::string& getCurrentMapLevelPath() const = 0;
+		virtual int32_t getCurrentMapMaxPlayers() const = 0;
+		virtual uint32_t getCurrentMapSize() const = 0;
+		virtual void setCurrentMapSize(uint32_t) = 0;
 		virtual void getNetworkStats() = 0;
 		virtual void sendUDPPacket(const char*, unsigned short, void*, int) = 0;
 		virtual void addTextToChatWindow(const char*) = 0;
-		virtual void failedExitVehicle(int) = 0;
+		virtual void failedExitVehicle(int32_t) = 0;
 		virtual void isPunkBusterEnabled() = 0;
-		virtual void getAbortLoadLevel() = 0;
+		virtual bool getAbortLoadLevel() const = 0;
 		virtual void destroyPlayer(world::IPlayer*) = 0;
 	};
 }	 // namespace dice::hfe

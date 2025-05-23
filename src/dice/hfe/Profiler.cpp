@@ -100,11 +100,13 @@ Profiler::~Profiler()
 
 IBase* Profiler::create(uint32_t id, IBase* profiler)
 {
-	profiler = new Profiler(false);
-	if (profiler->queryInterface(id) == nullptr)
+	if (profiler == nullptr)
 	{
-		profiler->release();
+		profiler = new Profiler(false);
+		if (profiler->queryInterface(id) == nullptr)
+		{
+			profiler->release();
+		}
 	}
-
 	return profiler;
 }
