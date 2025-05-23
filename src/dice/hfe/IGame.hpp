@@ -2,10 +2,7 @@
 
 #include <dice/hfe/IBase.hpp>
 #include <dice/hfe/Vec2.hpp>
-
-#include <dice/hfe/world/IObject.hpp>
-#include <dice/hfe/world/IObjectTemplate.hpp>
-#include <dice/hfe/world/IPlayer.hpp>
+#include <dice/hfe/Vec3.hpp>
 
 #include <string>
 
@@ -27,19 +24,23 @@ namespace dice::hfe
 	{
 		enum class ConnectionStatus;
 		enum class PResult;
+		class PlayerInput;
 	}	 // namespace io
 
 	namespace world
 	{
 		enum class VehicleType;
 		enum class MissileLockMessage;
+		class IPlayer;
+		class IObjectTemplate;
+		class IObject;
 	}	 // namespace world
 
 	class IGame : public IBase
 	{
 	public:
 		virtual ~IGame() = 0;
-		virtual void init() = 0;
+		virtual bool init() = 0;
 		virtual void shutdown() = 0;
 		virtual void load() = 0;
 		virtual void loadPath(const std::string&) = 0;
