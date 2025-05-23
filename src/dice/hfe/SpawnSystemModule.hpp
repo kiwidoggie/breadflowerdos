@@ -23,4 +23,4 @@ namespace dice::hfe
 		virtual bool init() override;
 		virtual bool close() override;
 	};
-}
+}	 // namespace dice::hfe

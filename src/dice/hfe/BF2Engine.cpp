@@ -14,6 +14,7 @@
 #include "ServerSettings.hpp"
 #include "SimpleParser.hpp"
 #include "TickCalculator.hpp"
+#include "io/FileManager.hpp"
 #include "io/OldConsole.hpp"
 #include "io/SettingsManagerBase.hpp"
 
@@ -204,7 +205,7 @@ bool BF2Engine::initEngine()
 		io::g_fileManager->addPath("mods/bf2");
 	}
 #endif
-
+*/
 	io::g_fileManager->addPath(modDirectory);
 
 	if (!m_log->initLogFiles())
@@ -213,43 +214,52 @@ bool BF2Engine::initEngine()
 	}
 
 	io::g_fileManager->permitMountArchives(true);
-	io::g_mainConsole->runFullAccess("ServerArchives.con", "", "", "", "", "",
-"", "", "", io::Console::ignoredString_);
+	io::g_mainConsole->runFullAccess(
+		"ServerArchives.con",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		io::Console::ignoredString_);
 	io::g_fileManager->permitMountArchives(false);
 
 	if (!initLocalization())
 	{
 		return false;
 	}
+	/*
+		io::g_settingsManager->load("Settings/Usersettings.con");
 
-	io::g_settingsManager->load("Settings/Usersettings.con");
-
-	if (m_statusMonitor == nullptr)
-	{
-		bool statusMonitor = true;
-		g_settings->boolGet("GSStatusMonitor", statusMonitor);
-
-		if (statusMonitor)
+		if (m_statusMonitor == nullptr)
 		{
-			m_statusMonitor = new StatusMonitor();
+			bool statusMonitor = true;
+			g_settings->boolGet("GSStatusMonitor", statusMonitor);
+
+			if (statusMonitor)
+			{
+				m_statusMonitor = new StatusMonitor();
+			}
 		}
-	}
 
-	auto modInfo = g_classManager->getSingleton("ModInfo");
-	modInfo->init();
+		auto modInfo = g_classManager->getSingleton("ModInfo");
+		modInfo->init();
 
-	if (m_setup->initRenderer() && !m_setup->initConsole())
-	{
-		return false;
-	}
+		if (m_setup->initRenderer() && !m_setup->initConsole())
+		{
+			return false;
+		}
 
-	if (!m_setup->initNetwork())
-	{
-		return false;
-	}
+		if (!m_setup->initNetwork())
+		{
+			return false;
+		}
 
-	SingletonServer::init();
-	*/
+		SingletonServer::init();
+		*/
 
 	return true;
 }

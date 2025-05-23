@@ -19,6 +19,6 @@ namespace dice::hfe
 #if defined(WIN32)
 	// TODO: Win32 static_assert
 #else
-	static_assert(sizeof(ActionBuffer) == 0x38); // bf2: 0049efaa
+	static_assert(sizeof(ActionBuffer) == 0x38);	// bf2: 0049efaa
 #endif
 }	 // namespace dice::hfe

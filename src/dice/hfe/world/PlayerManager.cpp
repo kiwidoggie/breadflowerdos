@@ -339,7 +339,9 @@ uint32_t PlayerManager::getNumberOfAliveHumanPlayers() const
 
 	for (auto& player : m_players)
 	{
-		if (!player->getIsAIPlayer() && player->getIsConnected()) // TODO: is this a bug in bf2? shouldn't this be getIsAlive()?
+		if (!player->getIsAIPlayer() &&
+			player->getIsConnected())	 // TODO: is this a bug in bf2?
+										 // shouldn't this be getIsAlive()?
 		{
 			++playerCount;
 		}
@@ -393,13 +395,15 @@ uint32_t PlayerManager::getNrOfPlayersInSquad(int32_t teamId, int32_t squadId)
 	return playerCount;
 }
 
-std::list<IPlayer*>& PlayerManager::getInvitedPlayers(int32_t teamId, int32_t squadId)
+std::list<IPlayer*>&
+PlayerManager::getInvitedPlayers(int32_t teamId, int32_t squadId)
 {
 	m_tempPlayers.clear();
 
 	for (auto& player : m_players)
 	{
-		if (player->getTeam() == teamId && player->getSquadId() != squadId && player->getIsInvitedToSquad(squadId))
+		if (player->getTeam() == teamId && player->getSquadId() != squadId &&
+			player->getIsInvitedToSquad(squadId))
 		{
 			m_tempPlayers.push_back(player);
 		}
@@ -411,7 +415,8 @@ std::list<IPlayer*>& PlayerManager::getInvitedPlayers(int32_t teamId, int32_t sq
 uint32_t PlayerManager::getNrOfActiveSquads(int32_t teamId)
 {
 	uint32_t activeSquadCount = 0;
-	// TODO: should we use sth like SquadId::SquadCount? That way we can increase the max squad count later on.
+	// TODO: should we use sth like SquadId::SquadCount? That way we can
+	// increase the max squad count later on.
 	for (size_t squadId = 1; squadId <= 10; squadId++)
 	{
 		if (getNrOfPlayersInSquad(teamId, squadId) > 0)

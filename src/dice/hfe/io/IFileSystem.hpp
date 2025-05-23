@@ -6,8 +6,8 @@
 
 namespace dice::hfe::io
 {
-	class FileAccess;
-	class FileMode;
+	enum class FileAccess;
+	enum class FileMode;
 	class FileInfo;
 	class IStream;
 

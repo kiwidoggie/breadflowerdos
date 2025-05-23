@@ -20,6 +20,7 @@ namespace dice::hfe::world
 		std::map<int32_t, IPlayer*> m_idToPlayerMap;
 		std::map<int32_t, IPlayer*> m_deactivatedPlayers;
 		IPlayer* m_localPlayer;
+		char m_unknownF8[8];
 
 	public:
 		static IBase* create(uint32_t, IBase*);
@@ -84,11 +85,17 @@ namespace dice::hfe::world
 #if defined(WIN32)
 	// TODO: Win32 static_assert
 #else
-	static_assert(sizeof(PlayerManager) == 0x100); // bf2: 008add03
-	static_assert(offsetof(PlayerManager, m_activePlayer) == 0x10); // bf2: 00682580
-	static_assert(offsetof(PlayerManager, m_players) == 0x18); // bf2: 00680239
-	static_assert(offsetof(PlayerManager, m_playerClasses) == 0x60); // bf2: 006818c7
-	static_assert(offsetof(PlayerManager, m_idToPlayerMap) == 0x90); // bf2: 00680264
-	static_assert(offsetof(PlayerManager, m_deactivatedPlayers) == 0xC0); // bf2: 006800be
+	static_assert(sizeof(PlayerManager) == 0x100);	  // bf2: 008add03
+	static_assert(
+		offsetof(PlayerManager, m_activePlayer) == 0x10);	 // bf2: 00682580
+	static_assert(
+		offsetof(PlayerManager, m_players) == 0x18);	// bf2: 00680239
+	static_assert(
+		offsetof(PlayerManager, m_playerClasses) == 0x60);	  // bf2: 006818c7
+	static_assert(
+		offsetof(PlayerManager, m_idToPlayerMap) == 0x90);	  // bf2: 00680264
+	static_assert(
+		offsetof(PlayerManager, m_deactivatedPlayers) ==
+		0xC0);	  // bf2: 006800be
 #endif
 }	 // namespace dice::hfe::world

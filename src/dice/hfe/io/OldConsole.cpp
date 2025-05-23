@@ -84,21 +84,37 @@ void OldConsole::executeLines(
 	// TODO: Implement
 }
 
-void OldConsole::output(const std::string&) { }
+void OldConsole::output(const std::string&)
+{
+	// TODO: Implement
+}
 
-void OldConsole::updateAsciiKey(char) { }
+void OldConsole::updateAsciiKey(char)
+{
+	// TODO: Implement
+}
 
-void OldConsole::updateGameInput(const GameInput&) { }
+void OldConsole::updateGameInput(const GameInput&)
+{
+	// TODO: Implement
+}
 
-void OldConsole::updateKeyMacros(const GameInput&) { }
+void OldConsole::updateKeyMacros(const GameInput&)
+{
+	// TODO: Implement
+}
 
-void OldConsole::getLines(int32_t, std::vector<std::string>&) const { }
+void OldConsole::getLines(int32_t, std::vector<std::string>&) const
+{
+	// TODO: Implement
+}
 
 bool OldConsole::run(
 	const std::string&, const std::string&, const std::string&,
 	const std::string&, const std::string&, const std::string&,
 	const std::string&, const std::string&, const std::string&, std::string&)
 {
+	// TODO: Implement
 	return false;
 }
 
@@ -107,6 +123,7 @@ bool OldConsole::runFullAccess(
 	const std::string&, const std::string&, const std::string&,
 	const std::string&, const std::string&, const std::string&, std::string&)
 {
+	// TODO: Implement
 	return false;
 }
 
@@ -115,115 +132,177 @@ bool OldConsole::include(
 	const std::string&, const std::string&, const std::string&,
 	const std::string&, const std::string&, const std::string&, std::string&)
 {
+	// TODO: Implement
 	return false;
 }
 
 bool OldConsole::bindKeyToConsoleScript(int32_t, const std::string&)
 {
+	// TODO: Implement
 	return false;
 }
 
-void OldConsole::setExitCallBack(void (*)(void*), void*) { }
+void OldConsole::setExitCallBack(void (*)(void*), void*)
+{
+	// TODO: Implement
+}
 
-void OldConsole::update(char, std::string&, std::vector<std::string>&) { }
+void OldConsole::update(char, std::string&, std::vector<std::string>&)
+{
+	// TODO: Implement
+}
 
 bool OldConsole::addVariable(const std::string&, const std::string&)
 {
+	// TODO: Implement
 	return false;
 }
 
 bool OldConsole::addConstant(const std::string&, const std::string&)
 {
+	// TODO: Implement
 	return false;
 }
 
 const std::string& OldConsole::listVariables(const std::string&)
 {
+	// TODO: Implement
 	return "";
 }
 
 const std::string& OldConsole::listConstants(const std::string&)
 {
+	// TODO: Implement
 	return "";
 }
 
-void OldConsole::setEchoErrors(bool) { }
+void OldConsole::setEchoErrors(bool)
+{
+	// TODO: Implement
+}
 
 bool OldConsole::getEchoErrors()
 {
+	// TODO: Implement
 	return false;
 }
 
-void OldConsole::setEcho(bool) { }
+void OldConsole::setEcho(bool)
+{
+	// TODO: Implement
+}
 
 bool OldConsole::getEcho() const
 {
+	// TODO: Implement
 	return false;
 }
 
-void OldConsole::setMaxLineSize(int32_t) { }
+void OldConsole::setMaxLineSize(int32_t)
+{
+	// TODO: Implement
+}
 
 int32_t OldConsole::getMaxLineSize() const
 {
+	// TODO: Implement
 	return 0;
 }
 
-void OldConsole::setMaxHistorySize(int32_t) { }
+void OldConsole::setMaxHistorySize(int32_t)
+{
+	// TODO: Implement
+}
 
 int32_t OldConsole::getMaxHistorySize() const
 {
+	// TODO: Implement
 	return 0;
 }
 
-void OldConsole::setMaxCommandHistorySize(int32_t) { }
+void OldConsole::setMaxCommandHistorySize(int32_t)
+{
+	// TODO: Implement
+}
 
 int32_t OldConsole::getMaxCommandHistorySize() const
 {
+	// TODO: Implement
 	return 0;
 }
 
-void OldConsole::setUseRelativePaths(bool) { }
+void OldConsole::setUseRelativePaths(bool)
+{
+	// TODO: Implement
+}
 
 bool OldConsole::getUseRelativePaths() const
 {
+	// TODO: Implement
 	return false;
 }
 
-void OldConsole::setAllowMultipleFileLoad(bool) { }
+void OldConsole::setAllowMultipleFileLoad(bool)
+{
+	// TODO: Implement
+}
 
 bool OldConsole::getAllowMultipleFileLoad() const
 {
+	// TODO: Implement
 	return false;
 }
 
 const std::string& OldConsole::getWorkingPath() const
 {
+	// TODO: Implement
 	return "";
 }
 
-void OldConsole::setWorkingPath(const std::string&) { }
+void OldConsole::setWorkingPath(const std::string&)
+{
+	// TODO: Implement
+}
 
 const std::string& OldConsole::getWorkingFile() const
 {
+	// TODO: Implement
 	return "";
 }
 
 const std::string& OldConsole::getWorkingFileAndLine() const
 {
+	// TODO: Implement
 	return "";
 }
 
-void OldConsole::setAccess(int32_t) { }
+void OldConsole::setAccess(int32_t)
+{
+	// TODO: Implement
+}
 
 int32_t OldConsole::getAccess() const
 {
+	// TODO: Implement
 	return 0;
 }
 
-void OldConsole::setCurrentLine(std::string&) { }
+void OldConsole::setCurrentLine(std::string&)
+{
+	// TODO: Implement
+}
 
-void OldConsole::addAutoComplArgument(const std::string&) { }
+void OldConsole::addAutoComplArgument(const std::string&)
+{
+	// TODO: Implement
+}
 
-void OldConsole::removeAutoComplArgument(const std::string&) { }
+void OldConsole::removeAutoComplArgument(const std::string&)
+{
+	// TODO: Implement
+}
 
-void OldConsole::setHandleCommandHook(bool (*)(const char*, int32_t)) { }
+void OldConsole::setHandleCommandHook(bool (*)(const char*, int32_t))
+{
+	// TODO: Implement
+}
