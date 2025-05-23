@@ -15,6 +15,7 @@
 #include "io/FileChangeManager.hpp"
 #include "Profiler.hpp"
 #include "io/OldConsole.hpp"
+#include "io/FileManager.hpp"
 #include "GameServer.hpp"
 
 using namespace dice::hfe;
@@ -200,7 +201,7 @@ bool BF2Engine::initEngine()
         io::g_fileManager->addPath("mods/bf2");
     }
 #endif
-
+    */
     io::g_fileManager->addPath(modDirectory);
     
     if (!m_log->initLogFiles())
@@ -216,7 +217,7 @@ bool BF2Engine::initEngine()
     {
         return false;
     }
-
+    /*
     io::g_settingsManager->load("Settings/Usersettings.con");
 
     if (m_statusMonitor == nullptr)

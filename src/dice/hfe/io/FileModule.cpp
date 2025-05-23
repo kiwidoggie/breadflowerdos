@@ -1,4 +1,5 @@
 #include "FileModule.hpp"
+#include "FileManager.hpp"
 #include "FileChangeManager.hpp"
 
 using namespace dice::hfe::io;
@@ -58,12 +59,10 @@ FileModule* FileModule::queryInterface(uint32_t p_param)
 void FileModule::getClassList(std::vector<ClassRegInfo>& regInfos)
 {
     // TODO: Implement
-    /*
     {
         auto regInfo = ClassRegInfo(CID_FileManager, "dice.hfe.io.FileManager.Standard", FileManager::create);
         regInfos.push_back(regInfo);
     }
-    */
     {
         auto regInfo = ClassRegInfo(CID_FileChangeManager, "dice.hfe.io.FileChangeManager.Standard", FileChangeManager::create);
         regInfos.push_back(regInfo);

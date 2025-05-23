@@ -1,6 +1,8 @@
 #pragma once
 
 #include <dice/hfe/IBase.hpp>
+#include <dice/hfe/io/FileAccess.hpp>
+#include <dice/hfe/io/FileMode.hpp>
 #include <string>
 #include <list>
 
@@ -10,8 +12,6 @@ namespace dice
     {
         namespace io
         {
-            class FileAccess;
-            class FileMode;
             class FileInfo;
             class IStream;
 

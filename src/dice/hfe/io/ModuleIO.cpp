@@ -1,4 +1,5 @@
 #include "ModuleIO.hpp"
+#include "FileManager.hpp"
 #include "FileChangeManager.hpp"
 #include "OldConsole.hpp"
 
@@ -90,12 +91,10 @@ void ModuleIO::getClassList(std::vector<ClassRegInfo>& regInfos)
 void ModuleIO::getSingletonList(std::vector<SingletonRegInfo>& regInfos)
 {
     // TODO: Implement
-    /*
     {
         auto regInfo = SINGLETON_REG_INFO("FileManager", g_fileManager, IID_IFileManager, CID_FileManager, 1);
         regInfos.push_back(regInfo);
     }
-    */
     {
         auto regInfo = SINGLETON_REG_INFO("FileChangeManager", g_fileChangeManager, IID_IFileChangeManager, CID_FileChangeManager, 1);
         regInfos.push_back(regInfo);

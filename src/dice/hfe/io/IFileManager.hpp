@@ -1,6 +1,7 @@
 #pragma once
 
 #include "IFileSystem.hpp"
+#include "FileResolveMode.hpp"
 #include <vector>
 
 namespace dice
@@ -11,7 +12,6 @@ namespace dice
         {
             class IArchiveHandler;
             class IArchive;
-            enum class FileResolveMode;
 
             const uint32_t IID_IFileManager = 0xCC0146FB;
 
