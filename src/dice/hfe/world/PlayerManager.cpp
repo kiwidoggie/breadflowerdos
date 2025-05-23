@@ -3,7 +3,7 @@
 
 using namespace dice::hfe::world;
 
-IBase* PlayerManager::create(uint32_t id, IBase* playerManager)
+dice::hfe::IBase* PlayerManager::create(uint32_t id, IBase* playerManager)
 {
 	if (playerManager == nullptr)
 	{
@@ -124,11 +124,13 @@ IPlayer* PlayerManager::getNextPlayerFromId(int32_t id)
 
 IPlayer* PlayerManager::getPlayerFromProfileId(int32_t id)
 {
+	// TODO: Implement
 	return nullptr;
 }
 
 IPlayer* PlayerManager::getPlayerFromIdString(const std::string& name)
 {
+	// TODO: Implement
 	return nullptr;
 }
 
@@ -164,12 +166,16 @@ std::list<IPlayer*>& PlayerManager::getPlayers()
 
 std::list<IPlayer*>& PlayerManager::getPlayersSortedByScore()
 {
-	return std::list<IPlayer*>();
+	// TODO: Implement
+	auto players = std::list<IPlayer*>();
+	return players;
 }
 
 std::list<IPlayer*>& PlayerManager::getPlayersSortedByRank()
 {
-	return std::list<IPlayer*>();
+	// TODO: Implement
+	auto players = std::list<IPlayer*>();
+	return players;
 }
 
 std::list<IPlayer*>& PlayerManager::getPlayers(int32_t teamId)
@@ -189,12 +195,16 @@ std::list<IPlayer*>& PlayerManager::getPlayers(int32_t teamId)
 
 std::list<IPlayer*>& PlayerManager::getPlayersSortedByScore(int32_t teamId)
 {
-	return std::list<IPlayer*>();
+	// TODO: Implement
+	auto players = std::list<IPlayer*>();
+	return players;
 }
 
 std::list<IPlayer*>& PlayerManager::getPlayersSortedByRank(int32_t teamId)
 {
-	return std::list<IPlayer*>();
+	// TODO: Implement
+	auto players = std::list<IPlayer*>();
+	return players;
 }
 
 std::list<IPlayer*>&
@@ -216,13 +226,17 @@ PlayerManager::getPlayersInSquad(int32_t teamId, int32_t squadId)
 std::list<IPlayer*>&
 PlayerManager::getPlayersInSquadSortedByScore(int32_t teamId, int32_t squadId)
 {
-	return std::list<IPlayer*>();
+	// TODO: Implement
+	auto players = std::list<IPlayer*>();
+	return players;
 }
 
 std::list<IPlayer*>&
 PlayerManager::getPlayersInSquadSortedByRank(int32_t teamId, int32_t squadId)
 {
-	return std::list<IPlayer*>();
+	// TODO: Implement
+	auto players = std::list<IPlayer*>();
+	return players;
 }
 
 std::list<IPlayer*>& PlayerManager::getTeamSquadLeaders(int32_t teamId)
@@ -240,7 +254,10 @@ std::list<IPlayer*>& PlayerManager::getTeamSquadLeaders(int32_t teamId)
 	return m_tempPlayers;
 }
 
-void PlayerManager::updatePlayers(float) { }
+void PlayerManager::updatePlayers(float)
+{
+	// TODO: Implement
+}
 
 void PlayerManager::registerPlayerClass(
 	uint32_t classId, const std::string& className)
@@ -255,4 +272,113 @@ void PlayerManager::getPlayerClasses(
 	{
 		outList.emplace_back(kv.first, kv.second);
 	}
+}
+
+const std::string& PlayerManager::getClassNameFromPlayerClassID(uint32_t) const
+{
+	// TODO: Implement
+	return "";
+}
+
+IPlayer* PlayerManager::createPlayer(uint32_t, const std::string&, int32_t)
+{
+	// TODO: Implement
+	return nullptr;
+}
+
+IPlayer*
+PlayerManager::createPlayer(const std::string&, const std::string&, int32_t)
+{
+	// TODO: Implement
+	return nullptr;
+}
+
+bool PlayerManager::saveAllPlayers(const std::string&)
+{
+	// TODO: Implement
+	return false;
+}
+
+IPlayer* PlayerManager::getActivePlayer() const
+{
+	// TODO: Implement
+	return nullptr;
+}
+
+void PlayerManager::setActivePlayer(IPlayer*)
+{
+	// TODO: Implement
+}
+
+uint32_t PlayerManager::getNumberOfPlayers() const
+{
+	// TODO: Implement
+	return 0;
+}
+
+uint32_t PlayerManager::getNumberOfHumanPlayers() const
+{
+	// TODO: Implement
+	return 0;
+}
+
+uint32_t PlayerManager::getNumberOfAliveHumanPlayers() const
+{
+	// TODO: Implement
+	return 0;
+}
+
+uint32_t PlayerManager::getNrOfPlayerInTeam(int32_t)
+{
+	// TODO: Implement
+	return 0;
+}
+
+uint32_t PlayerManager::getNrOfPlayerInSquads(int32_t)
+{
+	// TODO: Implement
+	return 0;
+}
+
+uint32_t PlayerManager::getNrOfPlayersInSquad(int32_t, int32_t)
+{
+	// TODO: Implement
+	return 0;
+}
+
+std::list<IPlayer*>& PlayerManager::getInvitedPlayers(int32_t, int32_t)
+{
+	// TODO: Implement
+	auto players = std::list<IPlayer*>();
+	return players;
+}
+
+uint32_t PlayerManager::getNrOfActiveSquads(int32_t)
+{
+	// TODO: Implement
+	return 0;
+}
+
+int32_t PlayerManager::getTeamToAddPlayer(float, float)
+{
+	// TODO: Implement
+	return 0;
+}
+
+bool PlayerManager::deactivatePlayer(int32_t)
+{
+	// TODO: Implement
+	return false;
+}
+
+bool PlayerManager::reactivatePlayer(int32_t)
+{
+	// TODO: Implement
+	return false;
+}
+
+bool PlayerManager::renamePlayer(IPlayer*, std::string)
+{
+	// TODO: Implement
+	return false;
 }
