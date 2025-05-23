@@ -34,9 +34,10 @@ endif()
 
 if (BUILD_2142)
     message("Building BF2142")
-    add_compile_definitions(BF2142)
+    add_compile_definitions(BF_2142)
 else()
     message("Building BF2")
+    add_compile_definitions(BF_2)
 endif()
 
 add_definitions( -D_GLIBCXX_USE_CXX11_ABI=0 ) # this is required for STL binary compatibility on modern GCC

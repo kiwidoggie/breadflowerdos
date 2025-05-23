@@ -7,6 +7,7 @@
 #include "Demo.hpp"
 #include "EventManager.hpp"
 #include "ISettingsRepostitory.hpp"
+#include "LaunchArgs.hpp"
 #include "Mutex.hpp"
 #include "ServerSettings.hpp"
 #include "SimpleParser.hpp"
@@ -127,6 +128,26 @@ bool BF2Engine::init(std::string& launchArgs)
 	// io::g_mainConsole->loadCommandHistory("Logs/BfCommandHistory.con");
 	// io::g_mainConsole->runFullAccess("Init.con", "", "", "", "", "", "", "",
 	// "", &io::Console::ignoredString_);
+
+	// PbServerInitialize();
+	// io::g_mainConsole->setHandleCommandHook(HandleCommandHookPB);
+	//  g_debugDraw = new DebugDraw(); // TODO: verify ? cuz size 1
+
+	if (m_thread != nullptr)
+	{
+		return true;
+	}
+
+	/*
+	m_thread = new CheckServerAliveThread();
+
+	if (m_thread != nullptr)
+	{
+		m_thread->start("CheckServerAliveThread", 2);
+	}
+
+	g_loadStat->registerAtIncLoadCallback(atIncLoadCallback);
+	*/
 	return true;
 }
 
@@ -365,10 +386,12 @@ bool BF2Engine::parseParameters(const std::string& launchArgs)
 				"skipDXCheck",
 				"Skips DirectX version check. Use with caution.");	  // only
 																	  // bf2
+#if defined(BF_2142)
 			simpleParser.add(
 				LaunchArgs::LaunchArg_OverlayPath,
 				"overlayPath",
 				"Start game with a custom path for configuration files");	 // only bf2142
+#endif
 			simpleParser.add(
 				LaunchArgs::LaunchArg_Ranked,
 				"ranked",
@@ -389,6 +412,7 @@ bool BF2Engine::parseParameters(const std::string& launchArgs)
 				LaunchArgs::LaunchArg_PlayerName,
 				"playerName",
 				"Set the player name");
+#if defined(BF_2142)
 			simpleParser.add(
 				LaunchArgs::LaunchArg_EAAccountName,
 				"eaAccountName",
@@ -402,6 +426,7 @@ bool BF2Engine::parseParameters(const std::string& launchArgs)
 				LaunchArgs::LaunchArg_SoldierName,
 				"soldierName",
 				"Auto-login to a soldier in the specified EA Account Name");	// only bf2142
+#endif
 			simpleParser.add(
 				LaunchArgs::LaunchArg_PlayerPassword,
 				"playerPassword",
@@ -430,6 +455,7 @@ bool BF2Engine::parseParameters(const std::string& launchArgs)
 				LaunchArgs::LaunchArg_DropDynamicSpawns,
 				"dropDynamicSpawns",
 				"Don\'t re-add dynamic spawn groups as round (re)starts.");	   // only bf2
+#if defined(BF_2142)
 			simpleParser.add(
 				LaunchArgs::LaunchArg_Provider,
 				"provider",
@@ -442,6 +468,7 @@ bool BF2Engine::parseParameters(const std::string& launchArgs)
 				LaunchArgs::LaunchArg_ServerInfoType,
 				"type",
 				"");	// only bf2142
+#endif
 		}
 
 		std::list<std::pair<int32_t, std::string>> paramList;
@@ -693,9 +720,11 @@ bool BF2Engine::parseParameters(const std::string& launchArgs)
 						"GSFileChangeMonitor",
 						std::stol(value) != 0);
 					break;
+#if defined(BF_2142)
 				case LaunchArgs::LaunchArg_OverlayPath:
 					g_settings->stringSet("GSOverlayPath", value);
 					break;
+#endif
 				case LaunchArgs::LaunchArg_PlayerPassword:
 					g_settings->stringSet("GSPlayerPassword", value);
 					break;
@@ -723,12 +752,14 @@ bool BF2Engine::parseParameters(const std::string& launchArgs)
 				case LaunchArgs::LaunchArg_GameName:
 					g_settings->stringSet("gameName", value);
 					break;
+#if defined(BF_2142)
 				case LaunchArgs::LaunchArg_MenuName:
 					if (value.ends_with(".dfm"))
 					{
 						g_settings->stringSet("menuName", value);
 					}
 					break;
+#endif
 				case LaunchArgs::LaunchArg_Restart:
 					g_settings->boolSet("skipMovies", true);
 					break;
@@ -741,6 +772,7 @@ bool BF2Engine::parseParameters(const std::string& launchArgs)
 				case LaunchArgs::LaunchArg_DropDynamicSpawns:
 					g_settings->boolSet("dropDynamicSpawns", true);
 					break;
+#if defined(BF_2142)
 				case LaunchArgs::LaunchArg_VideoOptions:
 					g_settings->stringSet("GSVideoOptions", value);
 					break;
@@ -770,6 +802,7 @@ bool BF2Engine::parseParameters(const std::string& launchArgs)
 				case LaunchArgs::LaunchArg_ServerInfoType:
 					g_settings->intSet("ServerInfoType", std::stol(value));
 					break;
+#endif
 				default:
 					break;
 				}
