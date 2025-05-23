@@ -77,21 +77,21 @@ bool BF2EngineSetup::initModules()
 	auto physicsModule = new world::PhysicsModule();
 	g_modules.push_back(physicsModule);
 	/*
-    auto animModule = new animationTools::AnimModule();
+	auto animModule = new animationTools::AnimModule();
 
 	 * g_modules.push_back(animModule);
-    */
+	*/
 	auto networkModule = new io::NetworkModule();
 	g_modules.push_back(networkModule);
 	/*
-    auto bfSoundModule = new BfSoundModule();
+	auto bfSoundModule = new BfSoundModule();
 
 	 * g_modules.push_back(bfSoundModule);
-    auto bfMaterialSystemModule = new
+	auto bfMaterialSystemModule = new
 	 * world::BFMaterialSystemModule();
 
 	 * g_modules.push_back(bfMaterialSystemModule);
-    auto scoreSystemModule =
+	auto scoreSystemModule =
 	 * new world::ScoreSystemModule();
  g_modules.push_back(scoreSystemModule);
 
@@ -99,26 +99,26 @@ bool BF2EngineSetup::initModules()
 	 * world::GameLogicObjTemplBaseModule();
 
 	 * g_modules.push_back(gameLogicObjTemplBaseModule);
-    auto
+	auto
 	 * gameLogicObjTemplFxModule = new world::GameLogicObjTemplFxModule();
 
 	 * g_modules.push_back(gameLogicObjTemplFxModule);
-    auto
+	auto
 	 * gameLogicObjTemplVehicleModule = new
 	 * world::GameLogicObjTemplVehicleModule();
 
 	 * g_modules.push_back(gameLogicObjTemplVehicleModule);
-    auto
+	auto
 	 * gameLogicObjTemplBFModule = new world::GameLogicObjTemplBFModule();
 
 	 * g_modules.push_back(gameLogicObjTemplBFModule);
-    auto
+	auto
 	 * gameLogicCompModule = new world::GameLogicCompModule();
 
 	 * g_modules.push_back(gameLogicCompModule);
-    auto spawnSystemModule =
+	auto spawnSystemModule =
 	 * new SpawnSystemModule();
-    g_modules.push_back(spawnSystemModule);
+	g_modules.push_back(spawnSystemModule);
  */
 	for (auto l_module : g_modules)
 	{
@@ -137,12 +137,12 @@ bool BF2EngineSetup::initModules()
 		}
 	}
 	/*
-    setSpawnManager(CID_SpawnManager); // 0xc487
+	setSpawnManager(CID_SpawnManager); // 0xc487
 
 	 * world::setMaterialManager(world::CID_MaterialManager); // 0xc4af
 
 	 * world::setScoreManager(world::CID_ScoreManager); // 0xc4af
-    */
+	*/
 
 	return true;
 }

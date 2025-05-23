@@ -9,11 +9,12 @@
 #include "ISettingsRepostitory.hpp"
 #include "LaunchArgs.hpp"
 #include "Mutex.hpp"
+#include "Profiler.hpp"
 #include "ServerSettings.hpp"
 #include "SimpleParser.hpp"
 #include "TickCalculator.hpp"
+#include "io/OldConsole.hpp"
 #include "io/SettingsManagerBase.hpp"
-#include "Profiler.hpp"
 
 using namespace dice::hfe;
 
@@ -171,7 +172,8 @@ bool BF2Engine::initEngine()
 {
 	if (g_profilerClient != nullptr)
 	{
-		g_profilerClient->getEnable(); // TODO: real code seems missing in bf2 linux server build.
+		g_profilerClient->getEnable();	  // TODO: real code seems missing in
+										  // bf2 linux server build.
 	}
 
 	if (!m_log->initDebugCallback())
@@ -179,7 +181,7 @@ bool BF2Engine::initEngine()
 		return false;
 	}
 
-	//io::g_mainConsole->setUseRelativePaths(true);
+	// io::g_mainConsole->setUseRelativePaths(true);
 
 	// if (!BF2EngineSetup::initFileSystem()) // TODO: Verify static?
 	if (!m_setup->initFileSystem())
@@ -210,7 +212,8 @@ bool BF2Engine::initEngine()
 	}
 
 	io::g_fileManager->permitMountArchives(true);
-	io::g_mainConsole->runFullAccess("ServerArchives.con", "", "", "", "", "", "", "", "", io::Console::ignoredString_);
+	io::g_mainConsole->runFullAccess("ServerArchives.con", "", "", "", "", "",
+"", "", "", io::Console::ignoredString_);
 	io::g_fileManager->permitMountArchives(false);
 
 	if (!initLocalization())
