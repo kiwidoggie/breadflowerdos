@@ -183,6 +183,13 @@ bool BF2EngineSetup::initRenderer()
 	return false;
 }
 
+// bf2: 004df040
+bool BF2EngineSetup::initConsole()
+{
+	// Implemented (server)
+	return true;
+}
+
 // bf2: 004df050
 bool BF2EngineSetup::initNetwork()
 {

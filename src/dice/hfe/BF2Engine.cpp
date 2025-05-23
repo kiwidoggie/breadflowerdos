@@ -13,6 +13,7 @@
 #include "SimpleParser.hpp"
 #include "TickCalculator.hpp"
 #include "io/SettingsManagerBase.hpp"
+#include "Profiler.hpp"
 
 using namespace dice::hfe;
 
@@ -168,7 +169,85 @@ bool BF2Engine::mainLoop()
 // bf2: 004dc600
 bool BF2Engine::initEngine()
 {
-	return true;	// TODO
+	if (g_profilerClient != nullptr)
+	{
+		g_profilerClient->getEnable(); // TODO: real code seems missing in bf2 linux server build.
+	}
+
+	if (!m_log->initDebugCallback())
+	{
+		return false;
+	}
+
+	//io::g_mainConsole->setUseRelativePaths(true);
+
+	// if (!BF2EngineSetup::initFileSystem()) // TODO: Verify static?
+	if (!m_setup->initFileSystem())
+	{
+		return false;
+	}
+
+	std::string modDirectory;
+	g_settings->stringGet("GSModDirectory", modDirectory);
+	/*
+#ifdef BF2142_SPECIFIC
+	if (compareIgnoreCase(modDirectory, "mods/bf2142") != 0)
+	{
+		io::g_fileManager->addPath("mods/bf2142");
+	}
+#else
+	if (compareIgnoreCase(modDirectory, "mods/bf2") != 0)
+	{
+		io::g_fileManager->addPath("mods/bf2");
+	}
+#endif
+
+	io::g_fileManager->addPath(modDirectory);
+
+	if (!m_log->initLogFiles())
+	{
+		return false;
+	}
+
+	io::g_fileManager->permitMountArchives(true);
+	io::g_mainConsole->runFullAccess("ServerArchives.con", "", "", "", "", "", "", "", "", io::Console::ignoredString_);
+	io::g_fileManager->permitMountArchives(false);
+
+	if (!initLocalization())
+	{
+		return false;
+	}
+
+	io::g_settingsManager->load("Settings/Usersettings.con");
+
+	if (m_statusMonitor == nullptr)
+	{
+		bool statusMonitor = true;
+		g_settings->boolGet("GSStatusMonitor", statusMonitor);
+
+		if (statusMonitor)
+		{
+			m_statusMonitor = new StatusMonitor();
+		}
+	}
+
+	auto modInfo = g_classManager->getSingleton("ModInfo");
+	modInfo->init();
+
+	if (m_setup->initRenderer() && !m_setup->initConsole())
+	{
+		return false;
+	}
+
+	if (!m_setup->initNetwork())
+	{
+		return false;
+	}
+
+	SingletonServer::init();
+	*/
+
+	return true;
 }
 
 bool BF2Engine::shutdownEngine()
