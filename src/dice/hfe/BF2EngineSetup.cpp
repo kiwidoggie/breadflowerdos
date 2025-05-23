@@ -11,10 +11,12 @@
 #include "ModuleGame.hpp"
 #include "ModuleGameLogic.hpp"
 #include "ModuleNetworkables.hpp"
+#include "SpawnSystemModule.hpp"
 #include "io/FileModule.hpp"
 #include "io/ModuleIO.hpp"
 #include "io/NetworkModule.hpp"
 #include "tool/ModuleToolObject.hpp"
+#include "world/GameLogicCompModule.hpp"
 #include "world/Module.hpp"
 #include "world/ObjTemplBaseModule.hpp"
 #include "world/ObjTemplPortalModule.hpp"
@@ -111,15 +113,13 @@ bool BF2EngineSetup::initModules()
 	auto
 	 * gameLogicObjTemplBFModule = new world::GameLogicObjTemplBFModule();
 
-	 * g_modules.push_back(gameLogicObjTemplBFModule);
-	auto
-	 * gameLogicCompModule = new world::GameLogicCompModule();
+	 * g_modules.push_back(gameLogicObjTemplBFModule);*/
+	auto gameLogicCompModule = new world::GameLogicCompModule();
+	g_modules.push_back(gameLogicCompModule);
 
-	 * g_modules.push_back(gameLogicCompModule);
-	auto spawnSystemModule =
-	 * new SpawnSystemModule();
+	auto spawnSystemModule = new SpawnSystemModule();
 	g_modules.push_back(spawnSystemModule);
- */
+
 	for (auto l_module : g_modules)
 	{
 		g_classManager->registerServer(l_module);
