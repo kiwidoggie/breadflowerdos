@@ -163,6 +163,9 @@ bool BF2Engine::shutdown()
 // bf2: 004daa10
 bool BF2Engine::mainLoop()
 {
+	if (m_shouldQuit)
+		return false;
+
 	// TODO: implement
 	return true;
 }
@@ -280,6 +283,10 @@ void BF2Engine::closeLog()
 	this->field39_0xa0 =
 	 * 0;
   */
+	if (m_log != nullptr)
+		delete m_log;
+
+	m_log = nullptr;
 }
 
 // bf2: 004db530
