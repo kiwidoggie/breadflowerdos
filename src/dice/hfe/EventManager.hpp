@@ -50,8 +50,8 @@ namespace dice::hfe
 		virtual bool processEvents(float) override;
 		virtual void removePendingEvents() override;
 		virtual bool removeEvent(uint32_t) override;
-		virtual bool
-		registerEventHandler(EventCategory, IEventListener*, int32_t) override;
+		virtual bool registerEventHandler(
+			EventCategory, IEventListener*, int32_t = 0) override;
 		virtual bool
 		unregisterEventHandler(EventCategory, IEventListener*) override;
 		virtual bool

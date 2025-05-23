@@ -9,10 +9,13 @@ EventManager* dice::hfe::g_frameEventManager = nullptr;
 // bf2: 0084d710
 IBase* EventManager::create(uint32_t id, IBase* eventManager)
 {
-	eventManager = new EventManager();
-	if (eventManager->queryInterface(id) == nullptr)
+	if (eventManager == nullptr)
 	{
-		eventManager->release();
+		eventManager = new EventManager();
+		if (eventManager->queryInterface(id) == nullptr)
+		{
+			eventManager->release();
+		}
 	}
 
 	return eventManager;
