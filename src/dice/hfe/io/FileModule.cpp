@@ -1,4 +1,5 @@
 #include "FileModule.hpp"
+#include "FileChangeManager.hpp"
 
 using namespace dice::hfe::io;
 
@@ -59,46 +60,46 @@ void FileModule::getClassList(std::vector<ClassRegInfo>& regInfos)
 {
 	// TODO: Implement
 	/*
-    {
-        auto regInfo = ClassRegInfo(CID_FileManager,
+	{
+		auto regInfo = ClassRegInfo(CID_FileManager,
 	 * "dice.hfe.io.FileManager.Standard", FileManager::create);
 
 	 * regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo =
-	 * ClassRegInfo(CID_FileChangeManager,
-	 * "dice.hfe.io.FileChangeManager.Standard", FileChangeManager::create);
-
-	 * regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo =
+	}*/
+	{
+		auto s_RegInfo = ClassRegInfo(
+			CID_FileChangeManager,
+			"dice.hfe.io.FileChangeManager.Standard",
+			FileChangeManager::create);
+		regInfos.push_back(s_RegInfo);
+	}
+	/*{
+		auto regInfo =
 	 * ClassRegInfo(CID_UnixFileSystem, "dice.hfe.io.FileSystem.Unix",
 	 * UnixFileSystem::create);
-        regInfos.push_back(regInfo);
-    }
+		regInfos.push_back(regInfo);
+	}
  {
 
 	 * auto regInfo = ClassRegInfo(CID_ZipArchiveHandler,
 	 * "dice.hfe.io.ArchiveHandler.ZIP", ZipArchiveHandler::create);
 
 	 * regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo =
+	}
+	{
+		auto regInfo =
 	 * ClassRegInfo(CID_MemStream, "dice.hfe.io.Stream.Memory",
 	 * MemStream::create);
-        regInfos.push_back(regInfo);
-    }
-    {
+		regInfos.push_back(regInfo);
+	}
+	{
 
 	 * auto regInfo = ClassRegInfo(CID_BufferedStream,
 	 * "dice.hfe.io.Stream.Buffered", BufferedStream::create);
 
 	 * regInfos.push_back(regInfo);
-    }
-    */
+	}
+	*/
 }
 
 void FileModule::getSingletonList(

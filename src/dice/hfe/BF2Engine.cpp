@@ -170,11 +170,11 @@ void BF2Engine::closeLog()
 	// TODO: Implement
 
 	/*
-    if ((long *)this->field39_0xa0 != (long *)0x0) {
-        (**(code
+	if ((long *)this->field39_0xa0 != (long *)0x0) {
+		(**(code
 	 * **)(*(long *)this->field39_0xa0 + 8))();
-    }
-    this->field39_0xa0 =
+	}
+	this->field39_0xa0 =
 	 * 0;
   */
 }
@@ -206,7 +206,7 @@ void BF2Engine::initDefaultSettings()
 {
 	g_settings->boolSet("GSMenu", false);
 
-#if defined(BF2142_SPECIFIC)
+#if defined(BF2142)
 	g_settings->stringSet("GSModDirectory", "mods/bf2142");
 #else
 	g_settings->stringSet("GSModDirectory", "mods/bf2");
@@ -242,7 +242,7 @@ void BF2Engine::initDefaultSettings()
 		->boolRegisterUserVar("GSShowNetGraph", false, true, 0);
 	io::g_settingsManager
 		->boolRegisterUserVar("GSClPunkBuster", false, true, 0);
-#if defined(BF2142_SPECIFIC)
+#if defined(BF2142)
 	io::g_settingsManager->boolRegisterUserVar("GSCameraShake", true, true, 0);
 #endif
 }
@@ -312,7 +312,7 @@ bool BF2Engine::parseParameters(const std::string& launchArgs)
 				LaunchArgs::LaunchArg_Password,
 				"password",
 				"Set the server password when joining a server");
-#ifdef BF2142_SPECIFIC
+#ifdef BF2142
 			simpleParser.add(
 				LaunchArgs::LaunchArg_ModPath,
 				"modPath",
@@ -781,7 +781,7 @@ bool BF2Engine::parseParameters(const std::string& launchArgs)
 	g_settings->stringGet("GSOverlayPath", path);
 	if (path.empty())
 	{
-#ifdef BF2142_SPECIFIC
+#ifdef BF2142
 		std::string modPath("mods/bf2142");
 #else
 		std::string modPath("mods/bf2");
@@ -795,17 +795,17 @@ bool BF2Engine::parseParameters(const std::string& launchArgs)
 		g_serverSettings->m_configFile = path + "Settings/serversettings.con";
 	}
 	/* TODO
-    if (g_reservedSlots->getConfigFile().empty())
-    {
+	if (g_reservedSlots->getConfigFile().empty())
+	{
 
 	 * g_reservedSlots->setConfigFile(path + "Settings/reservedSlots.con");
  }
 
 	 * if (g_mapList->m_configFile.empty())
-    {
+	{
  g_mapList->m_configFile =
 	 * path + "Settings/maplist.con";
-    }*/
+	}*/
 
 	g_settings->boolSet("GSIsServer", isServer);
 	g_settings->boolSet("GSDedicated", isDedicated);

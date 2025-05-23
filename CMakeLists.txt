@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.30.5)
 set(CMAKE_VERBOSE_MAKEFILE OFF)
 
 # Set the project to be a C CXX ASM
-project(bf2 CXX)
+project(RefractorBF CXX)
 
 # C++ Defaults
 set(CMAKE_CXX_COMPILER clang++)
@@ -16,6 +16,9 @@ set(CMAKE_CXX_CLANG_TIDY
         clang-tidy;
         -header-filter=.;
         -checks=-*,modernize-concat-nested-namespaces;)
+
+# Do we want to build 2142
+set(BUILD_2142 OFF)
 
 # Set the include directories
 include_directories(${PROJECT_SOURCE_DIR}/src)
@@ -29,9 +32,20 @@ else()
     add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-add_definitions( -D_GLIBCXX_USE_CXX11_ABI=0 ) # this is required for STL binary combatibility on modern GCC
+if (BUILD_2142)
+    message("Building BF2142")
+    add_compile_definitions(BF2142)
+else()
+    message("Building BF2")
+endif()
+
+add_definitions( -D_GLIBCXX_USE_CXX11_ABI=0 ) # this is required for STL binary compatibility on modern GCC
 
 # Get all of the source files that need to be compiled
-file(GLOB_RECURSE BF2_SRC_FILES ${PROJECT_SOURCE_DIR}/src/*.cpp ${PROJECT_SOURCE_DIR}/src/*.cc ${PROJECT_SOURCE_DIR}/src/*.cxx ${PROJECT_SOURCE_DIR}/src/*.c ${PROJECT_SOURCE_DIR}/src/*.h ${PROJECT_SOURCE_DIR}/src/*.hpp ${PROJECT_SOURCE_DIR}/src/*.hxx)
+file(GLOB_RECURSE BF_SRC_FILES ${PROJECT_SOURCE_DIR}/src/*.cpp ${PROJECT_SOURCE_DIR}/src/*.cc ${PROJECT_SOURCE_DIR}/src/*.cxx ${PROJECT_SOURCE_DIR}/src/*.c ${PROJECT_SOURCE_DIR}/src/*.h ${PROJECT_SOURCE_DIR}/src/*.hpp ${PROJECT_SOURCE_DIR}/src/*.hxx)
 
-add_executable(${PROJECT_NAME} ${BF2_SRC_FILES})
+if (BUILD_2142)
+    add_executable(${PROJECT_NAME}-2142 ${BF_SRC_FILES})
+else()
+    add_executable(${PROJECT_NAME}-bf2 ${BF_SRC_FILES})
+endif()
