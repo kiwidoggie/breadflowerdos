@@ -79,7 +79,7 @@ namespace dice::hfe
 			virtual void resetTickCounter() = 0;
 			virtual void getTimeOutSideWorld() = 0;
 			virtual void setTeam(int, bool) = 0;
-			virtual int getTeam() = 0;
+			virtual int32_t getTeam() = 0;
 			virtual void getSpawnAtTick() = 0;
 			virtual void setSpawnAtTick(unsigned int) = 0;
 			virtual void getTimeToSpawn() = 0;
@@ -88,7 +88,7 @@ namespace dice::hfe
 			virtual void getIsManDown() = 0;
 			virtual void getManDownAtTick() = 0;
 			virtual void setSquadId(unsigned int) = 0;
-			virtual unsigned int getSquadId() = 0;
+			virtual uint32_t getSquadId() = 0;
 			virtual void setIsCommander(bool) = 0;
 			virtual void getIsCommander() = 0;
 			virtual void setUAVIsReady(bool) = 0;

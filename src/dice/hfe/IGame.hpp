@@ -14,6 +14,7 @@ namespace dice::hfe
 	class EventNode;
 	class HTTPRequest;
 	class DemoRecorder;
+	class MapInfo;
 
 	enum class ConnectionType;
 	enum class TargetChannel;
@@ -42,33 +43,33 @@ namespace dice::hfe
 		virtual ~IGame() = 0;
 		virtual bool init() = 0;
 		virtual void shutdown() = 0;
-		virtual void load() = 0;
-		virtual void loadPath(const std::string&) = 0;
+		virtual bool load() = 0;
+		virtual bool loadPath(const std::string&) = 0;
 		virtual void unload() = 0;
 		virtual void getStatsMonitor() = 0;
 		virtual void update(int, float) = 0;
 		virtual void say(const std::string&) = 0;
-		virtual void getCurrentChannel() = 0;
+		virtual TargetChannel getCurrentChannel() = 0;
 		virtual void setCurrentChannel(TargetChannel) = 0;
-		virtual void getCurrentFlags() = 0;
-		virtual void setCurrentFlags(int) = 0;
-		virtual void getCurrentType() = 0;
+		virtual int32_t getCurrentFlags() = 0;
+		virtual void setCurrentFlags(int32_t) = 0;
+		virtual ChannelMessageType getCurrentType() = 0;
 		virtual void setCurrentType(ChannelMessageType) = 0;
-		virtual void getMapInfo() = 0;
+		virtual MapInfo* getMapInfo() = 0;
 		virtual void radioMessage(
 			TargetChannel, const std::string&, world::IPlayer*, unsigned int,
 			bool, bool) = 0;
 		virtual void radioMessageFromPlayer(
 			TargetChannel, const std::string&, unsigned int, unsigned int, bool,
 			bool) = 0;
-		virtual void localRadioMessage(TargetChannel, const std::string&) = 0;
+		virtual bool localRadioMessage(TargetChannel, const std::string&) = 0;
 		virtual void gameInfoMessage(
 			TargetChannel, const std::string&, unsigned int, unsigned int,
 			bool) = 0;
-		virtual void
+		virtual bool
 		localGameInfoMessage(TargetChannel, const std::string&) = 0;
 		virtual void addPlayerInput(const io::PlayerInput&) = 0;
-		virtual void getCurrentInputIndex() = 0;
+		virtual int32_t getCurrentInputIndex() = 0;
 		virtual void confirmGhost(int, unsigned int) = 0;
 		virtual void confirmReset(int) = 0;
 		virtual void createObjectOnAllClients(

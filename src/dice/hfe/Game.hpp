@@ -25,7 +25,46 @@ namespace dice::hfe
 	public:
 
 		MapInfo m_currentMap;
-		char _0x38[0x48];
+		char _0x38[0x30];
+		TargetChannel m_currentChannel;
+		ChannelMessageType m_channelMessageType;
+		int32_t m_currentFlags;
+		char _0x74[0xC];
+
+	public:
+		virtual ~Game() { }
+
+		virtual bool load()
+		{
+			return false;
+		}
+
+		virtual bool loadPath(const std::string&)
+		{
+			return false;
+		}
+
+		virtual int32_t getCurrentFlags()
+		{
+			return m_currentFlags;
+		}
+
+		virtual void setCurrentFlags(int32_t flags)
+		{
+			m_currentFlags = flags;
+		}
+
+		virtual ChannelMessageType getCurrentType()
+		{
+			return m_channelMessageType;
+		}
+
+		virtual void setCurrentType(ChannelMessageType msgType)
+		{
+			m_channelMessageType = msgType;
+		}
+
+		virtual MapInfo* getMapInfo(MapInfo*);
 	};
 
 	extern Game* g_game;

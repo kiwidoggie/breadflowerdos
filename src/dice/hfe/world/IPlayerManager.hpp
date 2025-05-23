@@ -24,18 +24,18 @@ namespace dice::hfe::world
 		virtual IPlayer* getLocalHumanPlayer() = 0;
 		virtual IPlayer* setLocalHumanPlayer(IPlayer*) = 0;
 		virtual IPlayer* setLocalHumanPlayer(int32_t) = 0;
-		virtual std::list<IPlayer*> getPlayers() = 0;
-		virtual std::list<IPlayer*> getPlayersSortedByScore() = 0;
-		virtual std::list<IPlayer*> getPlayersSortedByRank() = 0;
-		virtual std::list<IPlayer*> getPlayers(int32_t) = 0;
-		virtual std::list<IPlayer*> getPlayersSortedByScore(int32_t) = 0;
-		virtual std::list<IPlayer*> getPlayersSortedByRank(int32_t) = 0;
-		virtual std::list<IPlayer*> getPlayersInSquad(int32_t, int32_t) = 0;
-		virtual std::list<IPlayer*>
+		virtual std::list<IPlayer*>& getPlayers() = 0;
+		virtual std::list<IPlayer*>& getPlayersSortedByScore() = 0;
+		virtual std::list<IPlayer*>& getPlayersSortedByRank() = 0;
+		virtual std::list<IPlayer*>& getPlayers(int32_t) = 0;
+		virtual std::list<IPlayer*>& getPlayersSortedByScore(int32_t) = 0;
+		virtual std::list<IPlayer*>& getPlayersSortedByRank(int32_t) = 0;
+		virtual std::list<IPlayer*>& getPlayersInSquad(int32_t, int32_t) = 0;
+		virtual std::list<IPlayer*>&
 		getPlayersInSquadSortedByScore(int32_t, int32_t) = 0;
-		virtual std::list<IPlayer*>
+		virtual std::list<IPlayer*>&
 		getPlayersInSquadSortedByRank(int32_t, int32_t) = 0;
-		virtual std::list<IPlayer*> getTeamSquadLeaders(int32_t) = 0;
+		virtual std::list<IPlayer*>& getTeamSquadLeaders(int32_t) = 0;
 		virtual void updatePlayers(float) = 0;
 		virtual void registerPlayerClass(uint32_t, const std::string&) = 0;
 		virtual void getPlayerClasses(
@@ -55,7 +55,7 @@ namespace dice::hfe::world
 		virtual uint32_t getNrOfPlayerInTeam(int32_t) = 0;
 		virtual uint32_t getNrOfPlayerInSquads(int32_t) = 0;
 		virtual uint32_t getNrOfPlayersInSquad(int32_t, int32_t) = 0;
-		virtual std::list<IPlayer*> getInvitedPlayers(int32_t, int32_t) = 0;
+		virtual std::list<IPlayer*>& getInvitedPlayers(int32_t, int32_t) = 0;
 		virtual uint32_t getNrOfActiveSquads(int32_t) = 0;
 		virtual int32_t getTeamToAddPlayer(float, float) = 0;
 		virtual bool deactivatePlayer(int32_t) = 0;
