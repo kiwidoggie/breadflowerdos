@@ -34,15 +34,21 @@ jobs:
             - name: Install pre-reqs
               run: sudo apt update && sudo apt install lld
 
-            - name: Configure BreadFlowerDos
-              run: mkdir build && cd build && cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld" -DCMAKE_SHARED_LINKER_FLAGS="-fuse-ld=lld" -G "Unix Makefiles" .. && cd ..
+            - name: Configure RefractorBF-BF2
+              run: mkdir build && cd build && cmake --no-warn-unused-cli -DBUILD_2142=OFF -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld" -DCMAKE_SHARED_LINKER_FLAGS="-fuse-ld=lld" -G "Unix Makefiles" .. && cd ..
 
-            - name: Build BreadFlowerDos
+            - name: Build RefractorBF-BF2
+              run: cmake --build build
+
+            - name: Configure RefractorBF-BF2142
+              run: mkdir build && cd build && cmake --no-warn-unused-cli -DBUILD_2142=ON -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld" -DCMAKE_SHARED_LINKER_FLAGS="-fuse-ld=lld" -G "Unix Makefiles" .. && cd ..
+
+            - name: Build RefractorBF-BF2142
               run: cmake --build build
 
             - name: Upload Artifacts
               uses: actions/upload-artifact@main
               with:
                 name: BF2
-                path: build/Refractor-*
+                path: build/Refractor*
                 retention-days: 1
