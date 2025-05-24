@@ -13,7 +13,7 @@ double g_frequency = 0;
 
 /**
  * @brief Get the Current Time object
- * 
+ *
  * bf2:0074a900
  */
 time_t getCurrentTime()
