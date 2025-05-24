@@ -35,20 +35,22 @@ jobs:
               run: sudo apt update && sudo apt install lld
 
             - name: Configure RefractorBF-BF2
-              run: mkdir build && cd build && cmake --no-warn-unused-cli -DBUILD_2142=OFF -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld" -DCMAKE_SHARED_LINKER_FLAGS="-fuse-ld=lld" -G "Unix Makefiles" .. && cd ..
+              run: mkdir build-2 && cd build-2 && cmake --no-warn-unused-cli -DBUILD_2142=OFF -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld" -DCMAKE_SHARED_LINKER_FLAGS="-fuse-ld=lld" -G "Unix Makefiles" .. && cd ..
 
             - name: Build RefractorBF-BF2
-              run: cmake --build build
+              run: cmake --build build-2
 
             - name: Configure RefractorBF-BF2142
-              run: mkdir build && cd build && cmake --no-warn-unused-cli -DBUILD_2142=ON -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld" -DCMAKE_SHARED_LINKER_FLAGS="-fuse-ld=lld" -G "Unix Makefiles" .. && cd ..
+              run: mkdir build-2142 && cd build-2142 && cmake --no-warn-unused-cli -DBUILD_2142=ON -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld" -DCMAKE_SHARED_LINKER_FLAGS="-fuse-ld=lld" -G "Unix Makefiles" .. && cd ..
 
             - name: Build RefractorBF-BF2142
-              run: cmake --build build
+              run: cmake --build build-2142
 
             - name: Upload Artifacts
               uses: actions/upload-artifact@main
               with:
                 name: BF2
-                path: build/Refractor*
+                path: |
+                  build-2/Refractor*
+                  build-2142/Refractor*
                 retention-days: 1
