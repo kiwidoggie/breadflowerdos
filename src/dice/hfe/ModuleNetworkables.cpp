@@ -60,14 +60,14 @@ void ModuleNetworkables::getClassList(std::vector<ClassRegInfo>& regInfos)
 {
 	// TODO: Implement
 	/*
-    {
-        auto regInfo = ClassRegInfo(CID_SimpleObjectNetworkable,
+	{
+		auto regInfo = ClassRegInfo(CID_SimpleObjectNetworkable,
 	 * "dice.bf2.Networkable.SimpleObject", SimpleObjectNetworkable::create);
 
 	 * regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo =
+	}
+	{
+		auto regInfo =
 	 * ClassRegInfo(CID_RotationalBundleNetworkable,
 	 * "dice.bf2.Networkable.RotationalBundle",
 	 * RotationalBundleNetworkable::create);
@@ -75,31 +75,31 @@ void ModuleNetworkables::getClassList(std::vector<ClassRegInfo>& regInfos)
  }
 
 	 * {
-        auto regInfo = ClassRegInfo(CID_FreeCameraNetworkable,
+		auto regInfo = ClassRegInfo(CID_FreeCameraNetworkable,
 	 * "dice.bf2.Networkable.FreeCamera", FreeCameraNetworkable::create);
 
 	 * regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo =
+	}
+	{
+		auto regInfo =
 	 * ClassRegInfo(CID_OverheadCameraNetworkable,
 	 * "dice.bf2.Networkable.OverheadCamera",
 	 * OverheadCameraNetworkable::create);
-        regInfos.push_back(regInfo);
+		regInfos.push_back(regInfo);
 
 	 * }
-    {
-        auto regInfo = ClassRegInfo(CID_SpringNetworkable,
+	{
+		auto regInfo = ClassRegInfo(CID_SpringNetworkable,
 	 * "dice.bf2.Networkable.Spring", SpringNetworkable::create);
 
 	 * regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo =
+	}
+	{
+		auto regInfo =
 	 * ClassRegInfo(CID_ItemNetworkable, "dice.bf2.Networkable.Item",
 	 * ItemNetworkable::create);
-        regInfos.push_back(regInfo);
-    }
+		regInfos.push_back(regInfo);
+	}
  {
 
 	 * auto regInfo = ClassRegInfo(CID_DestroyableObjectNetworkable,
@@ -109,35 +109,35 @@ void ModuleNetworkables::getClassList(std::vector<ClassRegInfo>& regInfos)
  }
 
 	 * {
-        auto regInfo =
+		auto regInfo =
 	 * ClassRegInfo(CID_DestroyableWindowsBundleNetworkable ,
 	 * "dice.bf2.Networkable.DestroyableWindowsBundle",
 	 * DestroyableWindowsBundleNetworkable::create);
 
 	 * regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo =
+	}
+	{
+		auto regInfo =
 	 * ClassRegInfo(CID_SoldierNetworkable , "dice.bf2.Networkable.Soldier",
 	 * SoldierNetworkable::create);
-        regInfos.push_back(regInfo);
-    }
+		regInfos.push_back(regInfo);
+	}
 
 	 * {
-        auto regInfo = ClassRegInfo(CID_PlayerControlObjectNetworkable
+		auto regInfo = ClassRegInfo(CID_PlayerControlObjectNetworkable
 	 * , "dice..bf2.Networkable.PlayerControlObject",
 	 * PlayerControlObjectNetworkable::create);
  regInfos.push_back(regInfo);
 
 	 * }
-    {
-        auto regInfo = ClassRegInfo(CID_KitNetworkable ,
+	{
+		auto regInfo = ClassRegInfo(CID_KitNetworkable ,
 	 * "dice.bf2.Networkable.Kit", KitNetworkable::create);
 
 	 * regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo =
+	}
+	{
+		auto regInfo =
 	 * ClassRegInfo(CID_GenericProjectileNetworkable ,
 	 * "dice.bf2.Networkable.GenericProjectile",
 	 * GenericProjectileNetworkable::create);
@@ -145,26 +145,26 @@ void ModuleNetworkables::getClassList(std::vector<ClassRegInfo>& regInfos)
  }
 
 	 * {
-        auto regInfo = ClassRegInfo(CID_ControlPointNetworkable ,
+		auto regInfo = ClassRegInfo(CID_ControlPointNetworkable ,
 	 * "dice.bf2.Networkable.ControlPoint", ControlPointNetworkable::create);
 
 	 * regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo =
+	}
+	{
+		auto regInfo =
 	 * ClassRegInfo(CID_EngineNetworkable , "dice.bf2.Networkable.Engine",
 	 * EngineNetworkable::create);
-        regInfos.push_back(regInfo);
-    }
+		regInfos.push_back(regInfo);
+	}
 
 	 * {
-        auto regInfo = ClassRegInfo(CID_TargetObjectNetworkable ,
+		auto regInfo = ClassRegInfo(CID_TargetObjectNetworkable ,
 	 * "dice.bf2.Networkable.TargetObject", TargetObjectNetworkable::create);
 
 	 * regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo =
+	}
+	{
+		auto regInfo =
 	 * ClassRegInfo(CID_TriggerableTargetNetworkable ,
 	 * "dice.bf2.Networkable.TriggerableTarget",
 	 * TriggerableTargetNetworkable::create);

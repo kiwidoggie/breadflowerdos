@@ -59,116 +59,116 @@ void PhysicsModule::getClassList(std::vector<ClassRegInfo>& regInfos)
 {
 	// TODO: Implement
 	/*
-    {
-        auto regInfo = ClassRegInfo(CID_BasicPhysicsSystem,
+	{
+		auto regInfo = ClassRegInfo(CID_BasicPhysicsSystem,
 	 * "dice.hfe.world.PhysicsSystem.Basic",
 	 * ClassFactory<BasicPhysicsSystem>::create);
  regInfos.push_back(regInfo);
 
 	 * }
-    {
-        auto regInfo = ClassRegInfo(CID_PhysicsNode,
+	{
+		auto regInfo = ClassRegInfo(CID_PhysicsNode,
 	 * "dice.hfe.world.PhysicsNode.Basic", ClassFactory<PhysicsNode>::create);
 
 	 * regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo =
+	}
+	{
+		auto regInfo =
 	 * ClassRegInfo(CID_PhysicsNodeManager,
 	 * "dice.hfe.world.PhysicsNodeManager.Basic",
 	 * ClassFactory<PhysicsNodeManager>::create);
  regInfos.push_back(regInfo);
 
 	 * }
-    {
-        auto regInfo = ClassRegInfo(CID_ResponsePhysics,
+	{
+		auto regInfo = ClassRegInfo(CID_ResponsePhysics,
 	 * "dice.hfe.world.ResponsePhysics.Basic",
 	 * ClassFactory<ResponsePhysics>::create);
  regInfos.push_back(regInfo);
  }
 
 	 * {
-        auto regInfo = ClassRegInfo(CID_ResponsePhysicsManager,
+		auto regInfo = ClassRegInfo(CID_ResponsePhysicsManager,
 	 * "dice.hfe.world.ResponsePhysicsManager.Basic",
 	 * ClassFactory<ResponsePhysicsManager>::create);
 
 	 * regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo =
+	}
+	{
+		auto regInfo =
 	 * ClassRegInfo(CID_Heightmap, "dice.hfe.world.Heightmap",
 	 * Heightmap::create);
-        regInfos.push_back(regInfo);
-    }
-    {
+		regInfos.push_back(regInfo);
+	}
+	{
 
 	 * auto regInfo = ClassRegInfo(CID_HeightmapEditable,
 	 * "dice.hfe.world.HeightmapEditable", HeightmapEditable::create);
 
 	 * regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo =
+	}
+	{
+		auto regInfo =
 	 * ClassRegInfo(CID_HeightmapCluster, "dice.hfe.world.HeightmapCluster",
 	 * HeightmapCluster::create);
-        regInfos.push_back(regInfo);
-    }
+		regInfos.push_back(regInfo);
+	}
  {
 
 	 * auto regInfo = ClassRegInfo(CID_HeightmapClusterEditable,
 	 * "dice.hfe.world.HeightmapClusterEditable",
 	 * HeightmapClusterEditable::create);
-        regInfos.push_back(regInfo);
+		regInfos.push_back(regInfo);
 
 	 * }
-    {
-        auto regInfo = ClassRegInfo(CID_CollisionManager,
+	{
+		auto regInfo = ClassRegInfo(CID_CollisionManager,
 	 * "dice.hfe.world.CollisionManager", CollisionManager::create);
 
 	 * regInfos.push_back(regInfo);
-    }
-    */
+	}
+	*/
 }
 
 void PhysicsModule::getSingletonList(std::vector<SingletonRegInfo>& regInfos)
 {
 	// TODO: Implement
 	/*
-    {
-        auto regInfo = SINGLETON_REG_INFO("BasicPhysicsSystem",
+	{
+		auto regInfo = SINGLETON_REG_INFO("BasicPhysicsSystem",
 	 * g_basicPhysicsSystem, IID_IPhysicsSystem, CID_BasicPhysicsSystem, 1);
 
 	 * regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo =
+	}
+	{
+		auto regInfo =
 	 * SINGLETON_REG_INFO("PhysicsNodeManager", g_physicsNodeManager,
 	 * IID_IPhysicsNodeManager, CID_PhysicsNodeManager, 1);
 
 	 * regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo =
+	}
+	{
+		auto regInfo =
 	 * SINGLETON_REG_INFO("ResponsePhysicsManager", g_responsePhysicsManager,
 	 * IID_IResponsePhysicsManager, CID_ResponsePhysicsManager, 1);
 
 	 * regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo =
+	}
+	{
+		auto regInfo =
 	 * SINGLETON_REG_INFO("HeightmapCluster", g_heightmapCluster,
 	 * IID_IHeightmapCluster, CID_HeightmapCluster, 1);
 
 	 * regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo =
+	}
+	{
+		auto regInfo =
 	 * SINGLETON_REG_INFO("CollisionManager", g_collisionManager,
 	 * IID_ICollisionManager, CID_CollisionManager, 1);
 
 	 * regInfos.push_back(regInfo);
-    }
-    */
+	}
+	*/
 }
 
 bool PhysicsModule::init()

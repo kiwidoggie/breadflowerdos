@@ -82,13 +82,13 @@ void Module::getClassList(std::vector<ClassRegInfo>& regInfos)
 	}
 	// TODO: Implement
 	/*
-    {
-        auto regInfo = ClassRegInfo(CID_DebugCounterManager,
+	{
+		auto regInfo = ClassRegInfo(CID_DebugCounterManager,
 	 * "dice.hfe.DebugCounterManager", DebugCounterManager::create);
 
 	 * regInfos.push_back(regInfo);
-    }
-    */
+	}
+	*/
 }
 
 void Module::getSingletonList(std::vector<SingletonRegInfo>& regInfos)
@@ -100,36 +100,36 @@ void Module::getSingletonList(std::vector<SingletonRegInfo>& regInfos)
 		regInfos.push_back(regInfo);
 	}
 	/*
-    {
-        auto regInfo = SINGLETON_REG_INFO("MainConsoleObjects",
+	{
+		auto regInfo = SINGLETON_REG_INFO("MainConsoleObjects",
 	 * g_mainConsoleObjects);
-        regInfos.push_back(regInfo);
-    }
-    {
+		regInfos.push_back(regInfo);
+	}
+	{
 
 	 * auto regInfo = SINGLETON_REG_INFO("BfGlobal_callback",
 	 * g_bfGlobal_callback);
-        regInfos.push_back(regInfo);
-    }
-    {
+		regInfos.push_back(regInfo);
+	}
+	{
 
 	 * auto regInfo = SINGLETON_REG_INFO("BfGlobal_callbackData",
 	 * g_bfGlobal_callbackData);
-        regInfos.push_back(regInfo);
-    }
+		regInfos.push_back(regInfo);
+	}
  {
 
 	 * auto regInfo = SINGLETON_REG_INFO("DebugOn", g_debugOn);
 
 	 * regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo =
+	}
+	{
+		auto regInfo =
 	 * SINGLETON_REG_INFO("DebugModules", g_debugModules);
 
 	 * regInfos.push_back(regInfo);
-    }
-    */
+	}
+	*/
 	{
 		auto regInfo = SINGLETON_REG_INFO(
 			"EventManager",
@@ -158,19 +158,19 @@ void Module::getSingletonList(std::vector<SingletonRegInfo>& regInfos)
 		regInfos.push_back(regInfo);
 	}
 	/*
-    {
-        auto regInfo = SINGLETON_REG_INFO("DebugCounterManager",
+	{
+		auto regInfo = SINGLETON_REG_INFO("DebugCounterManager",
 	 * g_debugCounterManager, IID_IDebugCounterManager, CID_DebugCounterManager,
 	 * 1);
-        regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo
+		regInfos.push_back(regInfo);
+	}
+	{
+		auto regInfo
 	 * = SINGLETON_REG_INFO("LoadStat", g_loadStat);
 
 	 * regInfos.push_back(regInfo);
-    }
-    */
+	}
+	*/
 }
 
 bool Module::init()

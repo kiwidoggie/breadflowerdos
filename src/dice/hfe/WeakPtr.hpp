@@ -2,7 +2,8 @@
 
 namespace dice::hfe
 {
-	template <class T> class WeakPtr
+	template <class T>
+	class WeakPtr
 	{
 	public:
 		unsigned int m_refCount;	// 0x0

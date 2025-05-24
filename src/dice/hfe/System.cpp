@@ -11,7 +11,7 @@ System* dice::hfe::g_system = nullptr;
 
 /**
  * @brief Construct a new System:: System object
- * 
+ *
  * bf2: 0074a3d0
  */
 System::System() :
@@ -33,7 +33,7 @@ System::~System()
 
 /**
  * @brief Adds a reference to this class
- * 
+ *
  * bf2: 0074a890
  */
 void System::addRef()
@@ -43,9 +43,9 @@ void System::addRef()
 
 /**
  * @brief Gets the current reference count
- * 
+ *
  * bf2: 0074a8f0
- * 
+ *
  *
  * @return uint32_t Current reference count
  */
@@ -56,10 +56,10 @@ uint32_t System::getRef()
 
 /**
  * @brief TODO: Documentation
- * 
+ *
  * bf2: 0074a8a0
- * 
- * @return uint32_t 
+ *
+ * @return uint32_t
 
  */
 uint32_t System::release()
@@ -76,12 +76,12 @@ uint32_t System::release()
 
 /**
  * @brief TODO: Documentation
- * 
- * bf2: 0074a8c0
- * 
- * @param p_param 
  *
- * @return System* 
+ * bf2: 0074a8c0
+ *
+ * @param p_param
+ *
+ * @return System*
  */
 System* System::queryInterface(uint32_t p_param)
 {
@@ -103,10 +103,10 @@ void System::dtor1()
 
 /**
  * @brief Gets the exact time
- * 
+ *
  * bf2: 0074a530
- * 
- * @return uint64_t 
+ *
+ * @return uint64_t
 
  */
 uint64_t System::getExactTime()
@@ -115,11 +115,11 @@ uint64_t System::getExactTime()
 }
 
 /**
- * @brief 
- * 
+ * @brief
+ *
  * bf2: 0074a640
- * 
- * @return time_t 
+ *
+ * @return time_t
  */
 time_t System::getWallClockTime()
 {
@@ -147,10 +147,10 @@ time_t System::getWallClockTime()
 
 /**
  * @brief Sleeps for specified duration
- * 
+ *
  * bf2: 0074a540
  * @param
- * p_duration 
+ * p_duration
  */
 void System::sleep(uint32_t p_duration)
 {
@@ -168,10 +168,10 @@ void System::sleep(uint32_t p_duration)
 }
 
 /**
- * @brief 
- * 
+ * @brief
+ *
  * bf2: 0074a5a0
- * @return uint32_t 
+ * @return uint32_t
  */
 uint32_t System::getSimulationRate()
 {
@@ -179,10 +179,10 @@ uint32_t System::getSimulationRate()
 }
 
 /**
- * @brief 
- * 
+ * @brief
+ *
  * bf2: 0074a8d0
- * @return float 
+ * @return float
  */
 float System::getSimulationRatio()
 {
@@ -193,7 +193,7 @@ float System::getSimulationRatio()
 
 /**
  * @brief Unimplemented
- * 
+ *
  * bf2: 0074a5e0
  */
 void System::storeAndTurnOffFPUExceptions()
@@ -203,7 +203,7 @@ void System::storeAndTurnOffFPUExceptions()
 
 /**
  * @brief Unimplemented
- * 
+ *
  * bf2: 0074a5f0
  */
 void System::restoreFPUExceptions()

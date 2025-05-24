@@ -28,7 +28,7 @@ You must run clang-tidy and clang-format before each commit, or it will cause bu
 
 From the root directory
 
-`clang-format-20 -style=file -i -- src/*.cpp src/**.hpp`
+`find ./src -iname '*.hpp' -o -iname '*.cpp' | clang-format-20 -style=file -i -Werror --files=/dev/stdin`
 
 `clang-tidy -checks='-*,modernize-concat-nested-namespaces' -fix-errors src/**.hpp -- -Isrc`
 

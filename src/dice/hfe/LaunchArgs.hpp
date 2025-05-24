@@ -63,9 +63,9 @@ namespace dice::hfe
 												// on server
 		LaunchArg_DeferredShaderPermutation,	// only bf2 // TODO:
 												// disabled on server
-		LaunchArg_MaxValidation,	   // only bf2 // TODO: disabled on server
-		LaunchArg_LowSpecEmulation,	   // only bf2 // TODO: disabled on
-									   // server
+		LaunchArg_MaxValidation,				// only bf2 // TODO: disabled on server
+		LaunchArg_LowSpecEmulation,				// only bf2 // TODO: disabled on
+												// server
 #endif
 		LaunchArg_DumpAllConFiles,	  // TODO: disabled on server
 		LaunchArg_CustomConFile,	  // TODO: disabled on server
@@ -99,12 +99,12 @@ namespace dice::hfe
 		LaunchArg_DropDynamicSpawns,	// only bf2
 #endif
 #if defined(BF_2142)
-		LaunchArg_VideoOptions,		   // only bf2142 // TODO: disabled on
-									   // server
-		LaunchArg_QuickPermutation,	   // only bf2142 // TODO: disabled on
-									   // server
-		LaunchArg_NVPerfHUD,		// only bf2142 // TODO: disabled on server
-		LaunchArg_EAAccountName,	// only bf2142
+		LaunchArg_VideoOptions,			// only bf2142 // TODO: disabled on
+										// server
+		LaunchArg_QuickPermutation,		// only bf2142 // TODO: disabled on
+										// server
+		LaunchArg_NVPerfHUD,			// only bf2142 // TODO: disabled on server
+		LaunchArg_EAAccountName,		// only bf2142
 		LaunchArg_EAAccountPassword,	// only bf2142
 		LaunchArg_SoldierName,			// only bf2142
 		LaunchArg_Provider,				// only bf2142

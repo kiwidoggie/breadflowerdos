@@ -60,8 +60,8 @@ void ObjTemplPortalModule::getClassList(std::vector<ClassRegInfo>& regInfos)
 {
 	// TODO: Implement
 	/*
-    {
-        auto regInfo = ClassRegInfo(CID_PortalManager (0x10ec7a00),
+	{
+		auto regInfo = ClassRegInfo(CID_PortalManager (0x10ec7a00),
 	 * "dice.hfe.world.PortalManager.Standard",
 	 * ClassFactory<PortalManager>::create);
  regInfos.push_back(regInfo);
@@ -75,13 +75,13 @@ void ObjTemplPortalModule::getSingletonList(
 {
 	// TODO: Implement
 	/*
-    {
-        auto regInfo = SINGLETON_REG_INFO("PortalManager",
+	{
+		auto regInfo = SINGLETON_REG_INFO("PortalManager",
 	 * g_portalManager, IID_IPortalManager (0xe140c2fb), CID_PortalManager
 	 * (0x10ec7a00), 1);
-        regInfos.push_back(regInfo);
-    }
-    */
+		regInfos.push_back(regInfo);
+	}
+	*/
 }
 
 bool ObjTemplPortalModule::init()
