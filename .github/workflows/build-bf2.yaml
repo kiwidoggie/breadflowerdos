@@ -22,12 +22,14 @@ jobs:
               with:
                 cmake-version: '4.0.x'
 
-            - name: Run clang-format style check for C/C++/Protobuf programs.
-              uses: jidicula/clang-format-action@v4.15.0
+            - name: Run clang-format
+              uses: DoozyX/clang-format-lint-action@v0.20
               with:
-                clang-format-version: '20'
-                check-path: 'src'
-                fallback-style: 'InheritParentConfig'
+                clangFormatVersion: '20'
+                extensions: 'hpp,cpp'
+                source: 'src'
+                style: file
+                inplace: False
 
             - name: Install pre-reqs
               run: sudo apt update && sudo apt install lld
