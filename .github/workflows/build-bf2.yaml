@@ -27,6 +27,7 @@ jobs:
               with:
                 clang-format-version: '20'
                 check-path: 'src'
+                fallback-style: 'InheritParentConfig'
 
             - name: Install pre-reqs
               run: sudo apt update && sudo apt install lld
@@ -41,5 +42,5 @@ jobs:
               uses: actions/upload-artifact@main
               with:
                 name: BF2
-                path: build/**
+                path: build/Refractor-*
                 retention-days: 1

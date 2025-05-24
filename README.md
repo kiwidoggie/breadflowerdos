@@ -26,9 +26,11 @@ You must run clang-tidy and clang-format before each commit, or it will cause bu
 
 ### Linux
 
-`find . -iname '*.h' -o -iname '*.cpp' -o -iname '*.hpp' | clang-format --style=file -i --files=/dev/stdin`
+From the root directory
 
-`clang-tidy -checks='-*,modernize-concat-nested-namespaces' -fix-errors dice/hfe/world/**.hpp -- -I.`
+`clang-format-20 -style=file -i -- src/*.cpp src/**.hpp`
+
+`clang-tidy -checks='-*,modernize-concat-nested-namespaces' -fix-errors src/**.hpp -- -Isrc`
 
 ### Windows (TODO)
 
