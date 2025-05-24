@@ -74,7 +74,7 @@ InsertBraces: false
 InsertNewlineAtEOF: true
 LambdaBodyIndentation: Signature
 Language: Cpp
-LineEnding: CRLF
+LineEnding: LF
 MainIncludeChar: Any
 MaxEmptyLinesToKeep: 1
 NamespaceIndentation: All
