@@ -127,3 +127,4 @@ Standard: Auto
 TabWidth: 4
 UseTab: Always
 SpacesBeforeTrailingComments: 4
+ColumnLimit: 0
