@@ -59,45 +59,45 @@ void ObjectModule::getClassList(std::vector<ClassRegInfo>& regInfos)
 {
 	// TODO: Implement
 	/*
-    {
-        auto regInfo = ClassRegInfo(CID_ObjectManager,
+	{
+		auto regInfo = ClassRegInfo(CID_ObjectManager,
 	 * "dice.hfe.world.ObjectManager.Standard", ObjectManager::create);
 
 	 * regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo =
+	}
+	{
+		auto regInfo =
 	 * ClassRegInfo(CID_WindManager, "dice.hfe.world.WindManager.Standard",
 	 * WindManager::create);
-        regInfos.push_back(regInfo);
-    }
-    {
+		regInfos.push_back(regInfo);
+	}
+	{
 
 	 * auto regInfo = ClassRegInfo(CID_Object, "dice.hfe.world.Object.Standard",
 	 * Object::create);
-        regInfos.push_back(regInfo);
-    }
-    {
+		regInfos.push_back(regInfo);
+	}
+	{
  auto
 	 * regInfo = ClassRegInfo(CID_ObjectPriorityCalculator,
 	 * "dice.hfe.world.ObjectPriorityCalculator.Standard",
 	 * ObjectPriorityCalculator::create);
-        regInfos.push_back(regInfo);
+		regInfos.push_back(regInfo);
 
 	 * }
-    {
-        auto regInfo = ClassRegInfo(CID_QuadTreeCuller,
+	{
+		auto regInfo = ClassRegInfo(CID_QuadTreeCuller,
 	 * "dice.hfe.world.Culler.QuadTreeCuller", QuadTreeCuller::create);
 
 	 * regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo =
+	}
+	{
+		auto regInfo =
 	 * ClassRegInfo(CID_BinTreeCuller, "dice.hfe.world.Culler.BinTreeCuller",
 	 * BinTreeCuller::create);
-        regInfos.push_back(regInfo);
-    }
-    */
+		regInfos.push_back(regInfo);
+	}
+	*/
 }
 
 void ObjectModule::getSingletonList(

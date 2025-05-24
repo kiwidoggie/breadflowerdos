@@ -60,31 +60,31 @@ void ModuleGameLogic::getClassList(std::vector<ClassRegInfo>& regInfos)
 {
 	// TODO: Implement
 	/*
-    {
-        auto regInfo = ClassRegInfo(CID_SquadManager,
+	{
+		auto regInfo = ClassRegInfo(CID_SquadManager,
 	 * "dice.bf.SquadManager", SquadManager::create);
 
 	 * regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo =
+	}
+	{
+		auto regInfo =
 	 * ClassRegInfo(CID_ClientSquadManager, "dice.bf.ClientSquadManager",
 	 * ClientSquadManager::create);
-        regInfos.push_back(regInfo);
-    }
+		regInfos.push_back(regInfo);
+	}
 
 	 * {
-        auto regInfo = ClassRegInfo(CID_ClientGameLogic,
+		auto regInfo = ClassRegInfo(CID_ClientGameLogic,
 	 * "dice.bf.clientGameLogic", ClientGameLogic::create);
 
 	 * regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo =
+	}
+	{
+		auto regInfo =
 	 * ClassRegInfo(CID_ServerGameLogic, "dice.bf.serverGameLogic",
 	 * ServerGameLogic::create);
-        regInfos.push_back(regInfo);
-    }
+		regInfos.push_back(regInfo);
+	}
  */
 }
 

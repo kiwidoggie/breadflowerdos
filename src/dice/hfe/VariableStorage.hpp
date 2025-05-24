@@ -4,7 +4,8 @@
 
 namespace dice::hfe
 {
-	template <class T, class U> class VariableStorage
+	template <class T, class U>
+	class VariableStorage
 	{
 	public:
 		std::map<T, U> storage;

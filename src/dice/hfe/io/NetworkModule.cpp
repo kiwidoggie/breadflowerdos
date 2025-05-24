@@ -59,11 +59,11 @@ void NetworkModule::getClassList(std::vector<ClassRegInfo>& regInfos)
 {
 	// TODO: Implement
 	/*
-    {
-        auto regInfo = ClassRegInfo(CID_NetworkableInfoManager,
+	{
+		auto regInfo = ClassRegInfo(CID_NetworkableInfoManager,
 	 * "dice.hfe.io.NetworkableInfoManager.Standard",
 	 * NetworkableInfoManager::create);
-        regInfos.push_back(regInfo);
+		regInfos.push_back(regInfo);
  }
 
 	 */
@@ -73,11 +73,11 @@ void NetworkModule::getSingletonList(std::vector<SingletonRegInfo>& regInfos)
 {
 	// TODO: Implement
 	/*
-    {
-        auto regInfo = SINGLETON_REG_INFO("NetworkableInfoManager",
+	{
+		auto regInfo = SINGLETON_REG_INFO("NetworkableInfoManager",
 	 * g_networkableInfoManager, IID_INetworkableInfoManager,
 	 * CID_NetworkableInfoManager, 1);
-        regInfos.push_back(regInfo);
+		regInfos.push_back(regInfo);
  }
 
 	 */

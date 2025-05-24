@@ -22,25 +22,35 @@ jobs:
               with:
                 cmake-version: '4.0.x'
 
-            - name: Run clang-format style check for C/C++/Protobuf programs.
-              uses: jidicula/clang-format-action@v4.15.0
+            - name: Run clang-format
+              uses: DoozyX/clang-format-lint-action@v0.20
               with:
-                clang-format-version: '20'
-                check-path: 'src'
-                fallback-style: 'InheritParentConfig'
+                clangFormatVersion: '20'
+                extensions: 'hpp,cpp'
+                source: 'src'
+                style: file
+                inplace: False
 
             - name: Install pre-reqs
               run: sudo apt update && sudo apt install lld
 
-            - name: Configure BreadFlowerDos
-              run: mkdir build && cd build && cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld" -DCMAKE_SHARED_LINKER_FLAGS="-fuse-ld=lld" -G "Unix Makefiles" .. && cd ..
+            - name: Configure RefractorBF-BF2
+              run: mkdir build-2 && cd build-2 && cmake --no-warn-unused-cli -DBUILD_2142=OFF -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld" -DCMAKE_SHARED_LINKER_FLAGS="-fuse-ld=lld" -G "Unix Makefiles" .. && cd ..
 
-            - name: Build BreadFlowerDos
-              run: cmake --build build
+            - name: Build RefractorBF-BF2
+              run: cmake --build build-2
+
+            - name: Configure RefractorBF-BF2142
+              run: mkdir build-2142 && cd build-2142 && cmake --no-warn-unused-cli -DBUILD_2142=ON -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld" -DCMAKE_SHARED_LINKER_FLAGS="-fuse-ld=lld" -G "Unix Makefiles" .. && cd ..
+
+            - name: Build RefractorBF-BF2142
+              run: cmake --build build-2142
 
             - name: Upload Artifacts
               uses: actions/upload-artifact@main
               with:
                 name: BF2
-                path: build/Refractor-*
+                path: |
+                  build-2/Refractor*
+                  build-2142/Refractor*
                 retention-days: 1

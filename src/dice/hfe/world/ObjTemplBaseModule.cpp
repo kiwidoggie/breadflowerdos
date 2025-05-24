@@ -60,14 +60,14 @@ void ObjTemplBaseModule::getClassList(std::vector<ClassRegInfo>& regInfos)
 {
 	// TODO: Implement
 	/*
-    {
-        auto regInfo = ClassRegInfo(CID_ObjectTemplateManager,
+	{
+		auto regInfo = ClassRegInfo(CID_ObjectTemplateManager,
 	 * "dice.hfe.world.ObjectTemplateManager.Standard",
 	 * ClassFactory<ObjectTemplateManager>::create);
 
 	 * regInfos.push_back(regInfo);
-    }
-    */
+	}
+	*/
 }
 
 void ObjTemplBaseModule::getSingletonList(

@@ -54,7 +54,7 @@ namespace dice::hfe::world
 		virtual void updatePlayers(float) override;
 		virtual void registerPlayerClass(uint32_t, const std::string&) override;
 		virtual void getPlayerClasses(std::list<std::pair<uint32_t, std::string>>&) const override;
-		virtual const std::string&getClassNameFromPlayerClassID(uint32_t) const override;
+		virtual const std::string& getClassNameFromPlayerClassID(uint32_t) const override;
 		virtual IPlayer* createPlayer(uint32_t, const std::string&, int32_t) override;
 		virtual IPlayer* createPlayer(const std::string&, const std::string&, int32_t) override;
 		virtual bool saveAllPlayers(const std::string&) override;

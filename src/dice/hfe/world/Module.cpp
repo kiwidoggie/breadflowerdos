@@ -63,26 +63,26 @@ void Module::getSingletonList(std::vector<SingletonRegInfo>& regInfos)
 {
 	// TODO: Implement
 	/*
-    {
-        auto regInfo = SINGLETON_REG_INFO("ObjectManager",
+	{
+		auto regInfo = SINGLETON_REG_INFO("ObjectManager",
 	 * g_objectManager, IID_IObjectManager, CID_ObjectManager, 1);
 
 	 * regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo =
+	}
+	{
+		auto regInfo =
 	 * SINGLETON_REG_INFO("ObjectTemplateManager", g_objectTemplateManager,
 	 * IID_IObjectTemplateManager, CID_ObjectTemplateManager, 1);
 
 	 * regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo =
+	}
+	{
+		auto regInfo =
 	 * SINGLETON_REG_INFO("PlayerManager", g_playerManager, IID_IPlayerManager,
 	 * CID_PlayerManager, 1);
-        regInfos.push_back(regInfo);
-    }
-    {
+		regInfos.push_back(regInfo);
+	}
+	{
 
 	 * auto regInfo = SINGLETON_REG_INFO("WindManager", g_windManager,
 	 * IID_IWindManager, CID_WindManager, 1);
@@ -96,7 +96,7 @@ bool Module::init()
 {
 	// TODO: Implement
 	/*
-    g_mainConsoleObjects->registerConsoleObjects(objectManager::myList);
+	g_mainConsoleObjects->registerConsoleObjects(objectManager::myList);
 
 	 * g_mainConsoleObjects->registerTypeConversion("IObject*", "object");
 
@@ -131,7 +131,7 @@ bool Module::init()
 
 	 * g_mainConsoleObjects->registerTypeConversion("const
 	 * world::IObjectTemplate_ptrproxy", "objectTemplate");
-    */
+	*/
 	return true;
 }
 

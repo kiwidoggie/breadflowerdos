@@ -60,30 +60,30 @@ void GameLogicCompModule::getClassList(std::vector<ClassRegInfo>& regInfos)
 {
 	// TODO: Implement
 	/*
-    {
-        auto regInfo = ClassRegInfo(CID_ArmorGLCompTemplate,
+	{
+		auto regInfo = ClassRegInfo(CID_ArmorGLCompTemplate,
 	 * "dice.hfe.world.TemplateComponent.Armor",
 	 * ClassFactory<ArmorGLCompTemplate>::create);
 
 	 * regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo =
+	}
+	{
+		auto regInfo =
 	 * ClassRegInfo(CID_AbilityGLCompTemplate,
 	 * "dice.hfe.world.TemplateComponent.Ability",
 	 * ClassFactory<AbilityGLCompTemplate>::create);
 
 	 * regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo =
+	}
+	{
+		auto regInfo =
 	 * ClassRegInfo(CID_RadioGLCompTemplate,
 	 * "dice.hfe.world.TemplateComponent.Radio",
 	 * ClassFactory<RadioGLCompTemplate>::create);
 
 	 * regInfos.push_back(regInfo);
-    }
-    */
+	}
+	*/
 }
 
 void GameLogicCompModule::getSingletonList(

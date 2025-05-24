@@ -59,19 +59,19 @@ void ModuleBF2::getClassList(std::vector<ClassRegInfo>& regInfos)
 {
 	// TODO: Implement
 	/*
-    {
-        auto regInfo = ClassRegInfo(CID_GameServer,
+	{
+		auto regInfo = ClassRegInfo(CID_GameServer,
 	 * "dice.bf.gameServer", GameServer::create);
  regInfos.push_back(regInfo);
 
 	 * }
-    {
-        auto regInfo = ClassRegInfo(world::CID_PlayerManager,
+	{
+		auto regInfo = ClassRegInfo(world::CID_PlayerManager,
 	 * "dice.hfe.world.PlayerManager.Standard", world::PlayerManager::create);
 
 	 * regInfos.push_back(regInfo);
-    }
-    */
+	}
+	*/
 }
 
 // bf2: 008ac450

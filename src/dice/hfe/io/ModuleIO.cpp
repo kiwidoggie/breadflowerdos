@@ -64,8 +64,8 @@ void ModuleIO::getClassList(std::vector<ClassRegInfo>& regInfos)
 {
 	// TODO: Implement
 	/*
-    {
-        auto regInfo = ClassRegInfo(CID_ControlMap,
+	{
+		auto regInfo = ClassRegInfo(CID_ControlMap,
 	 *
 	 *
 	 * "dice.hfe.io.ControlMap.Standard", ControlMap::create);
@@ -73,9 +73,9 @@ void ModuleIO::getClassList(std::vector<ClassRegInfo>& regInfos)
 	 *
 	 *
 	 * regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo =
+	}
+	{
+		auto regInfo =
 	 *
 	 *
 	 * ClassRegInfo(CID_NullInputDeviceManager,
@@ -88,8 +88,8 @@ void ModuleIO::getClassList(std::vector<ClassRegInfo>& regInfos)
 	 * * regInfos.push_back(regInfo);
 
 	 * }
-    {
-        auto regInfo =
+	{
+		auto regInfo =
 	 *
 	 *
 	 * ClassRegInfo(CID_NullResourceManager,
@@ -99,10 +99,10 @@ void ModuleIO::getClassList(std::vector<ClassRegInfo>& regInfos)
 
 
 	 * * regInfos.push_back(regInfo);
-    }
+	}
 
 	 * {
-        auto regInfo =
+		auto regInfo =
 
 	 * * ClassRegInfo(CID_NullCacheManager,
 	 *
@@ -111,8 +111,8 @@ void ModuleIO::getClassList(std::vector<ClassRegInfo>& regInfos)
 
 	 *
 	 * regInfos.push_back(regInfo);
-    }
-    {
+	}
+	{
 
 	 * auto regInfo =
 	 *
@@ -124,18 +124,18 @@ void ModuleIO::getClassList(std::vector<ClassRegInfo>& regInfos)
 
 
 	 * * * regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo =
+	}
+	{
+		auto regInfo =
 	 *
 
 	 * * ClassRegInfo(CID_ExcelLexicon, "dice.hfe.ExcelLexicon",
 	 *
 	 *
 	 * ExcelLexicon::create);
-        regInfos.push_back(regInfo);
-    }
-    */
+		regInfos.push_back(regInfo);
+	}
+	*/
 }
 
 void ModuleIO::getSingletonList(std::vector<SingletonRegInfo>& regInfos)
@@ -160,8 +160,8 @@ void ModuleIO::getSingletonList(std::vector<SingletonRegInfo>& regInfos)
 			1);
 		regInfos.push_back(s_RegInfo);
 	} /*
-    {
-        auto regInfo =
+	{
+		auto regInfo =
 	 *
 		 SINGLETON_REG_INFO("ResourceManager",
 		 g_resourceManager,
@@ -171,10 +171,10 @@ void ModuleIO::getSingletonList(std::vector<SingletonRegInfo>& regInfos)
 
 	 *
 		 regInfos.push_back(regInfo);
-    }
+	}
 
 		 {
-        auto regInfo =
+		auto regInfo =
 
 		 * SINGLETON_REG_INFO("CacheManager",
 		 g_cacheManager,
@@ -183,7 +183,7 @@ void ModuleIO::getSingletonList(std::vector<SingletonRegInfo>& regInfos)
 
 
 		 regInfos.push_back(regInfo);
-    }
+	}
  {
 
 	 * auto regInfo =
@@ -196,9 +196,9 @@ void ModuleIO::getSingletonList(std::vector<SingletonRegInfo>& regInfos)
 
 
 		 regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo
+	}
+	{
+		auto regInfo
 	 * =
 
 		 SINGLETON_REG_INFO("InputDeviceManager", g_inputDeviceManager,
@@ -209,17 +209,17 @@ void ModuleIO::getSingletonList(std::vector<SingletonRegInfo>& regInfos)
 	 *
 
 		 regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo =
+	}
+	{
+		auto regInfo =
 	 *
 
 		 SINGLETON_REG_INFO("InputManager", g_inputManager, IID_IInputManager,
 
 
 		 * CID_InputManager, 1);
-        regInfos.push_back(regInfo);
-    }
+		regInfos.push_back(regInfo);
+	}
 
 		 {
 
@@ -238,8 +238,8 @@ void ModuleIO::getSingletonList(std::vector<SingletonRegInfo>& regInfos)
 		auto s_RegInfo = SINGLETON_REG_INFO("MainConsole", g_mainConsole);
 		regInfos.push_back(s_RegInfo);
 	} /*
-    {
-        auto regInfo =
+	{
+		auto regInfo =
 	 *
 
 		 SINGLETON_REG_INFO("ActiveMethodConsole", g_activeMethodConsole);
@@ -247,17 +247,17 @@ void ModuleIO::getSingletonList(std::vector<SingletonRegInfo>& regInfos)
 
 
 		 * regInfos.push_back(regInfo);
-    }
-    {
-        auto regInfo =
+	}
+	{
+		auto regInfo =
 	 *
 
 		 SINGLETON_REG_INFO("Lexicon", g_lexicon, IID_ILexicon,
 
 		 CID_ExcelLexicon,
 	 * 2);
-        regInfos.push_back(regInfo);
-    }
+		regInfos.push_back(regInfo);
+	}
 
 
 	   */
@@ -267,7 +267,7 @@ bool ModuleIO::init()
 {
 	// TODO: Implement
 	/*
-    g_mainConsoleObjects->registerConsoleObjects(fileManager::myList);
+	g_mainConsoleObjects->registerConsoleObjects(fileManager::myList);
 
 
 
@@ -353,12 +353,12 @@ bool ModuleIO::init()
 
 
 	 * * * 0);
-    addConstantHelper("c_GIToggleConsole", 1);
+	addConstantHelper("c_GIToggleConsole", 1);
 
 	 *
 	 *
 	 * addConstantHelper("c_GIEscape", 2);
-    addConstantHelper("c_GIUp",
+	addConstantHelper("c_GIUp",
 	 * 3);
 
 
@@ -408,16 +408,16 @@ bool ModuleIO::init()
 	 * addConstantHelper("c_GIOk",
 
 	 * * 15);
-    addConstantHelper("c_GIAltOk", 16);
+	addConstantHelper("c_GIAltOk", 16);
 
 	 *
 	 *
 	 * addConstantHelper("c_GITab", 28);
-    addConstantHelper("c_GIEnter",
+	addConstantHelper("c_GIEnter",
 
 
 	 * * * 29);
-    addConstantHelper("c_GICancel", 17);
+	addConstantHelper("c_GICancel", 17);
 
 	 *
 	 *
@@ -484,7 +484,7 @@ bool ModuleIO::init()
 
 
 	 * * * 23);
-    addConstantHelper("c_GISaySquad", 24);
+	addConstantHelper("c_GISaySquad", 24);
 
 	 *
 	 *
@@ -520,11 +520,11 @@ bool ModuleIO::init()
 	 *
 	 *
 	 * addConstantHelper("c_GI3dMap", 57);
-    addConstantHelper("c_GIYes",
+	addConstantHelper("c_GIYes",
 
 
 	 * * * 47);
-    addConstantHelper("c_GINo", 48);
+	addConstantHelper("c_GINo", 48);
 
 	 *
 	 *
@@ -581,11 +581,11 @@ bool ModuleIO::init()
 	 *
 	 *
 	 * addConstantHelper("c_PILie", 37);
-    addConstantHelper("c_PICrouch",
+	addConstantHelper("c_PICrouch",
 
 
 	 * * * 38);
-    addConstantHelper("c_PIYaw", 0);
+	addConstantHelper("c_PIYaw", 0);
 
 	 *
 	 * addConstantHelper("c_PIPitch",
@@ -618,7 +618,7 @@ bool ModuleIO::init()
 
 
 	 * * * 8);
-    addConstantHelper("c_PIAltFire", 31);
+	addConstantHelper("c_PIAltFire", 31);
 
 	 *
 	 *
@@ -633,11 +633,11 @@ bool ModuleIO::init()
 	 *
 	 *
 	 * addConstantHelper("c_PIAction", 9);
-    addConstantHelper("c_PIUse",
+	addConstantHelper("c_PIUse",
 
 
 	 * * * 10);
-    addConstantHelper("c_PIMouseLook", 11);
+	addConstantHelper("c_PIMouseLook", 11);
 
 	 *
 	 *
@@ -646,7 +646,7 @@ bool ModuleIO::init()
 
 
 	 * * * 60);
-    addConstantHelper("c_PIPrevItem", 61);
+	addConstantHelper("c_PIPrevItem", 61);
 
 	 *
 	 *
@@ -760,7 +760,7 @@ bool ModuleIO::init()
 
 
 	 * * * 49);
-    addConstantHelper("c_PIRadio3", 50);
+	addConstantHelper("c_PIRadio3", 50);
 
 	 *
 	 *
@@ -769,7 +769,7 @@ bool ModuleIO::init()
 
 
 	 * * * 52);
-    addConstantHelper("c_PIRadio6", 53);
+	addConstantHelper("c_PIRadio6", 53);
 
 	 *
 	 *
@@ -778,7 +778,7 @@ bool ModuleIO::init()
 
 
 	 * * * 55);
-    addConstantHelper("c_PIScreenShot", 56);
+	addConstantHelper("c_PIScreenShot", 56);
 
 	 *
 	 *
@@ -787,7 +787,7 @@ bool ModuleIO::init()
 
 
 	 * * * 58);
-    addConstantHelper("c_PISayTeam", 59);
+	addConstantHelper("c_PISayTeam", 59);
 
 	 *
 	 *
@@ -804,7 +804,7 @@ bool ModuleIO::init()
 	 *
 	 *
 	 * addConstantHelper("c_PIToggleFireRate", 46);
-    */
+	*/
 	return true;
 }
 

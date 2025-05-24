@@ -11,7 +11,8 @@ namespace dice::hfe
 		}
 	};
 
-	template <class K, class V, class H> struct Hash
+	template <class K, class V, class H>
+	struct Hash
 	{
 
 		struct Node
