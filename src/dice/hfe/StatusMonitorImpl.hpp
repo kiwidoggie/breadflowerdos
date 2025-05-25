@@ -14,4 +14,4 @@ namespace dice::hfe
 		virtual void outputString(int32_t, int32_t, std::string&) = 0;
 		virtual void flushToScreen() = 0;
 	};
-}
+}	 // namespace dice::hfe

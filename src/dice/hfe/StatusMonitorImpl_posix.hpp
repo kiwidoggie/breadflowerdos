@@ -10,7 +10,7 @@ namespace dice::hfe
 		uint8_t m_unknown08[4];
 		uint8_t m_unknown0C[4];
 		double m_unknown10;
-		void* m_scrWindow; // WINDOW *initscr(void);
+		void* m_scrWindow;	  // WINDOW *initscr(void);
 
 	public:
 		StatusMonitorImpl_posix();
@@ -26,4 +26,4 @@ namespace dice::hfe
 	static_assert(sizeof(StatusMonitorImpl_posix) == 0x20);
 	static_assert(offsetof(StatusMonitorImpl_posix, m_unknown10) == 0x10);
 #endif
-}
+}	 // namespace dice::hfe
