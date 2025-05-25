@@ -85,6 +85,8 @@ namespace dice::hfe
 		bool parseParameters(const std::string&);
 		bool playDemo(bool, const std::string&);
 		void quitNextFrame();
+
+		void updateStatusMonitor(bool);
 	};
 
 	extern BF2Engine* g_bf2Engine;

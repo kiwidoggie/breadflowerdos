@@ -1066,6 +1066,16 @@ void BF2Engine::quitNextFrame()
 	m_shouldQuit = true;
 }
 
+// bf2: 004d3960
+void BF2Engine::updateStatusMonitor(bool p_Param)
+{
+	if (m_statusMonitor == nullptr)
+		return;
+
+	// TODO: Implement
+	// StatusMonitor::update(m_statusMonitor, p_Param);
+}
+
 void dice::hfe::bf2ExitCallback(void* bf2Engine)
 {
 	if (bf2Engine != nullptr)
